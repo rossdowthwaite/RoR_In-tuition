@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = @user.courses
-    @enrolled = Enrolment.find(:all, :include => :student, :conditions => ["students.pupil_id == ?", current_user.id])
+    @enrolled = Enrolment.find(:all, :include => :student, :conditions => ["students.pupil_id = ?", current_user.id])
   end
 
   def show
