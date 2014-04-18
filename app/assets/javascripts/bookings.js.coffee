@@ -14,3 +14,12 @@ ready = ->
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
+
+$ ->
+  $("input.datepicker").each (i) ->
+    $(this).datepicker
+    altFormat: "yyyy-mm-dd"
+    dateFormat: "yyyy-mm-dd"
+    altField: $(this).next()
+    autoclose: true
+    weekStart: 1
