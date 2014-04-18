@@ -1,0 +1,39 @@
+
+<% if @content.count == 0 %>
+
+<center><h3>You dont have any subjects To Add Yet this Course yet</h3>
+<p>Once you have oraginzed your topics you can add your subjects to your course!</p><br>
+<%= link_to raw('<i class="fa fa-puzzle-piece fa-5x"></i><br>Start building your sylabus now!'), my_materials_path() %> </center><br><br>
+  <center><%= image_tag('coure_subjects.png') %></center>
+
+<% else %>
+
+      <%= form_for (@course) do |f| %>
+
+        <!-- Sending form will fail if none of the boxes are ticked -->
+        <!-- this tag ensures something is sent -->
+        <%= hidden_field_tag "#{f.object_name}[subject_ids][]", nil %>
+
+        <table class="table table-striped">
+            
+            <thead>  
+              <tr>
+                <th>Enabled</th>
+                <th>topic</th>
+              </tr>
+            </thead>
+            
+          <% @content.each do |content| %>
+            <tr>
+              <td><%= check_box_tag "course[subject_ids][]", content.id, @course.subject_ids.include?(content.id) %></td>
+              <td><%= content.title %></td>
+            </tr>  
+          <% end %>
+        </table>
+        
+        <div class="actions">
+          <%= f.submit :class => 'btn btn-primary my_button' %>
+        </div>
+      <% end %>
+
+<% end %>

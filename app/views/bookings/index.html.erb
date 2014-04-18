@@ -1,0 +1,61 @@
+<% @heading = 'My Bookings'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'booking_index_side' %>
+
+<div id="booking_table">
+  <% @bookings.each do |booking| %>
+    <% booking_status(booking) %>
+    <% my_booking_status(booking) %>
+
+      <%= link_to booking do %>
+        <div id="booking" style="background-color:<%= @color %>">
+          <div id="booking_titles">
+            <%= booking.title %>
+          </div>
+          <div id="booking_date">
+            <%= booking.start.strftime("%B %d, %Y")  %>
+          </div>
+          <div id='booking_time'>
+            <%= time(booking.start_time) %> - <%= time(booking.end_time) %>
+          </div>
+          <div id='distance_time'>
+            <%= distance_of_time_in_words(Date.today, booking.start)  %>
+          </div>
+         
+            <% if booking.appointments.count > 2 %>
+               <div id='with_tab'>
+                  <%= booking.appointments.count - 1 %>
+               </div> 
+            <% else %>
+               <div id='with_tab'>
+                  <% booking.appointments.each do |app| %>
+                    <% if !my_appointment(app) %>
+                      <%= image_tag app.user.avatar.url(:post) if app.user.avatar?  %>
+                    <% end %>
+                  <% end %>
+               </div> 
+            <% end %>
+          
+
+          <div id='booking_icons'>
+                   <div id="booking_icon">
+                      <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), booking, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
+                    </div>
+                  
+                    <div id="booking_icon">
+                        <center><%= raw(@my_status_icon) %></center>
+                    </div>
+
+                    <div id="booking_icon">
+                        <center><%= raw(@booking_status_icon) %></center>
+                    </div>
+          </div>
+
+        </div>
+
+      <% end %>
+
+  <% end %>
+</div>
+

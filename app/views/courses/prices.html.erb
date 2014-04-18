@@ -1,0 +1,8 @@
+<% @heading = 'Course Prices'  %>
+<%= render 'layouts/header' %>
+
+<% @prices.each do |price| %>
+	<%= price.title  %><br>
+<% end %>
+
+<%= link_to 'Update Prices', update_prices_course_path(@course), :class => 'btn btn-primary my_button' %> 

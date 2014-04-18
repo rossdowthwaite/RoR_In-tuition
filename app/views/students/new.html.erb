@@ -1,0 +1,69 @@
+<% @heading = 'New student' %>
+<%= render 'layouts/header' %>
+
+	<center>
+		<h1>Find a Student</h1>
+
+			<!-- seacrh form -->
+			<%= search_form_for @search, url: new_student_path do |f| %>
+			
+			<!-- Check email contents -->
+			<%= f.text_field :email_cont, :class => 'wider my_field' %><br>
+
+			<button class='btn btn-primary my_button'>
+		    	<i class="fa fa-search fa-3x"></i>
+		  	</button>
+
+	</center>
+
+	<% end %> 
+	<!-- search for end -->
+
+	<!-- if no results are returned.. -->
+	<% if @users.count == 0 %>
+
+		<% if  @done == "set" %>
+			<center><h4>Sorry, no user was found that matches your search.</h4></center>
+			<center><p>Maybe they dont have an account yet?</p></center>
+		<% end %>
+
+	<% else %>
+
+	<!-- show results-->
+	<center>
+		<table class="table table-striped" style="width:80%">
+
+		  <thead>
+		    <tr>
+		      <th></th>
+		      <th>Username</th>
+		      <th>Email</th>
+		      <th></th>
+		      <th></th>
+		    </tr>
+		  </thead>
+
+		  <tbody>
+		    <% @users.each do |u| %>
+		      <tr>
+		      	<td width="10%"><%= image_tag u.avatar.url(:mini) if u.avatar %></td>
+		        <td><%= u.title %></td>
+		        <td><%= u.email %></td>
+		        <td></td>
+		        
+		        <td width="30px">
+		        	<% if find_student(u, current_user) %>
+	        			<%= link_to "send invite",  students_path(student: {user_id: current_user.id, pupil_id: u.id, status: false, response: "Pending" }), :method => :post %>
+	        		<% else %>
+	        			Already your student
+	        		<% end %>
+	        	</td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+
+		</table>
+	</center>
+
+	<% end %>
+	<!-- end show results -->

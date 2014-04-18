@@ -1,0 +1,221 @@
+<% @profiled = poly(@profile.profilable_type, @profile.profilable_id)  %>
+
+<% if @profile.profilable_type == 'User' %>
+	<% @image = @profiled.avatar.url(:home) if @profiled.avatar?  %>
+	<% @email = @profiled.email %>
+	<% @user_profile = true  %>
+	<% if @profiled.courses.count > 0  %>
+		<% @title = 'Tutor' %>
+	<% else %>
+		<% @title = 'Student' %>
+	<% end %>
+<% else %>
+	<% @image = @profiled.logo.url(:home) if @profiled.logo?  %>
+	<% @email = @profiled.user.email %>
+	<% @course = true  %>
+<% end %>
+
+<% if owned_by(current_user, @profiled) %>
+	<% @owner = true %> 
+<% end %>
+
+<% if @owner %>
+	<div id="profile_nav">
+		<% if @user_profile %>
+		  <%= link_to qualifications_path do %>
+		    <div id="dash_tab">
+		      <div id="dash_heading">
+		        <h3>Qualities</h3> 
+		      </div>  
+		      <center><i class="fa fa-trophy fa-2x icons_100" id="tab_icon"></i></center>
+		    </div>
+		  <% end %>
+		 
+
+		  <%= link_to user_avatar_path(current_user) do %>
+		    <div id="dash_tab">
+		      <div id="dash_heading">
+		        <h3>Avatar</h3> 
+		      </div>  
+		      <center><i class="fa fa-camera-retro fa-2x icons_100" id="tab_icon"></i></center>
+		    </div>
+		  <% end %>
+
+		  <%= link_to goals_path do %>
+		    <div id="dash_tab">
+		      <div id="dash_heading">
+		        <h3>Goals</h3> 
+		      </div>  
+		      <center><i class="fa fa-flag-checkered fa-2x icons_100" id="tab_icon"></i></center>
+		    </div>
+		  <% end %>
+	<% end %>
+
+		 <%= link_to edit_profile_path do %>
+		    <div id="dash_tab">
+		      <div id="dash_heading">
+		        <h3>Bio</h3> 
+		      </div>  
+		      <center><i class="fa fa-bullhorn fa-2x icons_100" id="tab_icon"></i></center>
+		    </div>
+		  <% end %>
+
+		<% if @course %>
+			 <%= link_to course_locations_path(@profiled) do %>
+			    <div id="dash_tab">
+			      <div id="dash_heading">
+			        <h3>Locations</h3> 
+			      </div>  
+			      <center><i class="fa fa-compass fa-2x icons_100" id="tab_icon"></i></center>
+			    </div>
+			  <% end %>	
+
+			  <%= link_to course_course_items_path(@profiled) do %>
+			    <div id="dash_tab">
+			      <div id="dash_heading">
+			        <h3>Pricing</h3> 
+			      </div>  
+			      <center><i class="fa fa-money fa-2x icons_100" id="tab_icon"></i></center>
+			    </div>
+			  <% end %>	
+
+		<% end %>
+
+	</div>
+<% end %>
+
+<div id="Profile_header">
+	<div id='profile_heading'>
+		<h2><%= @profiled.title %></h2>
+		<h4><%= @title %></h4>
+	</div>
+
+	<% if @course  %>
+		<%= link_to profile_path(@profiled.user.profile) do %> 
+			<div id='profile_tab'>
+			<div id="dash_heading">
+		        <h3>Tutor</h3> 
+		    </div> 
+				<center><i class="fa fa-user fa-2x icons_100" id="tab_icon"></i></center>
+			</div>
+		<% end %>
+	<% end %>
+
+	<%= mail_to @email, :encode => "hex" do %> 
+		<div id='profile_tab'>
+			<div id="dash_heading">
+		        <h3>Contact</h3> 
+		     </div>  
+			<center><i class="fa fa-envelope fa-2x icons_100" id="tab_icon"></i></center>
+		</div>
+	<% end %>
+</div>
+
+	<div id="bio_cont">
+	<div id="profile_image">
+		<%= image_tag @image  %>
+	</div>
+		<div id="bio">
+			<h5>Bio:</h5>
+			<%= auto_link(simple_format(@profile.bio))  %>
+			<% if @owner %>
+				<%= link_to 'Edit Bio', edit_profile_path() %> 
+			<% end %>
+		</div>
+	</div>
+
+	<div id='profile_extras'>
+
+		<% if @user_profile %>
+
+			<% if @profiled.courses.count > 0  %>
+				<div id="profile_courses">
+					<h3>Taught Courses</h3>
+					<% @profiled.courses.each do |course| %>
+						<%= link_to course.profile do %> 
+							<div id="course_enrol">
+							        <div id="course_enrol_img">
+							          <%= image_tag course.logo.url(:thumb) if course.logo %>
+							        </div>
+
+							        <div id='course_enrol_heading'>
+							          <h3 class="tab_heading"><%= course.title %><h3>
+							        </div>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+			<% end %>
+
+			<% if @profiled.qualifications.count > 0 %>
+				<div id="profile_courses">
+					<h3>Qualifications</h3>
+					<% @profiled.qualifications.each do |qual| %>
+						<h5>* <%= qual.quality %></h5>
+					<% end %>
+				<% if @owner %>
+					<%= link_to 'Edit Qualifications', qualifications_path() %> 
+				<% end %>
+				</div>
+			<% end %>
+
+			<% if @profiled.goals.count > 0 %>
+				<div id="profile_courses">
+					<h3>Goals</h3>
+					<% @profiled.goals.each do |goal| %>
+						<h5>* <%= goal.aim %></h5>
+					<% end %>
+				<% if @owner %>
+					<%= link_to 'Edit Goals', goals_path() %> 
+				<% end %>
+				</div>
+			<% end %>
+
+
+		<% end %>
+
+
+		<% if @profiled.locations.count > 0 %>
+			<div id="profile_courses">
+				<h3>Location</h3>
+				<% @profiled.locations.each do |address| %>
+				 	<div id="address_tab">
+			            <h5><%= address.street %><h5>
+			            <h5><%= address.city %><br></h5>
+			            <h5><%= address.county %><br></h5>
+			            <h5><%= address.country %><br></h5>
+			            <h5><%= address.p_code %><br></h5>
+          			</div>
+				<% end %>
+			</div>
+		<% end %>
+
+	<% if @course %>
+		<% if @profiled.course_items.profiled.count > 0 %>
+			<div id="profile_prices">
+				<h3>Pricing</h3>
+				<% @profiled.course_items.profiled.each do |price| %>
+					<div id="profile_price">
+						<div id='profile_price_title'>
+			            	<%= price.product.title %>
+			            </div>
+						<div id='profile_price_int'>
+							<div id='with_tab'>
+				                <center><i class="fa fa-gbp fa-2x tab_icons"></i></center>
+				             </div>
+			            	<%= price.product.price %>
+			            </div>			            
+			         </div>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+
+	</div>
+
+
+
+
+
+
+

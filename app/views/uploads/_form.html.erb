@@ -1,0 +1,36 @@
+<%= form_for(@upload) do |f| %>
+  <% if @upload.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+
+      <ul>
+      <% @upload.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- If Topic is set then the material needs to be linked to the topic -->
+  <!-- The controller will check if this is set and add the record to the join table -->
+  <% if @topic %>
+    <%= hidden_field_tag :topic_id, @topic.id%>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label "Upload Title", :class => 'my_label' %>
+    <%= f.text_field :title, :class => 'my_field'  %>
+  </div>
+  <div class="field">
+    <%= f.label :upload, :class => 'my_label' %>
+    <%= f.file_field :upload, :class => 'my_field' %>
+  </div>
+
+<div id="media_create">
+  <div class="actions">
+    <%= f.submit :class => 'my_button btn btn-primary no_margin'  %>
+  </div>
+</div>
+
+<% end %>

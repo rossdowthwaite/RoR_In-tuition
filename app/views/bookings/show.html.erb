@@ -1,0 +1,79 @@
+<% @heading = 'My Bookings'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'booking_side' %>
+
+
+<h2><%= @booking.title %></h2>
+
+  <div id='booking_stuff_cont'> 
+    <h4>When?</h4>
+    <div id="booking_stuff">
+      <h4>Date</h4>
+      <%= @booking.start %><br>
+      <%= @booking.end %>
+
+      <h4>Time</h4>
+      <%= time(@booking.start_time) %><br>
+      <%= time(@booking.end_time) %>
+    </div>
+  </div>
+
+  <div id='booking_stuff_cont'>
+    <h4>What</h4>
+    <div id="booking_stuff">
+      
+      <p><%= @booking.description %></p>
+    </div>
+  </div>
+
+  <% if @booking.booker_id != current_user.id  %>
+    <div id="booking_action_stuff_cont">
+      <h4>Action</h4>
+      <div id='booking_action_stuff'>
+            <%= render 'booking_actions'   %>
+      </div>
+    </div>
+  <% end %>
+
+
+<div id='Booking_comments'>
+          <h4>Comments</h4>
+          <% @comments.each do |comment| %>
+
+            <div id='booking_comment'>
+              <div id="booking_comment_image">
+                <%= image_tag comment.user.avatar.url(:post) if comment.user.avatar? %>
+              </div>
+              <div id="booking_comment_content">
+                <%= comment.content %>
+              </div>
+              <div id='status'><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), comment, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
+            </div>
+
+          <% end %>
+
+          <%= form_for([@booking.comments.build]) do |f| %>
+
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :commentable_id, :value => @booking.id %>
+            <%= f.hidden_field :commentable_type, :value => 'Booking' %>
+
+
+            <div class="field">
+              <%= f.text_area :content, :class => 'booking_comment_area' %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit :class => 'btn btn-primary booking_comment_button' %>
+            </div>
+
+          <% end %>
+
+
+
+</div>
+
+  </div>
+</div>
+

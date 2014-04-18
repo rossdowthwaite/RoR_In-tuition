@@ -1,0 +1,74 @@
+<div id="side">
+
+
+<h4>Status</h4>
+<% set_status_style(confirmed(@booking)) %>
+<div id="booking_status" style="background-color:<%= @color %>">  
+    <% if confirmed(@booking) %>
+    
+      <center><h5>CONFIRMED!</h5></center>
+      <center><i class="fa fa-ticket fa-3x"></i></center>
+    
+    <% elsif @appointments.rejected.count == @appointments.count - 1 %>
+
+    	<center><h5>REJECTED!</h5></center>
+      <center><i class="fa fa-times-circle fa-3x"></i></center>
+
+    <% else %>
+
+      <center><h5>PENDING!</h5></center>
+      <center><%= @booking.appointments.is_confirmed.count %> out of <%= @booking.appointments.count %> confirmed</center>
+    
+    <% end %>
+</div>
+
+
+
+<% if @booking.booker == current_user  %>
+	<%= link_to edit_booking_path() do %> 
+			<div id="tab_medium">
+				<div id="dash_heading">
+					<h3>Edit <br>Booking</h3>
+				</div>
+			</div>
+	<% end %>
+<% end %>
+
+<h4>With</h4>
+
+<% @appointments.each do |app| %>
+
+    <% if !my_appointment(app) %>
+
+	    <div id="forum_participant">
+
+	      <% if app.user.avatar.exists? %>
+
+	          <div id="course_enrol_img">
+	            <%= image_tag app.user.avatar.url(:thumb)%>
+	          </div>
+
+	      <% else %>
+	            <div id="no_avatar"></div>
+	      <% end %>
+
+			<% if app.confirmed == nil %>
+	            <div id="status"><center><i class="fa fa-clock-o fa-2x tab_icons"></i></center></div>
+	        <% end %>
+
+	        <% if app.confirmed == false %>
+	            <div id="status"><center><i class="fa fa-thumbs-o-down fa-2x tab_icons"></i></center></div>
+	        <% end %>
+
+	        <% if app.confirmed == true %>
+	            <div id="status"><center><i class="fa fa-thumbs-o-up fa-2x tab_icons"></i></center></div>
+	        <% end %>
+	    
+	    </div>
+
+    <% end %>
+      
+<% end %>
+
+
+</div>

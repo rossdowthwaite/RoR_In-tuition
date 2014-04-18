@@ -1,0 +1,34 @@
+<% @heading =  @subject.title  %>
+<%= render 'layouts/header' %>
+
+<div id="subject_topics_section">
+	
+		<h2>Topics</h2>
+
+		<% @topics.each do |topic| %>
+
+		<% if @course %>
+			<% @link = course_subject_topic_path(@course, @subject, topic) %>
+		<% else %>
+			<% @link = topic %>
+		<% end %>
+
+			<%= link_to @link  do %> 
+			<div id="topic_tab">
+				<%= topic.title %>
+				<div id="status"></div>
+			</div>
+			<% end %>
+		<% end %>
+
+		<br><br>
+
+		<% if @subject.user == current_user  %>
+		<%= link_to 'Add Topics', add_topics_subject_path(), :class => 'my_button btn btn-inverse' %> 
+		<% end %>
+	</div>
+
+<div id='subject_description'>
+	<h2>Overview</h2>
+	<p><%= @subject.description %></p>
+</div>

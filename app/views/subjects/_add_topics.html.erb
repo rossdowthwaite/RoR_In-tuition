@@ -1,0 +1,32 @@
+<%= form_for (@subject) do |f| %>
+
+  <!-- Sending form will fail if none of the boxes are ticked -->
+  <!-- this tag ensures something is sent -->
+  <%= hidden_field_tag "#{f.object_name}[topic_ids][]", nil %>
+  
+  <!-- Send the course id if its set -->
+  <% if @course %>
+    <%= hidden_field_tag :course_id, @course.id %>
+  <% end %> 
+
+  <table class="table table-striped">
+      
+      <thead>  
+        <tr>
+          <th>Enabled</th>
+          <th>topic</th>
+        </tr>
+      </thead>
+      
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= check_box_tag "subject[topic_ids][]", topic.id, @subject.topic_ids.include?(topic.id) %></td>
+        <td><%= topic.title %></td>
+      </tr>  
+    <% end %>
+  </table>
+  
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary my_button' %>
+  </div>
+<% end %>

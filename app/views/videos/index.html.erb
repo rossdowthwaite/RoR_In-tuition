@@ -1,0 +1,45 @@
+<% @heading = 'My Videos'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'layouts/content_side'  %>
+
+<% if @videos.count == 0 %>
+  
+  <center><h3>Add Some Videos!</h3>
+  <p>Start adding some links to your favourite youtube videos to use in your topics.</p>
+  <p>You can add videos to topics on the fly when you create the content for you topic.<br> All the videos you link to will be shown here.</p><br>
+  <%= link_to raw('<i class="fa fa-film fa-5x"></i> <br>Add a New Video'), new_video_path %><br><br>
+  <center><%= image_tag('topic_materials.png') %></center>
+  </center>
+
+
+<% else %>
+
+  <table>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Used in</th>
+    </tr>
+    <% @videos.each do |video| %>
+      <tr>
+        <td>
+          <% if video.video_url != "" %>
+                <% @video_id = YouTubeAddy.extract_video_id(video.video_url) %>
+                <%= image_tag "http://img.youtube.com/vi/" + @video_id + "/default.jpg"  %>
+          <% end %>
+        </td>
+        <td><%= video.title %></td>
+        <td><%= pluralize(video.topics.count, 'topic') %></td>
+        <td>
+          <%= link_to 'show', video %>
+          <%= link_to 'edit', edit_video_path(video) %>
+          <%= link_to 'destroy', video, method: :delete, data: { confirm: 'Are you sure?' }  %> 
+        </td>
+      </tr>  
+    <% end %>
+  </table>
+
+  <%= link_to 'New Video', new_video_path %>
+
+<% end %>

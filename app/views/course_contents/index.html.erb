@@ -1,0 +1,29 @@
+<h1>Listing course_contents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Course</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course_contents.each do |course_content| %>
+      <tr>
+        <td><%= course_content.subject %></td>
+        <td><%= course_content.course %></td>
+        <td><%= link_to 'Show', course_content %></td>
+        <td><%= link_to 'Edit', edit_course_content_path(course_content) %></td>
+        <td><%= link_to 'Destroy', course_content, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course content', new_course_content_path %>

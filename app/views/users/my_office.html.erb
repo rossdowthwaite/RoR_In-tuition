@@ -1,0 +1,40 @@
+<% @heading = 'My Office'  %>
+<%= render 'layouts/header' %>
+
+<div id="office_grid">
+
+    <%= link_to my_materials_path do %>
+          <div id="tab">
+            <div id="tab_type">
+              <h3>Materials</h3>
+            </div>
+            <center><i class="fa fa-briefcase fa-5x icons_160" id="tab_icon"></i></center>
+          </div>
+    <% end %>
+
+    <%= link_to schools_path do %>
+          <div id="tab">
+            <div id="tab_type">
+              <h3>Schools</h3>
+            </div>
+            <center><i class="fa fa-home fa-5x icons_160" id="tab_icon"></i></center>
+          </div>
+    <% end %>
+
+    <%= link_to products_path do %>
+          <div id="tab">
+            <div id="tab_type">
+              <h3>Products</h3>
+            </div>
+            <center><i class="fa fa-shopping-cart fa-5x icons_160" id="tab_icon"></i></center>
+          </div>
+    <% end %>
+
+          <div id="tab">
+            <div id="tab_type">
+              <h3>Finances</h3>
+            </div>
+            <center><i class="fa fa-signal fa-5x icons_160" id="tab_icon"></i></center>
+          </div>
+
+</div>

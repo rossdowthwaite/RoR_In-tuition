@@ -1,0 +1,80 @@
+// Place all the styles related to the publics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#search_container {
+
+}
+
+#search_box{
+	float:left;
+	height:100px;
+	margin-right: 10px;
+}
+
+#search_tab{
+	width:200px;
+	height:200px;
+	float: left;
+	background-color: red;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	position: relative;
+	padding: 0px;
+}
+
+#results_grid {
+	width:99%;
+	min-height: 400px;
+	overflow: auto;
+}
+
+#distance_tab {
+	float: left;
+	bottom:0px;
+	left:0px;
+	background-color: #04B486 ;
+	height:50px;
+	padding-left: 20px;
+	padding-right:20px;
+}
+
+#distance_tab h3 {
+	color: white;
+	font-size: 15px;
+	line-height: 160%;
+}
+
+#result_tab{
+	width:200px;
+	overflow: auto;
+	float: left;
+	position: relative;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	padding: 0px;
+}
+
+#intro {
+	margin: auto;
+	width:900px;
+	overflow:auto;
+}
+
+#welcome_search {
+	width:270px;
+	height:270px;
+	background-color: rgba(0,0,0, 0.4);
+	float:left;
+	margin-right: 20px;
+	color: white;
+	position: relative;
+}
+
+
+#search_title {
+	width:260px;
+	position: absolute;
+	padding-left: 10px;
+	background-color: rgba(0,0,0, 0.4);
+}

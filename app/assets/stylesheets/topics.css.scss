@@ -1,0 +1,23 @@
+// Place all the styles related to the topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#topic_header {
+	min-height: 100px;
+	margin-bottom: 30px;
+	overflow:auto;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+#topic_description {
+	margin-right: 250px;
+}
+
+#topic_menu {
+	position: absolute;
+	top:0px;
+	right:0px;
+}

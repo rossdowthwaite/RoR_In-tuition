@@ -1,0 +1,14 @@
+<% @heading = @forum.title  %>
+<%= render 'layouts/header' %>
+
+<%= render 'side'  %>
+
+<h2>Settings</h2>
+
+      <%= link_to 'Edit forum', edit_forum_path(@forum) %> <br>
+
+      <% if @forum.forumable_type == 'Student' %>
+      <% elsif @forum.forumable_type == 'Course' && poly(@forum.forumable_type, @forum.forumable_id).user_id == current_user.id %>
+      	<%= link_to 'Add Participants', add_participant_forum_path(@forum) %> <br>
+      	<%= link_to 'Delete forum', @forum, method: :delete, data: { confirm: 'Are you sure?' } %> <br>
+      <% end %>

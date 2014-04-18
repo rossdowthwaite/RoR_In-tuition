@@ -1,0 +1,46 @@
+<h1>Find A Course</h1>
+
+<%= search_form_for @search, url: search_path do |f| %>
+
+  <div id="search_container">
+  <div id="search_box">
+      <%= f.label :title_cont, "Course Contains", :class => 'my_label'  %>
+      <%= f.text_field :course_title_cont, :class => 'my_field'  %>
+  </div>
+  <div id="search_box">
+      <%= label_tag :near, "near postcode", :class => 'my_label'  %>
+      <%= text_field_tag :near, params[:near], :class => 'my_short_field' %>
+  </div>
+      <%= f.submit "search", :class => 'btn btn-primary my_button' %>
+  </div>
+
+<% end %>
+
+<div id="results_grid">
+
+      <% @courses.each do |l| %>
+      <div id="result_tab">
+          <div id="search_tab">
+            
+            <%= link_to l.course.profile do %> 
+              <div id="tab_logo">
+                <%= image_tag l.course.logo.url(:medium) if l.course.logo? %>
+              </div>
+            <% end %>
+
+            <div id="tab_type">
+              <h3><%= l.course.title %></h3>
+            </div>
+ 
+
+          </div>
+
+          <% if params[:near].present?  %>
+            <div id="distance_tab">
+                <center><h3><i class="fa fa-map-marker fa-2x"> </i> <%= l.distance.round(1) %> miles</h3></center> 
+            </div>
+          <% end %> 
+      </div>
+      <% end %>
+
+</div>

@@ -1,0 +1,43 @@
+<% @heading = 'Course Prices'  %>
+<%= render 'layouts/header' %>
+
+    <% @course_items.each do |course_item| %>
+
+          <% if public?(course_item) %>
+            <% @icon = '<i class="fa fa-eye fa-2x tab_icons"></i>' %>
+          <% else %>
+            <% @icon = '<i class="fa fa-eye-slash fa-2x tab_icons"></i>' %>
+          <% end %>
+
+          <div id="product_item">
+            <div id='with_tab'>
+              <center><i class="fa fa-shopping-cart fa-2x tab_icons"></i></center>
+            </div>
+
+            <div id="product_item_title">
+                <%= course_item.product.title %>
+            </div>
+
+            <div id="product_item_desc">
+                <%= course_item.product.description %>
+            </div>
+
+
+            <div id="booking_icon" >
+              <center><%= link_to raw(@icon), edit_course_course_item_path(@course, course_item) %></center>
+            </div>
+
+            <div id="product_item_price">
+              <div id='with_tab'>
+                <center><i class="fa fa-gbp fa-2x tab_icons"></i></center>
+              </div>
+              <div id="product_item_price_int">
+                <%= course_item.product.price %>
+              </div>
+            </div>
+          </div> 
+        
+    <% end %>
+
+<%= link_to 'Update Prices', update_prices_course_path(@course), :class => 'btn btn-primary my_button' %>
+<%= link_to 'New Product', new_product_path, :class => 'btn btn-primary my_button' %>

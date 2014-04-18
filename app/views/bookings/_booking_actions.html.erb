@@ -1,0 +1,24 @@
+<% if @my_appointment.confirmed == nil %>
+
+              <center><h2>Confirm this booking</h2></center>
+
+                <div id='adj_buttons'>
+                    <%= button_to "Yes", appointment_path(@my_appointment, appointment: {confirmed: true, status: "Confirmed" }), method: :patch, :class => 'btn btn-inverse my_button float_left' %>
+
+                    <%= button_to "No", appointment_path(@my_appointment, appointment: {confirmed: false, status: "Rejected" }), method: :patch, :class => 'btn btn-inverse my_button float_right'   %>
+                </div>
+
+            <% else %>
+
+                <% if @my_appointment.confirmed == false %>
+
+                  <center><h3>I Have Rejected this booking</h3><center>
+
+
+                <% elsif @my_appointment.confirmed == true %>
+                
+                  <center><h3>I Have Confirmed this booking</h3><center>
+                
+                <% end %>
+          
+            <% end %>

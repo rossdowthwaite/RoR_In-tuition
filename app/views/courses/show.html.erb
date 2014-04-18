@@ -1,0 +1,47 @@
+<% @heading = 'Dashboard'  %>
+<%= render 'layouts/header' %>
+
+<div id='course_dash_content_side'>
+
+	<% if owned_by(current_user, @course) %>
+
+		<h4>Things to do</h4>
+
+		<% if @course.locations.count == 0 %>
+			<%= link_to 'Add a location', course_locations_path(@course) %><br> 
+		<% end %>
+
+		<% if @course.enrolments.count == 0 %>
+			<%= link_to 'Enrol Some Students', course_enrolments_path(@course) %><br> 
+		<% end %>
+
+		<% if @content.count == 0  %>
+			<%= link_to 'Add Some Content!', add_content_course_path(@course) %> 
+		<% end %>
+
+	<% end %>
+
+	
+
+	<% if @content.count != 0  %>
+
+		<h2>Course Content</h2>
+
+		<% @content.each do |content| %>
+
+			<%= link_to course_subject_path(@course, content) do %> 
+				<div id="course_dash_content">
+					<%= content.title %>
+					<div id="status" title="No. of Topics"><center><%= content.topics.count %></center></div>
+				</div>
+			<% end %>
+
+		<% end %>
+
+	<% end %>
+
+</div>
+
+<div id="course_dash_post_container">
+<%= render 'course_posts'  %>
+</div>

@@ -1,0 +1,35 @@
+<h3><%= @notification.message %></h3>
+
+<% @booking = @notifiable.booking %>
+
+<h4>Date</h4>
+<%= @booking.start %><br>
+<%= @booking.end %><br>
+
+<h4>Time</h4>
+<%= @booking.start_time %><br>
+<%= @booking.end_time %><br>
+
+
+<% if @notifiable.confirmed == nil %>
+	
+<h2>Confirm this booking</h2>
+
+    <%= button_to "Yes", appointment_path(@notifiable, appointment: {confirmed: true, status: "Confirmed" }), method: :patch, :class => 'btn btn-inverse my_button' %>
+
+    <%= button_to "No", appointment_path(@notifiable, appointment: {confirmed: false, status: "Rejected" }), method: :patch, :class => 'btn btn-inverse my_button'   %>
+
+ <% else %>
+
+     <% if @notifiable.confirmed == false %>
+
+       <h3>Declined</h3>
+
+
+     <% elsif @notifiable.confirmed == true %>
+     
+       <h3>Booking Confirmed</h3><br>
+     
+     <% end %>
+
+ <% end %>

@@ -1,0 +1,24 @@
+<% @heading = 'My Goals'  %>
+<%= render 'layouts/header' %>
+
+<% if @goals.count == 0  %>
+
+  <p>Add some goals so people know what your about</p>
+
+<% else %>
+
+  <table>
+    <tbody>
+      <% @goals.each do |goal| %>
+        <tr>
+          <td><%= goal.aim %></td>
+          <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+          <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
+
+<%= link_to 'New Goal', new_goal_path, :class => 'btn btn-primary my_button' %>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InTuition</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+  <!-- Google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Font Icons -->
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="header">
+
+		<%= link_to root_path do %>
+			<div id="logo">
+				<h1>in-tuition</h1>
+			</div>
+		<% end %>
+
+	<div id="user_nav">
+		<!-- If current user is logged in then.... -->
+		<% if current_user %>
+
+		<% if notifications.count > 0 %>
+		<%= notifications.count  %>
+			<%= link_to raw('<span class="fa-stack"><i class="fa fa-comments fa-stack-2x white_icon"></i><i id="note_tick" class="fa fa-bolt fa-stack-2x green_icon"></i></span>'), notifications_path, :class => "btn btn-inverse top_nav_button"  %>
+		<% else %>
+			<%= link_to raw('<i class="fa fa-comments fa-2x white_icon"></i>'), notifications_path, :class => "btn btn-inverse top_nav_button"  %>
+		<% end %>
+
+		<!-- Dropdown user menu -->
+		<div class="btn-group">
+            <a class="btn btn-inverse edge" data-toggle="dropdown" href="#">
+              <i class="fa fa-bars fa-2x tab_icons"></i>
+            </a>
+            <ul class="dropdown-menu pull-right" id="header_dropdown">
+				<li><%= link_to raw('<i class="fa fa-user"></i>    Account'), edit_user_path(current_user) %></li>
+				<li><%= link_to raw('<i class="fa fa-smile-o"></i>    Profile'), current_user.profile %></li>
+				<li><%= link_to raw('<i class="fa fa-ticket"></i>    My Bookings'), bookings_path %></li>
+				<li><%= link_to raw('<i class="fa fa-comment"></i>    My Forums'), forums_path %></li>
+				<li><%= link_to raw('<i class="fa fa-book"></i>    My Courses'), courses_path %></li>
+				<li><%= link_to raw('<i class="fa fa-users"></i>    My Students'), students_path %></li>
+				<li><%= link_to raw('<i class="fa fa-briefcase"></i>    My Materials'), my_materials_path %></li>
+				<li><%= link_to raw('<i class="fa fa-envelope-o"></i>    Notifications'), notifications_path %></li>
+				<li><%= link_to raw('<i class="fa fa-search"></i>    Course Search'), search_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to raw('<i class="fa fa-caret-square-o-down"></i> Logout'), logout_path %></li> 
+            </ul>
+          </div>
+
+		<!-- else show different links -->
+		<% else %> 
+
+				<%= link_to "Login", login_path %>
+				<%= link_to "Register", new_user_path %>
+
+		<% end %>
+	</div>
+
+</div> 
+
+<div id="main_container">
+
+		<%= yield %>
+
+</div>
+
+
+</body>
+</html>

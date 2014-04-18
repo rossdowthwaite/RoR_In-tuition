@@ -1,0 +1,34 @@
+<% @heading = 'My Uploads'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'layouts/content_side'  %>
+
+
+<% if @uploads.count == 0 %>
+  
+  <center><h3>Upload some Documents!</h3>
+  <p>Start uploading some PDF or images to add to your topics.</p>
+  <br>
+  <%= link_to raw('<i class="fa fa-upload fa-5x"></i> <br>Upload some stuff!'), new_upload_path %><br><br>
+  <center><%= image_tag('topic_materials.png') %></center>
+  </center>
+
+
+<% else %>
+
+<%= render 'uploads_nav' %>
+
+           <div id="all">
+                <%= render 'all' %>
+            </div>
+
+            <div id="images" style="display:none" >
+                <%= render 'images' %>
+            </div>
+
+            <div id="documents" style="display:none" >
+                <%= render 'documents'  %>
+            </div>
+        </div>
+
+<% end %>

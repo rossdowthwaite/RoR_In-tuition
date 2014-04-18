@@ -1,0 +1,22 @@
+		<p><%= @notification.message %></p>
+
+		<% if @notifiable.status == false && @notifiable.response == "Pending" %>
+
+		  <p>Do you accept?</p>
+
+		  <%= button_to "Accept", student_path(@notifiable, student: {status: true, response: "Accepted" }), method: :patch, :class => 'btn btn-inverse my_button' %>
+		  <%= button_to "Decline", student_path(@notifiable, student: {status: false, response: "Declined" }), method: :patch, :class => 'btn btn-inverse my_button'   %>
+
+		<% else %>
+
+			<% if @notifiable.response == "Declined" %>
+
+				<h3>Declined</h3>
+
+			<% elsif @notifiable.response == "Accepted" %>
+			
+				<h3>Accepted</h3>
+			
+			<% end %>
+			
+		<% end %>

@@ -1,0 +1,52 @@
+<div id="topic_media">
+
+	<% @materials.each do |m| %>
+
+	<div id="media_section">
+
+		<% @media = poly(m.medium_type, m.medium_id) %>
+
+
+		<!-- if Text then print it -->
+		<% if m.medium_type == "Text" %>
+
+			<h4><%= @media.title %></h4>
+			<!-- Displays links as links and html formatting -->
+			<p><%= auto_link(simple_format(@media.content)) %></p>
+		
+		<% end %>
+
+		<!-- if media is a video enbed it in an iFrame -->
+		<% if m.medium_type == "Video" %>
+
+			<center><h4><%= @media.title %></h4></center>
+	        
+	        <% if @media.video_url != "" %>
+	        	<!-- Extacts the video id to uses in the iframe -->
+	            <% @video_id = YouTubeAddy.extract_video_id(@media.video_url) %>
+	            <center><iframe width="420" height="315" src="http://www.youtube.com/embed/<%= @video_id %>" frameborder="0" allowfullscreen></iframe></center>
+	        <% end %>
+
+		<% end %>
+
+		<!-- if uplaoad - either an image or a PDF -->
+		<% if m.medium_type == "Upload" %>
+
+			<% if image?(@media.upload_file_name) %>
+				<!-- Display the image -->
+				<h4><%= @media.title %></h4>
+				<center><%= image_tag @media.upload.url(:medium) %></center>
+			<% else %>
+				<!-- its a pdf - link to it -->
+				<a href="<%= @media.upload.url %>"><%= @media.upload_file_name %></a>
+			<% end %>
+
+		<% end %>
+
+	</div>
+
+	<% end %>
+
+</div>
+
+

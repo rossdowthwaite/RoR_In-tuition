@@ -1,0 +1,55 @@
+<% @heading = 'My Courses'  %>
+<%= render 'layouts/header' %>
+<% if @courses.count == 0 && @enrolled.count == 0 %>
+
+      <center><h3>No courses yet</h3></center>
+      <center><p>This is where all your Course will your appear</p></center>
+      <center><p>Whether your a student or a tutor you can access your course data here.</p></center>
+      <center><h3>Tutor?</h3></center>
+      <center><p>Get started by adding your own course and start enrolling students</p></center><br>
+      <center><%= link_to raw('<i class="fa fa-book fa-5x"></i><br> Add Course'), new_course_path, :class =>" no_decoration" %> </center>
+
+<% else %> 
+
+    <div id="grid">
+
+      <% @courses.each do |course| %>
+        <%= link_to course do %>
+          <div id="tab">
+            <div id="tab_logo">
+              <%= image_tag course.logo.url(:medium) if course.logo? %>
+            </div>
+            <div id="tab_type">
+              <h3><%= course.title %> </h3>
+            </div>
+            <div id="status"><center><i class="fa fa-book fa-2x tab_icons" title="Tutor"></i></center></div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% @enrolled.each do |enrolled| %>
+        <%= link_to enrolled.course do %>
+          <div id="tab">
+            <div id="tab_logo">
+              <%= image_tag enrolled.course.logo.url(:medium) if enrolled.course.logo? %>
+            </div>
+            <div id="tab_type">
+              <h3><%= enrolled.course.title %> </h3>
+            </div>
+            <div id="status"><center><i class="fa fa-user fa-2x tab_icons" title="Student"></i></center></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <%= link_to new_course_path do %>
+        <div id="tab_new">
+          <center>
+            <%= link_to raw('<i class="fa fa-book fa-5x"></i><br> Add Course'), new_course_path, :class =>"no_decoration" %> 
+          </center>
+        </div>
+      <% end %>
+    </div>
+
+
+<% end %>

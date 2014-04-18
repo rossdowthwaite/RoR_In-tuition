@@ -1,0 +1,30 @@
+<%= form_for (@material) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- The topic will always be set when using this form -->
+  <%= f.hidden_field :topic_id, :value => @topic.id %>
+  
+  <div class="field">
+    <%= f.label "My Videos", :class => 'my_label' %><br>
+    <%= f.collection_select(:medium_id, Video.where(user_id: current_user.id), :id, :title, :prompt => false) %>
+  </div>
+
+  <%= f.hidden_field :medium_type, :value => "Video" %>
+
+<div id="media_create">
+  <div class="actions">
+    <%= f.submit 'Add to Topic', :class => 'my_button btn btn-primary no_margin' %>
+  </div>
+</div>
+
+<% end %>

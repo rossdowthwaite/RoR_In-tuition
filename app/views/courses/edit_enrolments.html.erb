@@ -1,0 +1,43 @@
+<% @heading = 'Edit Enrolments'  %>
+<%= render 'layouts/header' %>
+
+<%= form_for @course, :url => course_enrolment_update_path(@course) do |f| %>
+
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= hidden_field_tag "#{f.object_name}[student_ids][]", nil %>
+
+    <% @students.each do |student| %>
+      <div id="course_enrol">
+        
+        <div id="course_enrol_img">
+          <%= image_tag student.pupil.avatar.url(:home) if student.pupil.avatar? %>
+        </div>
+
+        <div id='course_enrol_heading'>
+          <h3 class="tab_heading"><%= student.pupil.title %><h3>
+        </div>
+
+        <div id="course_enrol_check">
+        	<center>
+		      <%= check_box_tag "course[student_ids][]", student.id, @course.student_ids.include?(student.id), :class => 'my_check_box'  %></center>
+
+        </div>
+      </div>  
+    <% end %>
+
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary my_button'  %>
+  </div>
+
+<% end %>

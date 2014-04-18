@@ -1,0 +1,55 @@
+<% @heading = 'Enrolments' %>
+<%= render 'layouts/header' %>
+
+
+<!-- Add pending -->
+<% if @students.count == 0 %>
+
+  <center><h3>You currently have no students!!</h3></center>
+  <center><p>Invite some students to join you and then enrol them onto a course</p></center><br>
+  <center><%= link_to raw('<i class="fa fa-users fa-5x"></i><br>Invite Students'), new_student_path, :class => 'no_decoration' %>  </center>
+
+<!-- If some exist then -->
+<% else %>
+
+
+    <div id="grid">
+
+      <% @enrolments.each do |enrolment| %>
+
+
+            <div id="student_cont">
+
+              <div id="student_tab">
+
+                <div id="tab_logo">
+                  <%= image_tag enrolment.student.pupil.avatar.url(:home) if enrolment.student.pupil.avatar %>
+                </div>
+
+                <div id="student_type">
+                  <h3><%= enrolment.student.pupil.title %></h3>
+                </div>
+
+              </div>
+
+            </div>
+
+        
+      <% end %>
+
+
+      <%= link_to edit_enrolments_course_path(@course) do %>
+        <div id="tab_new">
+          <center>
+            <%= link_to raw('<i class="fa fa-users fa-5x"></i><br>Edit Enrollments'), edit_enrolments_course_path(@course), :class =>"no_decoration" %> 
+          </center>
+        </div>
+      <% end %>
+
+    </div>
+    <!-- Grid end -->
+
+
+
+
+<% end %>

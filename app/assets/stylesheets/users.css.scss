@@ -1,0 +1,27 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#user_dash_posts {
+	width:45%;
+	min-width: 300px;
+	margin-right: 4%;
+	margin-bottom: 10px;
+	overflow: auto;
+	float:left;
+}
+
+#user_dash_bookings {
+	width:45%;
+	min-width: 300px;
+	margin-bottom: 10px;
+	height: 100px;
+	float:left;
+}
+
+#go_to {
+	position: absolute;
+	top:0px;
+	right:0px;
+}

@@ -1,0 +1,5 @@
+    <%= label_tag "every", nil, :class => 'my_label' %>
+    <%= select_tag :recurring_amount, options_for_select(1..15), :class => 'mini field_height' %>
+    <%= select_tag :recurring_type, options_for_select(["weeks", "months", "years"]), :class => 'short field_height' %><br>
+    <%= label_tag "for the next", nil, :class => 'my_label' %>
+    <%= select_tag :recurring_for, options_for_select(1..10) %>

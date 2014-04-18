@@ -1,0 +1,37 @@
+<%= form_for([@addressable, @location]) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :street, :class => 'my_label' %>
+    <%= f.text_field :street, :class => 'my_field' %>
+  </div>
+  <div class="field">
+    <%= f.label :city, :class => 'my_label' %>
+    <%= f.text_field :city, :class => 'my_field' %>
+  </div>
+  <div class="field">
+    <%= f.label :county, :class => 'my_label' %>
+    <%= f.text_field :county, :class => 'my_field' %>
+  </div>
+  <div class="field">
+    <%= f.label :country, :class => 'my_label' %>
+    <%= f.text_field :country, :class => 'my_field' %>
+  </div>
+  <div class="field">
+    <%= f.label :p_code, :class => 'my_label' %>
+    <%= f.text_field :p_code, :class => 'my_field' %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary my_button' %>
+  </div>
+<% end %>

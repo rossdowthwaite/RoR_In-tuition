@@ -1,0 +1,20 @@
+<% @heading = @forum.title  %>
+<%= render 'layouts/header' %>
+
+<%= render 'side'  %>
+
+<% if @forum.forum_contributors.count == 1 && @forum.forumable_type != 'Course' %>
+  <center>
+    <h2>Add Participants!!</h2>
+    <p>Choose some people to connect with from your network</p><br>
+    <%= link_to raw('<i class="fa fa-users fa-5x"></i><br>Add People'), add_participant_forum_path(@forum), :class =>"no_decoration" %> 
+
+  </center>
+
+<% end %>
+
+<div id="dash_post_container">
+
+	<%= render 'forum_posts'  %>
+
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bio: MyString
+  profilable_type: MyString
+  profilable_id: 1
+
+two:
+  bio: MyString
+  profilable_type: MyString
+  profilable_id: 1

@@ -1,0 +1,126 @@
+// Place all the styles related to the materials controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#material_type_buttons {
+	overflow: auto;
+	position: absolute;
+	top:20px;
+	left:20px;
+	width:80px;
+}
+
+#media_container{
+
+	min-height: 260px;
+	margin:auto;
+	margin-left: 120px;
+	position: relative;
+	overflow: auto;
+	background-color: #FAFAFA;
+}
+
+.media {
+	padding-right: 130px;
+	margin-left: 100px;
+	margin-top:20px;
+	min-height: 200px;
+	position: relative;
+}
+
+#media_create{
+	position: absolute;
+	top:0px;
+	right:20px;
+}
+
+#edit_media {
+	position: relative;
+	margin-left: 150px;
+}
+
+#video_buttons{
+	position: absolute;
+	width:80px;
+	height:200px;
+}
+
+#new_video_tab {
+	float:left;
+}
+
+#old_video_tab {
+	float:left;	
+}
+
+#upload_buttons{
+	position: absolute;
+	width:80px;
+	height:200px;
+}
+
+#new_upload_tab {
+	float:left;
+}
+
+#old_upload_tab {
+	float:left;	
+}
+
+#material_subject_block {
+	margin-left: 130px;
+	padding-left: 20px;
+	background-color: #819FF7;
+	line-height: 50px;
+	height: 50px;
+	color: white;
+	position: relative;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+#material_subject_block a {
+	color: white !important;
+}
+
+#material_sub_topic_block {
+	margin-left: 160px;
+	padding-left: 20px;
+	background-color: #04B486;
+	line-height: 50px;
+	height: 50px;
+	color: white;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#material_topic_block {
+	margin-left: 130px;
+	padding-left: 20px;
+	background-color: #04B486;
+	line-height: 50px;
+	height: 50px;
+	color: white;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#material_sub_topic_video_block {
+	margin-left: 190px;
+	padding-left: 20px;
+	background-color: #BD71FF;
+	line-height: 50px;
+	height: 50px;
+	color: white;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+#material_sub_topic_block a {
+	color: white !important;
+}
+
+#material_title {
+	position: absolute;
+	left: 70px;
+}

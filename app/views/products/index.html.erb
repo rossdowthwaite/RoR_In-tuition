@@ -1,0 +1,40 @@
+<% @heading = 'My Products'  %>
+<%= render 'layouts/header' %>
+
+    <% @products.each do |product| %>
+
+        <%= link_to product do %> 
+          <div id="product_item">
+            <div id='with_tab'>
+              <center><i class="fa fa-shopping-cart fa-2x tab_icons"></i></center>
+            </div>
+
+            <div id="product_item_title">
+                <%= product.title %>
+            </div>
+
+            <div id="product_item_desc">
+                <%= product.description %>
+            </div>
+
+            <div id="booking_icon" >
+              <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), product, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
+            </div>
+
+            <div id="booking_icon" >
+              <center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'),  edit_product_path(product) %></center>
+            </div>
+
+            <div id="product_item_price">
+              <div id='with_tab'>
+                <center><i class="fa fa-gbp fa-2x tab_icons"></i></center>
+              </div>
+                <%= product.price %>
+            </div>
+          </div>
+        <% end %> 
+        
+    <% end %>
+<br>
+
+<%= link_to 'New Product', new_product_path, :class => 'btn btn-primary my_button' %>

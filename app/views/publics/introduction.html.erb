@@ -1,0 +1,31 @@
+<h1>welcome</h1>
+
+<div id='intro'>
+<%= link_to search_path() do %> 
+	<div id='welcome_search'>
+		<div id="search_title">
+			<h2>Search for a Course</h2>
+		</div>
+		<center><i class="fa fa-search fa-5x icons_300"></i></center>
+	</div>
+<% end %>
+
+<%= link_to login_path() do %> 
+	<div id='welcome_search'>
+		<div id="search_title">
+			<h2>Login</h2>
+		</div>
+		<center><i class="fa fa-sign-in fa-5x icons_300"></i></center>
+	</div>
+<% end %>
+
+<%= link_to new_user_path do %> 
+	<div id='welcome_search'>
+		<div id="search_title">
+			<h2>Register</h2>
+		</div>
+		<center><i class="fa fa-pencil fa-5x icons_300"></i></center>
+	</div>
+<% end %>
+
+</div>

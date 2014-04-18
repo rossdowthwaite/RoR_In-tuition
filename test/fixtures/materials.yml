@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  topic_id: 
+  medium_id: 1
+  medium_type: MyString
+
+two:
+  topic_id: 
+  medium_id: 1
+  medium_type: MyString

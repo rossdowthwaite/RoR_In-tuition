@@ -1,0 +1,137 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#post {
+	width:100%;
+	position:relative;
+	margin: auto;
+	overflow: auto;
+	margin-bottom: 20px;
+	background-color: rgba(0,0,0,0.1);
+}
+
+#post_header {
+	top:0px;
+	width:100%;
+	overflow: auto;
+	background: #424242;
+	position: relative;
+}
+
+#post_header h4, #post_header h5{
+	color: white;
+	font-variant: none;
+}
+
+#comment_header {
+	position: relative;
+	top:0px;
+	width:100%;
+	overflow: auto;
+	background: #04B486;
+}
+
+#comment_header h4, #comment_header h5{
+	color: white;
+	font-variant: none;
+}
+
+#post_avatar {
+	float:left;
+	margin-right: 20px;
+}
+
+#no_post_avatar {
+	float:left;
+	margin-right: 20px;
+	width:50px;
+	height:50px;
+	background-color: #2E2E2E;
+}
+
+#post_contents {
+	padding: 20px;
+	padding-left: 50px;
+	overflow: auto;
+}
+
+#post_date {
+	position: absolute;
+	right:200px;
+	top:5px;
+	height:45px;
+}
+
+#post_sender {
+	float: left;
+	height: 45px;
+	margin-top: 5px;
+}
+
+#post_footer{
+	background: #424242;
+	height:50px;
+}
+
+.post_tab {
+	float:left;
+	height:50px;
+	width: 50px;
+	margin-right: 5px;
+	background-color: #2E2E2E;
+}
+
+.poster_post_tab {
+	float:right;
+	height:50px;
+	width: 50px;
+	margin-left: 5px;
+	background-color: #2E2E2E;
+}
+
+#comments{
+	overflow: auto;
+}
+
+#comment_footer{
+	background: #04B486;
+	height:50px;
+}
+
+.commenter_tab {
+	float:right;
+	height:50px;
+	width: 50px;
+	margin-left: 5px;
+	background-color: #03AA7E;
+}
+
+.comment_form{
+	background-color: #04B486;
+	padding-top: 20px;
+	height:220px;
+	width:100%;
+}
+
+#create_post_tab{
+	float:right;
+	background-color: #04B486;
+	width:100px;
+	height:50px;
+	margin-bottom: 10px;
+}
+
+#create_post {
+	min-height:120px;
+	width:100%;
+	position: relative;
+	overflow: auto;
+}
+
+#post_tab {
+	position: absolute;
+	left:0px;
+	bottom:0px;
+}

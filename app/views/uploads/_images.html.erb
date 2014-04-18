@@ -1,0 +1,24 @@
+   <div id="image_grid">
+
+    <% @uploads.each do |upload| %>
+        <% if image?(upload.upload_file_name) %>
+
+
+            <%= link_to upload do %>
+
+                <div id="tab">
+                  <div id="tab_logo">
+                    <%= image_tag upload.upload.url(:medium) if upload.upload? %>
+                  </div>
+                  <div id="tab_type">
+                    <h3><i class="fa fa-book"></i> <%= upload.title %> </h3>
+                  </div>
+                </div>
+
+            <% end %>
+
+   
+        <% end %>
+    <% end %>
+
+ </div>

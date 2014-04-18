@@ -1,0 +1,27 @@
+<% @heading = @school.title  %>
+<%= render 'layouts/header' %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @school.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @school.description %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @school.logo %>
+</p>
+
+
+<h4>Courses</h4>
+<% @courses.each do |c| %>
+	<%= c.title %><br>
+<% end %>
+
+<%= link_to 'Edit', edit_school_path(@school) %> |
+<%= link_to 'Back', schools_path %> |
+<%= link_to 'Add Course', add_course_school_path(@school) %> 

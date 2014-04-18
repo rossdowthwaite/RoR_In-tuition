@@ -1,0 +1,19 @@
+<% @heading = 'Edit Material'  %>
+<%= render 'layouts/header' %>
+
+<div id="side">
+
+	<h4>Topics</h4>
+	<% @topics.each do |topic| %>
+		<%= topic.title %>
+	<% end %>
+
+</div>
+
+
+<div id="edit_media">
+		<%= render 'form' %>
+</div>
+
+<%= link_to 'Show', @text %> |
+<%= link_to 'Back', texts_path %>

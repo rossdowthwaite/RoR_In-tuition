@@ -1,0 +1,44 @@
+<div id="side">
+
+  <% if @forum.avatar.exists? %>
+
+      <div id="course_enrol_img">
+        <%= image_tag @forum.avatar.url(:thumb) %>
+      </div>
+      
+  <% end %>
+
+  <h4>Participants</h4>
+	<% @forum.users.each do |user| %>
+
+    <div id="forum_participant">
+
+      <% if user.avatar.exists? %>
+
+          <div id="course_enrol_img">
+            <%= image_tag user.avatar.url(:thumb) %>
+          </div>
+
+      <% else %>
+
+            <div id="no_avatar"></div>
+      <% end %>
+
+        <div id='course_enrol_heading'>
+          <h3 class="tab_heading"><%= user.title %><h3>
+        </div>
+    
+    </div>
+
+	<% end %>
+
+  <%= link_to settings_forum_path(@forum) do %> 
+    <div id="tab_medium">
+      <div id="dash_heading">
+        <h3>Settings</h3>
+      </div>
+    </div>
+  <% end %>
+
+
+</div>

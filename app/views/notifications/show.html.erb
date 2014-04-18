@@ -1,0 +1,31 @@
+<% @heading = 'My Notifications'  %>
+<%= render 'layouts/header' %>
+
+<% @notifiable = poly(@notification.notifiable_type, @notification.notifiable_id) if @notification.notifiable_type  %>
+
+<% if @notification.notifiable_type == "Student" %>
+		<%= render 'student_notification'  %>
+<% end %>
+
+<% if @notification.notifiable_type == "ForumPost" %>
+		<%= render 'forum_notification'  %>
+<% end %>
+
+<% if @notification.notifiable_type == "Comment" %>
+		<%= render 'comment_notification'  %>
+<% end %>
+
+<% if @notification.notifiable_type == "ForumContributor" %>
+		<%= render 'student_forum_notification'  %>
+<% end %>
+
+<% if @notification.notifiable_type == "Appointment" %>
+		<%= render 'booking_notification'  %>
+<% end %>
+
+<br>
+<br>
+
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

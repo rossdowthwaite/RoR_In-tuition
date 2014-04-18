@@ -1,0 +1,18 @@
+<% @heading = 'Upload'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'layouts/content_side'  %>
+
+<h3><%= @upload.title %></h3>
+  
+<% if image?(@upload.upload_file_name) %>
+	<!-- Display the image -->
+	<center><%= image_tag @upload.upload.url(:medium) %></center>
+<% else %>
+	<!-- its a pdf - link to it -->
+	<a href="<%= @media.upload.url %>"><%= @upload.upload_file_name %></a>
+<% end %>
+
+
+<%= link_to 'Edit', edit_upload_path(@upload) %> |
+<%= link_to 'Back', uploads_path %>

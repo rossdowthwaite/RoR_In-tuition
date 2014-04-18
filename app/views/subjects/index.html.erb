@@ -1,0 +1,36 @@
+<% @heading = 'Subjects'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'layouts/content_side'  %>
+
+<% if @subjects.count == 0 %>
+  
+  <center><h3>Add Some Subjects!</h3>
+  <p>Subjects act as the header to you topics. Create a new subject, add a description and begin adding your topics to it.</p><br>
+  <%= link_to raw('<i class="fa fa-file fa-5x"></i> <br>Add a New Subject'), new_subject_path %>
+  </center>
+<br><br>
+<center><%= image_tag('subject_topics.png') %></center>
+<% else %>
+
+
+<% @subjects.each do |subject| %>
+  <%= link_to subject do %> 
+    <div id="material_subject_block">
+      <div id='with_tab'>
+        <center><i class="fa fa-file fa-2x tab_icons"></i></center>
+      </div>
+      <div id='material_title'>
+        <%= subject.title %>
+      </div>
+      <div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), subject, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
+      <div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,subject] %></center></div>
+      <div id="booking_icon" title="No. of Topics"><center><%= subject.topics.count %></center></div>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Subject', new_subject_path %>
+<% end %>

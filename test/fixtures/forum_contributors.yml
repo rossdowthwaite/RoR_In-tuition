@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contributor_id: 
+  forum_id: 
+
+two:
+  contributor_id: 
+  forum_id: 

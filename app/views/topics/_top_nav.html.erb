@@ -1,0 +1,27 @@
+<div id="topic_header">
+
+	<h1><%= @topic.title %></h1>
+
+	<div id='topic_description'>
+<p><%= @topic.decription  %></p>
+</div>
+
+	<div id="topic_menu">
+	<%= link_to topic_materials_path(@topic) do %>
+		<div id="images_tab" class="tab_medium">
+			<div id="dash_heading">
+				<h3>Add/Edit Content</h3>
+			</div>
+		</div>
+	<% end %>
+
+	<%= link_to edit_topic_path(@topic) do %>
+		<div id="images_tab" class="tab_medium">
+			<div id="dash_heading">
+				<h3>Edit Topic</h3>
+			</div>
+		</div>
+	<% end %>
+
+	</div>
+</div>

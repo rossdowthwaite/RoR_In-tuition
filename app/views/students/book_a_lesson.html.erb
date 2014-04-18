@@ -1,0 +1,11 @@
+<% @heading = 'Book with ' + @student.pupil.title  %>
+<%= render 'layouts/header' %>
+
+<%= render 'student_side_nav' %>
+
+<div id="center_with_side">
+	<div id="center_content">
+		<h2>New Booking</h2>
+		<%= render 'bookings/student_booking'  %>
+	</div>
+</div>

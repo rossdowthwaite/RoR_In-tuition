@@ -1,0 +1,70 @@
+<% @heading = 'My Students'  %>
+<%= render 'layouts/header' %>
+
+<!-- Add pending -->
+<% if @students.count == 0 %>
+
+  <center><h3>You currently have no students!</h3></center>
+  <center><p>Invite some students to join you and enrol them onto a course</p></center><br>
+  <center><%= link_to raw('<i class="fa fa-users fa-5x"></i><br>Invite Students'), new_student_path, :class => 'no_decoration' %>  </center>
+
+<!-- If some exist then -->
+<% else %>
+
+
+    <div id="grid">
+
+      <% @students.each do |student| %>
+
+          <%= link_to student do %>
+
+            <div id="student_cont">
+
+              <div id="student_tab">
+
+                <div id="tab_logo">
+                  <%= image_tag student.pupil.avatar.url(:home) if student.pupil.avatar %>
+                </div>
+
+                <div id="student_type">
+                  <h3><%= student.pupil.title %></h3>
+                </div>
+
+                  <% if student.status == false  %>
+                      <div id="status"><center><i class="fa fa-clock-o fa-2x tab_icons"></i></center></div>
+                  <% end %>
+
+              </div>
+
+                  <div id="student_courses_icon">
+                      <% student.courses.each do |c| %>
+                          <div id="student_course_icon">
+                              <%= image_tag c.logo.url(:mini) if c.logo? %>
+                          </div>
+                      <% end %>
+                  </div>
+
+            </div>
+
+          <% end %>
+        
+      
+      <% end %>
+
+
+      <%= link_to new_student_path do %>
+        <div id="tab_new">
+          <center>
+            <%= link_to raw('<i class="fa fa-users fa-5x"></i><br>Add student'), new_student_path, :class =>"no_decoration" %> 
+          </center>
+        </div>
+      <% end %>
+
+    </div>
+    <!-- Grid end -->
+
+
+
+
+<% end %>
+

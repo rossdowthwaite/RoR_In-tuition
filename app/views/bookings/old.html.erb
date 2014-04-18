@@ -1,0 +1,57 @@
+<% @heading = 'My Bookings'  %>
+<%= render 'layouts/header' %>
+
+<%= render 'booking_index_side' %>
+<h3>Past Bookings</h3>
+<div id="booking_table">
+  <% @old_bookings.each do |old_booking| %>
+    <% booking_status(old_booking) %>
+    <% my_booking_status(old_booking) %>
+
+      <%= link_to old_booking do %>
+        <div id="booking" style="background-color:<%= @color %>">
+          <div id="booking_titles">
+            <%= old_booking.title %>
+          </div>
+          <div id="booking_date">
+            <%= old_booking.start.strftime("%B %d, %Y")  %>
+          </div>
+          <div id='booking_time'>
+            <%= time(old_booking.start_time) %> - <%= time(old_booking.end_time) %>
+          </div>
+
+            <% if old_booking.appointments.count > 2 %>
+               <div id='with_tab'>
+                  <%= old_booking.appointments.count %>
+               </div> 
+            <% else %>
+               <div id='with_tab'>
+                  <% old_booking.appointments.each do |app| %>
+                    <% if !my_appointment(app) %>
+                      <%= image_tag app.user.avatar.url(:post) if app.user.avatar?  %>
+                    <% end %>
+                  <% end %>
+               </div> 
+            <% end %>
+
+          <div id='booking_icons'>
+                   <div id="booking_icon">
+                      <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), old_booking, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
+                    </div>
+                  
+                    <div id="booking_icon">
+                        <center><%= raw(@my_status_icon) %></center>
+                    </div>
+
+                    <div id="booking_icon">
+                        <center><%= raw(@booking_status_icon) %></center>
+                    </div>
+              
+          </div>
+
+        </div>
+
+      <% end %>
+
+  <% end %>
+</div>

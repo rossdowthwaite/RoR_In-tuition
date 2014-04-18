@@ -1,0 +1,232 @@
+GIT
+  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
+  revision: 7e394137813970fa7c8044f1d0b69322b77af5f6
+  specs:
+    bootstrap-datepicker-rails (1.3.0.1)
+      railties (>= 3.0)
+
+GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: df178520bf9ba405baee9528d5dbb630d6ff760c
+  specs:
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (>= 3.1)
+
+GIT
+  remote: git://github.com/shorelabs/font-icons-rails.git
+  revision: 19da71315862d54f766645444accd4e9f5dab6e7
+  specs:
+    font-icons-rails (0.0.5)
+      sass-rails (>= 3.1.1)
+
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 113198f979bc793882506114fcc3dc9f6c4e4575
+  specs:
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
+GIT
+  remote: git://github.com/tispratik/bootstrap-timepicker-rails.git
+  revision: eb489926214bc2ffb9f61ac0638d758e7a950826
+  specs:
+    bootstrap-timepicker-rails (0.1.3)
+      railties (>= 3.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.0.0)
+      actionpack (= 4.0.0)
+      mail (~> 2.5.3)
+    actionpack (4.0.0)
+      activesupport (= 4.0.0)
+      builder (~> 3.1.0)
+      erubis (~> 2.7.0)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    activemodel (4.0.0)
+      activesupport (= 4.0.0)
+      builder (~> 3.1.0)
+    activerecord (4.0.0)
+      activemodel (= 4.0.0)
+      activerecord-deprecated_finders (~> 1.0.2)
+      activesupport (= 4.0.0)
+      arel (~> 4.0.0)
+    activerecord-deprecated_finders (1.0.3)
+    activesupport (4.0.0)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
+    arel (4.0.2)
+    atomic (1.1.16)
+    authlogic (3.3.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+    awesome_nested_fields (0.6.4)
+      rails (>= 3.0.0)
+    builder (3.1.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
+    coffee-rails (4.0.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.7.0)
+    commonjs (0.2.7)
+    countries (0.9.3)
+      currencies (~> 0.4.2)
+    country_select (1.3.1)
+      countries (= 0.9.3)
+    currencies (0.4.2)
+    dependent-fields-rails (0.4.2)
+      coffee-rails
+      jquery-rails
+      railties (>= 3.1)
+    erubis (2.7.0)
+    execjs (2.0.2)
+    font-awesome-less (4.0.3.1)
+      less (~> 2.4.0)
+    geocoder (1.1.9)
+    hike (1.2.3)
+    i18n (0.6.9)
+    jbuilder (1.5.3)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
+    jquery-rails (3.1.0)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-timepicker-addon-rails (1.4.1)
+      railties (>= 3.1)
+    jquery-ui-rails (4.2.0)
+      railties (>= 3.2.16)
+    json (1.8.1)
+    less (2.4.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.4.2)
+      actionpack (>= 3.1)
+      less (~> 2.4.0)
+    less-rails-bootstrap (3.1.1.0)
+      less-rails (~> 2.4.2)
+    libv8 (3.16.14.3)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.25.1)
+    minitest (4.7.5)
+    multi_json (1.9.2)
+    polyamorous (0.6.4)
+      activerecord (>= 3.0)
+    polyglot (0.3.4)
+    rack (1.5.2)
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rails (4.0.0)
+      actionmailer (= 4.0.0)
+      actionpack (= 4.0.0)
+      activerecord (= 4.0.0)
+      activesupport (= 4.0.0)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.0.0)
+      sprockets-rails (~> 2.0.0)
+    rails_autolink (1.1.5)
+      rails (> 3.1)
+    railties (4.0.0)
+      actionpack (= 4.0.0)
+      activesupport (= 4.0.0)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rake (10.1.1)
+    ransack (1.1.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
+    rdoc (4.1.1)
+      json (~> 1.4)
+    ref (1.0.5)
+    restful_acl (3.1.5)
+    sass (3.2.18)
+    sass-rails (4.0.2)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2.0)
+      sprockets (~> 2.8, <= 2.11.0)
+      sprockets-rails (~> 2.0.0)
+    sdoc (0.4.0)
+      json (~> 1.8)
+      rdoc (~> 4.0, < 5.0)
+    sprockets (2.11.0)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.0.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.8)
+    sqlite3 (1.3.9)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
+    thor (0.19.0)
+    thread_safe (0.3.1)
+      atomic (>= 1.1.7, < 2)
+    tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
+    tzinfo (0.3.39)
+    uglifier (2.5.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    will_paginate (3.0.5)
+    youtube_addy (1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  authlogic
+  awesome_nested_fields
+  best_in_place!
+  bootstrap-datepicker-rails!
+  bootstrap-timepicker-rails!
+  coffee-rails (~> 4.0.0)
+  country_select
+  dependent-fields-rails
+  font-awesome-less
+  font-icons-rails!
+  geocoder
+  jbuilder (~> 1.2)
+  jquery-rails
+  jquery-timepicker-addon-rails
+  jquery-ui-rails
+  less-rails
+  less-rails-bootstrap
+  paperclip!
+  rails (= 4.0.0)
+  rails_autolink
+  ransack
+  restful_acl
+  sass-rails (~> 4.0.0)
+  sdoc
+  sqlite3
+  therubyracer
+  twitter-bootstrap-rails
+  uglifier (>= 1.3.0)
+  will_paginate (~> 3.0)
+  youtube_addy

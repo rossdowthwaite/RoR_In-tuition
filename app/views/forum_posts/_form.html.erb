@@ -1,0 +1,25 @@
+<%= form_for(@forum_post) do |f| %>
+  <% if @forum_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forum_post.errors.count, "error") %> prohibited this forum_post from being saved:</h2>
+
+      <ul>
+      <% @forum_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :forum %><br>
+    <%= f.text_field :forum %>
+  </div>
+  <div class="field">
+    <%= f.label :post %><br>
+    <%= f.text_field :post %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

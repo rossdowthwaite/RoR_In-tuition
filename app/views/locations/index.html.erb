@@ -1,0 +1,29 @@
+<% @heading = 'Locations'  %>
+<%= render 'layouts/header' %>
+
+<% if @addressable == @course %>
+  Add a location to your course to show students and potential students where you are based.<br> Courses will not show up in the course search until they have a location.<br><br>
+<% end %>
+
+<div id="course_grid">
+
+      <% @locations.each do |address| %>
+        <%= link_to [:edit, @addressable, address] do %>
+          <div id="address_tab">
+            <h5><%= address.street %><h5>
+            <h5><%= address.city %><br></h5>
+            <h5><%= address.county %><br></h5>
+            <h5><%= address.country %><br></h5>
+            <h5><%= address.p_code %><br></h5><br>
+            <h5><%= link_to 'Destroy', [@addressable, address], method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      <% end %>
+
+
+        <div id="tab_new">
+          <center><%= link_to raw('<i class="fa fa-compass fa-5x"></i><br> Add Address'), [:new, @addressable, :location], :class =>" no_decoration" %> </center>
+        </div>
+    </div>
+
+    </div>

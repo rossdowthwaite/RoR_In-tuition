@@ -1,0 +1,42 @@
+<%= form_for @forum do |f| %>
+  
+  <% if @forum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@forum.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Sending form will fail if none of the boxes are ticked -->
+  <!-- this tag ensures something is sent -->
+  <%= hidden_field_tag "#{f.object_name}[user_ids][]", nil %>
+  
+  
+  <% @users.each do |user| %>
+    <div id="course_enrol">
+        
+        <div id="course_enrol_img">
+          <%= image_tag user.avatar.url(:home) if user.avatar? %>
+        </div>
+
+        <div id='course_enrol_heading'>
+          <h3 class="tab_heading"><%= user.title %><h3>
+        </div>
+
+       <div id="course_enrol_check">
+          <center><%= check_box_tag "forum[user_ids][]", user.id, @forum.user_ids.include?(user.id) %></center> 
+       </div>
+  </div>
+
+    <% end %>
+
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-inverse my_button'%>
+  </div>
+
+<% end %>

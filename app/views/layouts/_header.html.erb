@@ -1,0 +1,84 @@
+<div id="title_header">
+
+
+	<!-- If the course is set display the logo and correct sub heading -->
+	<% if @course && !@course.new_record? %>
+
+			  <% if @course.logo.exists? %>
+
+				  <%= link_to course_path(@course) do %>
+			        <%= image_tag @course.logo.url(:thumb) if @course.logo.exists? %>
+			      <% end %>
+
+			  <% else %>
+
+			        <div id="no_avatar"><center><h3>Add Avatar</h3></center></div>
+
+			  <% end %>
+
+			  <% @sub_heading = @course.title %>
+
+	<!-- Else if addressable is set display the logo and correct sub heading -->
+	<% elsif @addressable %>
+
+		      <%= link_to @addressable do %>
+		          <%= image_tag addressable_image(@addressable) %>
+		      <% end %>
+
+		      <% @sub_heading = @addressable.title %>
+
+	<!-- Other wise is the current user -->
+	<% else %>
+
+			  <% if current_user.avatar.exists? %>
+
+				  <%= link_to root_path do %>
+			        <%= image_tag current_user.avatar.url(:thumb) if current_user.avatar.exists? %>
+			      <% end %>
+
+			  <% else %>
+
+				  <%= link_to user_avatar_path(current_user) do %>
+			        <div id="no_avatar"><center><h3>Add Avatar</h3></center></div>
+			      <% end %>
+
+			  <% end %>
+
+		      <% @sub_heading = current_user.title %>
+
+	<% end %>
+	<!-- END OF THE GUBBINS -->
+
+
+	<div id="course_headings">
+
+	    <h4><%= @sub_heading %></h4>
+	    <h2><%= @heading %><h2>
+
+	</div> 
+
+
+<!-- Set the correct nav for the title  -->
+  <div id="heading_nav_right">
+
+     <% if @course %>
+     	<% if @course.user == current_user %>
+     		<%= render 'courses/course_nav' %>
+     	<% else %>
+     		<%= render 'users/user_nav' %>
+     	<% end %>
+
+     <% elsif @addressable %>
+
+        <% addressable_nav(@addressable) %>
+        <%= render @nav %>
+
+     <% else %>
+
+        <%= render 'users/user_nav' %>
+
+     <% end %>
+
+  </div>
+
+</div>

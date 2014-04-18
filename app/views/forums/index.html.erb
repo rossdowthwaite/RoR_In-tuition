@@ -1,0 +1,63 @@
+<% @heading = 'My Forums'  %>
+<%= render 'layouts/header' %>
+
+
+    <div id="grid">
+
+      <% @forums.each do |forum| %>
+
+          <%= link_to forum do %>
+
+            <div id="student_cont">
+
+              <div id="student_tab">
+
+                <div id="tab_logo">
+
+
+                <div id="status"><center><h4 title="No. of Contributors"><%= forum.users.count %></h4></center></div>
+
+                <% if forum.avatar? %>
+
+                  <%= image_tag forum.avatar.url(:home) %>
+
+                <% elsif forum.forum_contributors.count == 2 %>
+
+                  <% if forum.forum_contributors.first.user.id == current_user.id %>
+                    <%= image_tag forum.forum_contributors.second.user.avatar.url(:home) %>
+                  <% else %>
+                    <%= image_tag forum.forum_contributors.first.user.avatar.url(:home) %>
+                  <% end %>
+
+                <% elsif forum.forumable_type == 'Course' %>
+                  
+                  <%= image_tag forum.forumable.logo.url(:home) if forum.forumable.logo? %>
+
+                <% end %>
+                </div>
+
+                <div id="student_type">
+                  <h3><%= forum.title %></h3>
+                </div>
+
+              </div>
+
+            </div>
+
+          <% end %>
+
+        
+      <% end %>
+
+
+      <%= link_to new_forum_path do %>
+        <div id="tab_new">
+          <center>
+            <%= link_to raw('<i class="fa fa-users fa-5x"></i><br>New Forum'), new_forum_path, :class =>"no_decoration" %> 
+          </center>
+        </div>
+      <% end %>
+
+    </div>
+    <!-- Grid end -->
+

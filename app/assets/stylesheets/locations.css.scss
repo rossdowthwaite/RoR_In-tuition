@@ -1,0 +1,31 @@
+// Place all the styles related to the locations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#address_tab {
+	width:200px;
+	height:200px;
+	float: left;
+	background-color: black;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	position: relative;
+	padding: 0px;
+}
+
+#address_tab a{
+	text-decoration: none !important;
+}
+
+#address_tab:hover {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+
+#address_tab h5{
+	line-height: 100% !important;
+	margin-left: 10px !important;
+	color: white !important;
+	text-decoration: none !important;
+}

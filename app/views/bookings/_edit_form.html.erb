@@ -1,0 +1,121 @@
+
+  <%= form_for @booking do |f| %>
+      <% if @booking.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+    
+          <ul>
+          <% @booking.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= hidden_field_tag :owner, current_user.id %>
+      <%= f.hidden_field :booker_id, :value => current_user.id %>
+
+<div id="left_section">
+
+      <div class="field">
+        <%= f.label "Title", :class => 'my_label' %>
+        <%= f.text_field :title, :class => 'wider my_field' %>
+      </div>
+    
+      <div class="field">
+        <%= f.label "Description", :class => 'my_label'  %>
+        <%= f.text_area :description, :class => 'longer my_text_Area'  %>
+      </div>
+
+    <h3>with</h3>
+
+     <div id="students">
+        <div class="items">
+          <%= f.nested_fields_for :appointments do |s| %>
+            <fieldset class="item">
+    
+              <%= s.collection_select(:user_id, @students, :id, :users_name, :prompt => false) %>
+    
+              <a href="#" class="remove">remove</a>
+    
+              <%= s.hidden_field :_destroy %>   
+            </fieldset>
+          <% end %>   
+        </div>
+        
+        <a href="#" class="add">Add Student</a>
+    </div>
+</div>
+
+<div id="left_section">
+
+      <div class="field" id="date_part">
+        <%= f.label "Date", :class => 'my_label'  %>
+        <%= f.text_field :start, :class =>"datepicker short my_field"  %>
+      </div>
+      <div class="field"  id="until_part">
+        <%= label_tag "until", nil, :class => 'my_label' %>
+        <%= check_box_tag(:end_date) %>
+      </div>
+      <div class="field" id="end_date_field", style="display:none">
+        <%= f.label "Date", :class => 'my_label'  %>
+        <%= f.text_field :end, :class =>"datepicker short my_field"   %>
+      </div>
+
+
+
+    <!-- DATE SECTION -->
+    <div id="date_section">
+
+        <% if @booking.start_time %>
+          <% @time = time(@booking.start_time) %> 
+        <% else %>
+          <% @time = '12/00/00'%>
+        <% end %>
+
+        <% if @booking.end_time %>
+          <% @end_time = time(@booking.end_time) %> 
+        <% else %>
+          <% @end_time = '12/00/00'%>
+        <% end %>
+
+        <div id="date_part">
+          <%= f.label "starts at", :class => 'my_label' %>
+          <div class="input-append bootstrap-timepicker">
+            <%= f.text_field :start_time, :id =>"timepicker1", :class =>"short", :value => @time %>
+            <span class="add-on"><i class="icon-time"></i></span>
+          </div>
+        </div>
+
+        <div id="date_part">
+          <%= f.label "ends at", :class => 'my_label' %>
+          <div class="input-append bootstrap-timepicker">
+            <%= f.text_field :end_time, :id =>"timepicker2", :class =>"short", :value => @end_time %>
+            <span class="add-on"><i class="icon-time"></i></span>
+          </div>
+        </div>
+
+    </div>
+
+
+      <div class="field">
+        <h3>Repeats</h3>
+        <%= check_box_tag(:recurring) %>
+      </div>
+    
+      <div class="field" id="recurring_fields" style="display:none">
+          <%= render 'bookings/recurring'  %>
+      </div>
+</div>
+
+  <div id="top_right_button">
+      <div class="actions">
+        <%= f.submit :class => 'btn btn-primary my_button' %>
+      </div>
+  </div>
+
+    <% end %>
+</div>
+
+
+

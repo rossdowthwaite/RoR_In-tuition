@@ -1,0 +1,2 @@
+module CourseWallsHelper
+end

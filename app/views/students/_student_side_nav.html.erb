@@ -1,0 +1,23 @@
+	<div id="side">
+
+	<%= link_to book_a_lesson_student_path(@student) do %> 
+		<div id="tab_small">
+			<div id="dash_heading">
+				<h3>book a <br>lesson</h3>
+			</div>
+		</div>
+	<% end %>
+
+	<%= link_to enrol_on_course_student_path(@student) do %> 
+		<div id="tab_small">
+			<div id="dash_heading">
+				<h3>Enrol on<br> Course</h3>
+			</div>
+		</div>
+	<% end %>
+	 
+		<div id="tab_small">
+				<center><%= link_to raw('<i class="fa fa-trash-o fa-2x icons_80"></i>'), @student, method: :delete, data: { confirm: 'Are you sure?' } %></center>
+		</div>
+
+	</div>

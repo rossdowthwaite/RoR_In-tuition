@@ -1,0 +1,31 @@
+<%= form_for @school, :url => course_update_school_path(@school) do |f| %>
+  
+  <% if @school.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@school.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Sending form will fail if none of the boxes are ticked -->
+  <!-- this tag ensures something is sent -->
+  <%= hidden_field_tag "#{f.object_name}[course_ids][]", nil %>
+  
+  
+  <table class="table table-striped">
+    <% @courses.each do |course| %>
+      <tr>
+        <td width="5%"><%= check_box_tag "school[course_ids][]", course.id, @school.course_ids.include?(course.id) %></td>
+        <td><%= course.title %></td>
+      </tr>  
+    <% end %>
+  </table>
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-inverse my_button'%>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_for(@video) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- If Topic is set then the material needs to be linked to the topic -->
+  <!-- The controller will check if this is set and add the record to the join table -->
+  <% if @topic %>
+    <%= hidden_field_tag :topic_id, @topic.id%>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Video Title', :class => 'my_label'%>
+    <%= f.text_field :title, :class => 'my_field' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label 'Youtube video url', :class => 'my_label' %>
+   
+    <%= f.text_field :video_url, :class => 'my_field'  %> 
+    <P>* only youtube video are currently supported</P>
+  </div>
+
+<div id="media_create">
+  <div class="actions">
+    <%= f.submit :class => 'my_button btn btn-primary no_margin' %>
+  </div>
+</div>
+
+<% end %>

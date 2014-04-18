@@ -1,0 +1,56 @@
+<div id="media_container">
+
+        <div id="material_type_buttons">
+            <button id="text" onClick="return false" class="btn btn-inverse my_button small_square_button" ><i class="fa fa-pencil fa-2x"></i></button>
+            <button id="video" onClick="return false" class="btn btn-inverse my_button small_square_button" ><i class="fa fa-video-camera fa-2x"></i></button>
+            <button id="upload" onClick="return false" class="btn btn-inverse my_button small_square_button" ><i class="fa fa-paperclip fa-2x"></i></button>
+        </div>
+
+        <div class="media" id="text_field">
+          <center>
+            <%= render 'texts/form' %>
+          </center>
+        </div>
+
+        <div class="media" id="video_field" style="display:none;">
+
+        <div id="video_buttons">
+            <button id="new_video_tab" onClick="return false" class="btn btn-inverse my_button small_square_button" >New Vid</button>
+            <button id="old_video_tab" onClick="return false" class="btn btn-inverse my_button small_square_button" >Choose</i></button>
+        </div>
+            
+            <div id="new_video">
+              <center>
+                <%= render 'videos/form' %>
+              </center>
+            </div>
+
+            <div id="old_video">
+              <center>
+                <%= render 'topic_video' %>
+              </center>
+            </div>
+        </div>
+
+        <div class="media" id="upload_field" style="display:none;">
+
+
+        <div id="upload_buttons">
+            <button id="new_upload_tab" onClick="return false" class="btn btn-inverse my_button small_square_button" >New<br> Upload</button>
+            <button id="old_upload_tab" onClick="return false" class="btn btn-inverse my_button small_square_button" >Choose</i></button>
+        </div>
+            
+            <div id="new_upload">
+              <center>
+                <%= render 'uploads/form' %>
+              </center>
+            </div>
+
+            <div id="old_upload">
+              <center>
+                <%= render 'topic_upload' %>
+              </center>
+            </div>
+        </div>
+
+</div>

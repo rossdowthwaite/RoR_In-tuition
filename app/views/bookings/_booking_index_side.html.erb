@@ -1,0 +1,27 @@
+<div id="side">
+
+	<%= link_to new_booking_path() do %> 
+			<div id="tab_medium">
+				<div id="dash_heading">
+					<h3>New <br>Booking</h3>
+				</div>
+			</div>
+	<% end %>
+
+	<%= link_to bookings_path() do %> 
+			<div id="tab_medium">
+				<div id="dash_heading">
+					<h3>Upcoming<br>Bookings</h3>
+				</div>
+			</div>
+	<% end %>
+
+	<%= link_to old_bookings_path() do %> 
+			<div id="tab_medium">
+				<div id="dash_heading">
+					<h3>Old<br>Bookings</h3>
+				</div>
+			</div>
+	<% end %>
+
+</div>
