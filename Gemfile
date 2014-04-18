@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -90,8 +90,10 @@ gem 'bootstrap-timepicker-rails', :require => 'bootstrap-timepicker-rails',
 
 # Authentication Gem - https://github.com/mdarby/restful_acl
 gem "restful_acl" 
-                                                 
 
+# Heroku shiz
+gem 'rails_12factor', group: :production
+                                                 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -103,3 +105,5 @@ gem "restful_acl"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+ruby "2.1.1"
