@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
 //= require twitter/bootstrap
 //= require best_in_place
 //= require_tree .
@@ -24,6 +24,7 @@
 
 $(document).ready(function() {
   alert('hello');
+  $("#students ,#prices ").nestedFields();
 });
 
 
