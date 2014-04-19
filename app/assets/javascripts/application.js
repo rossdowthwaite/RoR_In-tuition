@@ -22,7 +22,7 @@
 
 
 $(document).ready(function() {
-  
+  alert('hello');
   $("#students ,#prices ").nestedFields();
 
   // Time picker uses the Bootstrap-timepicker-rails gem -- https://github.com/tispratik/bootstrap-timepicker-rails
