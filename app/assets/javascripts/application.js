@@ -26,6 +26,23 @@ $(document).ready(function() {
   alert('hello');
   $("#students ,#prices ").nestedFields();
 
+  // Time picker uses the Bootstrap-timepicker-rails gem -- https://github.com/tispratik/bootstrap-timepicker-rails
+  // these are for selecting times in the bookings seciton of the app
+  
+  // start time 
+  $('#timepicker1').timepicker({
+                showSeconds: true,
+                showMeridian: false,
+                defaultTime: false
+            });
+
+  // until time
+  $('#timepicker2').timepicker({
+                showSeconds: true,
+                showMeridian: false,
+                defaultTime: false
+            });
+
 //github.com/Nerian/bootstrap-datepicker-rails
 
   $(".datepicker").datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
