@@ -17,6 +17,7 @@
 
 body {
 	margin: 0px;
+	height:100%;
 	background-image: url();
 	background-attachment: fixed;
 background: #b6ced8; /* Old browsers */
