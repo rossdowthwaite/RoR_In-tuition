@@ -25,6 +25,10 @@
 $(document).ready(function() {
   alert('hello');
   $("#students ,#prices ").nestedFields();
+
+//github.com/Nerian/bootstrap-datepicker-rails
+
+  $(".datepicker").datepicker({"format": "yyyy-mm-dd", "weekStart": 1, "autoclose": true});
 });
 
 
