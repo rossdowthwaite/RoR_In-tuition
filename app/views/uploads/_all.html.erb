@@ -1,25 +1,32 @@
 
 <% @uploads.each do |upload| %>
+
 	<% if image?(upload.upload_file_name) %>
-		<% @icon = '<i class="fa fa-camera-retro fa-2x tab_icons"></i>' %>
-		<% @color = '#819FF7' %>
+		<% set_image_styling %>
 	<% else %>
-		<% @icon = '<i class="fa fa-clipboard fa-2x tab_icons"></i>' %>
-		<% @color = '#04B486' %>
+		<% set_upload_styling %>
 	<% end %>
 	
-	<div id="upload_tab" style="background-color:<%= @color %>">
+	<div id="upload_tab" class="<%= @new_class %>">
+
 		<div id='with_tab'>		
 			<center><%= raw(@icon) %></center>
 		</div>
+
 		<div id="upload_tab_title">
 			<%= upload.title %>
 		</div>
+
 		<div id="upload_tab_file">
 			<a href="<%= upload.upload.url %>"><%= upload.upload_file_name %>
 		</div>
+
 		<div id="booking_icon">
-                      <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), upload, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
-                    </div>
+	        <center>
+	        	<%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), upload, method: :delete, data: { confirm: 'Are you sure?' }  %>
+	        </center>
+        </div>
+
 	</div>
+	
 <% end %>

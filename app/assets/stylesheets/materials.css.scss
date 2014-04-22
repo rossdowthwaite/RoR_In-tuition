@@ -105,6 +105,10 @@
 	margin-bottom: 10px;
 }
 
+#material_topic_block a{
+	color:white !important;
+}
+
 #material_sub_topic_video_block {
 	margin-left: 190px;
 	padding-left: 20px;
@@ -123,4 +127,8 @@
 #material_title {
 	position: absolute;
 	left: 70px;
+}
+
+#material_title a{
+	color: white;
 }

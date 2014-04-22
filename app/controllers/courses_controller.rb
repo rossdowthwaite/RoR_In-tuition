@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
 
   def update
       if @course.update(course_params)
-        redirect_to session.delete(:return_to) 
+        redirect_to session.delete(:return_to)
       else
         render action: 'edit'
       end

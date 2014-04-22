@@ -7,11 +7,11 @@
   <%= @video.title %>
 </h3>
 
-<% if @video.video_url  != "" %>
+<% if @video.video_url.present? %>
 
-            <% @video_id = YouTubeAddy.extract_video_id(@video.video_url) %>
-            
-            <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= @video_id %>" frameborder="0" allowfullscreen></iframe>
+    <% @video_id = YouTubeAddy.extract_video_id(@video.video_url) %>
+     <iframe width="420" height="315" src="http://www.youtube.com/embed/<%= @video_id %>" frameborder="0" allowfullscreen></iframe>
+     
 <% end %>
 
 <br>

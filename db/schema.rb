@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140418155721) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "appointments", force: true do |t|
     t.integer  "user_id"
     t.integer  "booking_id"
@@ -26,8 +23,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.string   "status"
   end
 
-  add_index "appointments", ["booking_id"], name: "index_appointments_on_booking_id", using: :btree
-  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
+  add_index "appointments", ["booking_id"], name: "index_appointments_on_booking_id"
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id"
 
   create_table "bookings", force: true do |t|
     t.string   "title"
@@ -41,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.integer  "booker_id"
   end
 
-  add_index "bookings", ["booker_id"], name: "index_bookings_on_booker_id", using: :btree
+  add_index "bookings", ["booker_id"], name: "index_bookings_on_booker_id"
 
   create_table "class_rooms", force: true do |t|
     t.integer  "course_id"
@@ -50,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "class_rooms", ["course_id"], name: "index_class_rooms_on_course_id", using: :btree
-  add_index "class_rooms", ["student_id"], name: "index_class_rooms_on_student_id", using: :btree
+  add_index "class_rooms", ["course_id"], name: "index_class_rooms_on_course_id"
+  add_index "class_rooms", ["student_id"], name: "index_class_rooms_on_student_id"
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -62,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "course_bookings", force: true do |t|
     t.integer  "course_id"
@@ -71,8 +68,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "course_bookings", ["booking_id"], name: "index_course_bookings_on_booking_id", using: :btree
-  add_index "course_bookings", ["course_id"], name: "index_course_bookings_on_course_id", using: :btree
+  add_index "course_bookings", ["booking_id"], name: "index_course_bookings_on_booking_id"
+  add_index "course_bookings", ["course_id"], name: "index_course_bookings_on_course_id"
 
   create_table "course_contents", force: true do |t|
     t.integer  "subject_id"
@@ -81,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "course_contents", ["course_id"], name: "index_course_contents_on_course_id", using: :btree
-  add_index "course_contents", ["subject_id"], name: "index_course_contents_on_subject_id", using: :btree
+  add_index "course_contents", ["course_id"], name: "index_course_contents_on_course_id"
+  add_index "course_contents", ["subject_id"], name: "index_course_contents_on_subject_id"
 
   create_table "course_items", force: true do |t|
     t.integer  "product_id"
@@ -92,8 +89,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "course_items", ["course_id"], name: "index_course_items_on_course_id", using: :btree
-  add_index "course_items", ["product_id"], name: "index_course_items_on_product_id", using: :btree
+  add_index "course_items", ["course_id"], name: "index_course_items_on_course_id"
+  add_index "course_items", ["product_id"], name: "index_course_items_on_product_id"
 
   create_table "courses", force: true do |t|
     t.string   "title"
@@ -116,8 +113,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "enrolments", ["course_id"], name: "index_enrolments_on_course_id", using: :btree
-  add_index "enrolments", ["student_id"], name: "index_enrolments_on_student_id", using: :btree
+  add_index "enrolments", ["course_id"], name: "index_enrolments_on_course_id"
+  add_index "enrolments", ["student_id"], name: "index_enrolments_on_student_id"
 
   create_table "forum_contributors", force: true do |t|
     t.integer  "user_id"
@@ -126,8 +123,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "forum_contributors", ["forum_id"], name: "index_forum_contributors_on_forum_id", using: :btree
-  add_index "forum_contributors", ["user_id"], name: "index_forum_contributors_on_user_id", using: :btree
+  add_index "forum_contributors", ["forum_id"], name: "index_forum_contributors_on_forum_id"
+  add_index "forum_contributors", ["user_id"], name: "index_forum_contributors_on_user_id"
 
   create_table "forum_posts", force: true do |t|
     t.integer  "forum_id"
@@ -136,8 +133,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "forum_posts", ["forum_id"], name: "index_forum_posts_on_forum_id", using: :btree
-  add_index "forum_posts", ["post_id"], name: "index_forum_posts_on_post_id", using: :btree
+  add_index "forum_posts", ["forum_id"], name: "index_forum_posts_on_forum_id"
+  add_index "forum_posts", ["post_id"], name: "index_forum_posts_on_post_id"
 
   create_table "forums", force: true do |t|
     t.string   "title"
@@ -153,7 +150,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "forums", ["administrator_id"], name: "index_forums_on_administrator_id", using: :btree
+  add_index "forums", ["administrator_id"], name: "index_forums_on_administrator_id"
 
   create_table "goals", force: true do |t|
     t.integer  "user_id"
@@ -162,7 +159,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id"
 
   create_table "locations", force: true do |t|
     t.string   "street"
@@ -186,7 +183,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "materials", ["topic_id"], name: "index_materials_on_topic_id", using: :btree
+  add_index "materials", ["topic_id"], name: "index_materials_on_topic_id"
 
   create_table "notifications", force: true do |t|
     t.integer  "user_id"
@@ -199,8 +196,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "seen_at"
   end
 
-  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id", using: :btree
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
+  add_index "notifications", ["receiver_id"], name: "index_notifications_on_receiver_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
@@ -209,7 +206,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "products", force: true do |t|
     t.integer  "user_id"
@@ -220,7 +217,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
+  add_index "products", ["user_id"], name: "index_products_on_user_id"
 
   create_table "profiles", force: true do |t|
     t.string   "bio"
@@ -237,7 +234,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "qualifications", ["user_id"], name: "index_qualifications_on_user_id", using: :btree
+  add_index "qualifications", ["user_id"], name: "index_qualifications_on_user_id"
 
   create_table "school_courses", force: true do |t|
     t.integer  "course_id"
@@ -246,8 +243,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "school_courses", ["course_id"], name: "index_school_courses_on_course_id", using: :btree
-  add_index "school_courses", ["school_id"], name: "index_school_courses_on_school_id", using: :btree
+  add_index "school_courses", ["course_id"], name: "index_school_courses_on_course_id"
+  add_index "school_courses", ["school_id"], name: "index_school_courses_on_school_id"
 
   create_table "schools", force: true do |t|
     t.string   "title"
@@ -261,7 +258,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "schools", ["user_id"], name: "index_schools_on_user_id", using: :btree
+  add_index "schools", ["user_id"], name: "index_schools_on_user_id"
 
   create_table "students", force: true do |t|
     t.integer  "user_id"
@@ -272,8 +269,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "students", ["pupil_id"], name: "index_students_on_pupil_id", using: :btree
-  add_index "students", ["user_id"], name: "index_students_on_user_id", using: :btree
+  add_index "students", ["pupil_id"], name: "index_students_on_pupil_id"
+  add_index "students", ["user_id"], name: "index_students_on_user_id"
 
   create_table "subject_topics", force: true do |t|
     t.integer  "subject_id"
@@ -282,8 +279,8 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "subject_topics", ["subject_id"], name: "index_subject_topics_on_subject_id", using: :btree
-  add_index "subject_topics", ["topic_id"], name: "index_subject_topics_on_topic_id", using: :btree
+  add_index "subject_topics", ["subject_id"], name: "index_subject_topics_on_subject_id"
+  add_index "subject_topics", ["topic_id"], name: "index_subject_topics_on_topic_id"
 
   create_table "subjects", force: true do |t|
     t.string   "title"
@@ -293,7 +290,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "subjects", ["user_id"], name: "index_subjects_on_user_id", using: :btree
+  add_index "subjects", ["user_id"], name: "index_subjects_on_user_id"
 
   create_table "texts", force: true do |t|
     t.string   "title"
@@ -303,7 +300,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "texts", ["user_id"], name: "index_texts_on_user_id", using: :btree
+  add_index "texts", ["user_id"], name: "index_texts_on_user_id"
 
   create_table "topics", force: true do |t|
     t.string   "title"
@@ -313,7 +310,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
   create_table "uploads", force: true do |t|
     t.string   "title"
@@ -326,7 +323,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "uploads", ["user_id"], name: "index_uploads_on_user_id", using: :btree
+  add_index "uploads", ["user_id"], name: "index_uploads_on_user_id"
 
   create_table "user_sessions", force: true do |t|
     t.string   "email"
@@ -363,7 +360,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "videos", ["user_id"], name: "index_videos_on_user_id", using: :btree
+  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
 
   create_table "walls", force: true do |t|
     t.integer  "course_id"
@@ -372,7 +369,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.datetime "updated_at"
   end
 
-  add_index "walls", ["course_id"], name: "index_walls_on_course_id", using: :btree
-  add_index "walls", ["post_id"], name: "index_walls_on_post_id", using: :btree
+  add_index "walls", ["course_id"], name: "index_walls_on_course_id"
+  add_index "walls", ["post_id"], name: "index_walls_on_post_id"
 
 end

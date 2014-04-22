@@ -3,7 +3,7 @@
 
 <h4>Status</h4>
 <% set_status_style(confirmed(@booking)) %>
-<div id="booking_status" style="background-color:<%= @color %>">  
+<div id="booking_status" class="<%= @class %>">  
     <% if confirmed(@booking) %>
     
       <center><h5>CONFIRMED!</h5></center>

@@ -1,10 +1,12 @@
 
-<% if @products.count == 0 %>
+<% if @products.empty? %>
 
-<center><h3>You dont have any subjects To Add Yet this Course yet</h3>
+<center>
+<h3>You dont have any subjects To Add Yet this Course yet</h3>
 <p>Once you have oraginzed your topics you can add your subjects to your course!</p><br>
-<%= link_to raw('<i class="fa fa-puzzle-piece fa-5x"></i><br>Start building your sylabus now!'), my_materials_path() %> </center><br><br>
-  <center><%= image_tag('coure_subjects.png') %></center>
+<%= link_to raw('<i class="fa fa-puzzle-piece fa-5x"></i><br>Start building your sylabus now!'), my_materials_path() %> 
+</center><br><br>
+<center><%= image_tag('coure_subjects.png') %></center>
 
 <% else %>
 

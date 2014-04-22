@@ -10,6 +10,7 @@ class NotificationsController < ApplicationController
   # GET /notifications/1
   def show
     @notification.update_attributes(:seen_at => Time.now)
+    session[:return_to] ||= request.referer
   end
 
 

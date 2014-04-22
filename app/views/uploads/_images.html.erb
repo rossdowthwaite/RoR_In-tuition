@@ -1,8 +1,7 @@
-   <div id="image_grid">
+<div id="image_grid">
 
     <% @uploads.each do |upload| %>
         <% if image?(upload.upload_file_name) %>
-
 
             <%= link_to upload do %>
 
@@ -17,8 +16,7 @@
 
             <% end %>
 
-   
         <% end %>
     <% end %>
 
- </div>
+</div>

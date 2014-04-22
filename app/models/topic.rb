@@ -39,16 +39,16 @@ class Topic < ActiveRecord::Base
 				end
 		  	end
 		end
-	  	user.subjects.include?(self) || @poo
+	  	user.topics.include?(self) || @poo
 	  end
 
 	  # This method checks permissions for the :update and :edit action
 	  def is_updatable_by(user, parent = nil)
-	  	user.subjects.include?(self)
+	  	user.topics.include?(self)
 	  end
 
 	  # This method checks permissions for the :destroy action
 	  def is_deletable_by(user, parent = nil)
-	  	user.subjects.include?(self)
+	  	user.topics.include?(self)
 	  end
 end

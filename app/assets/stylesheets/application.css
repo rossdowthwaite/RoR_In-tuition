@@ -549,3 +549,27 @@ h5{
 	height:50px;
 	line-height: 50px !important;
 }
+
+.accepted {
+	background-color:#2EFE64;
+}
+
+.standard {
+	background-color:#819FF7;
+}
+
+.action {
+	background-color:#FA5858;
+}
+
+.video_tab {
+
+}
+
+.image_tab {
+	background-color: #819FF7;
+}
+
+.upload_tab {
+	background-color: #04B486;
+}

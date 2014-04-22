@@ -4,12 +4,13 @@
 <h5>You have <%= pluralize(@notifications.new_notifications.count, 'new notification')  %></h5>
 
 <%= form_tag group_delete_notifications_path, :method => :delete do %>
+
     <% @notifications.each do |notification| %>
         <% @notifiable = poly(notification.notifiable_type, notification.notifiable_id) if notification.notifiable_type %>
 
         <% set_notification_style(notification) %>
 
-        <div id="notification_tab" style="background-color:<%= @color %>">
+        <div id="notification_tab" class="<%= @class %>">
 
             <div id='notification_sender'>
                 <%= image_tag notification.user.avatar.url(:post) if notification.user.avatar? %>

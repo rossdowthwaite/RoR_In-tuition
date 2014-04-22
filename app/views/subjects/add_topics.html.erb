@@ -4,7 +4,16 @@
 
 <h3>Your Topics</h3>
 
+<% if @topics.any? %>
 
-<%= render 'add_topics' %>
+	<%= render 'add_topics' %>
+
+<% else %>
+
+	  <center><h3>You Don't have any topics</h3></center>
+      <center><p>Add some</p></center>
+      <center><%= link_to raw('<i class="fa fa-book fa-5x"></i><br> Add Topics'), new_topic_path, :class =>" no_decoration" %> </center>
+
+<% end %>
 
 <%= link_to 'back', :back %> 

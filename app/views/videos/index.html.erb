@@ -3,7 +3,7 @@
 
 <%= render 'layouts/content_side'  %>
 
-<% if @videos.count == 0 %>
+<% if @videos.empty? %>
   
   <center><h3>Add Some Videos!</h3>
   <p>Start adding some links to your favourite youtube videos to use in your topics.</p>
@@ -24,7 +24,7 @@
     <% @videos.each do |video| %>
       <tr>
         <td>
-          <% if video.video_url != "" %>
+          <% if video.video_url.present? %>
                 <% @video_id = YouTubeAddy.extract_video_id(video.video_url) %>
                 <%= image_tag "http://img.youtube.com/vi/" + @video_id + "/default.jpg"  %>
           <% end %>

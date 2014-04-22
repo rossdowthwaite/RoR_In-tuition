@@ -1,15 +1,27 @@
 <% @heading =  'Topics'  %>
 <%= render 'layouts/header' %>
 
+
 <% if @subject %>
+
 	<%= link_to @subject.title, course_subject_path(@course, @subject) %> 
+
+<% else %>
+
+	<%= link_to 'back to topics', topics_path() %> 
+
 <% end %>
 
+
 <% if owned_by(current_user, @topic)  %>
+	
 	<%= render 'top_nav' %>
+
 <% else %>
+
 	<h1><%= @topic.title %></h1>
 	<p><%= @topic.decription  %></p><br><br>
+
 <% end %>
 
 <%= render 'topic_content'  %>

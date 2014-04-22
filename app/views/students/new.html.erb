@@ -20,11 +20,13 @@
 	<!-- search for end -->
 
 	<!-- if no results are returned.. -->
-	<% if @users.count == 0 %>
+	<% if @users.empty %>
 
 		<% if  @done == "set" %>
+
 			<center><h4>Sorry, no user was found that matches your search.</h4></center>
 			<center><p>Maybe they dont have an account yet?</p></center>
+			
 		<% end %>
 
 	<% else %>

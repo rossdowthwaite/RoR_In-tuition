@@ -1,8 +1,12 @@
 <% @heading =  @subject.title  %>
 <%= render 'layouts/header' %>
 
+
+
 <div id="subject_topics_section">
-	
+<% if !@course %>
+	<%= link_to 'back to Subjects', subjects_path() %> 
+<% end %>
 		<h2>Topics</h2>
 
 		<% @topics.each do |topic| %>
@@ -28,7 +32,7 @@
 		<% end %>
 	</div>
 
-<div id='subject_description'>
+<div id='subject_descriptions'>
 	<h2>Overview</h2>
 	<p><%= @subject.description %></p>
 </div>

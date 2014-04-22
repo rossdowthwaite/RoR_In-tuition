@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
-    @materials = @topic.materials
+    @materials = @topic.materials.order('created_at asc')
   end
 
   # GET /topics/new

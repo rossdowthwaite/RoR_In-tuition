@@ -4,7 +4,7 @@
 <%= render 'layouts/content_side'  %>
 
 
-<% if @uploads.count == 0 %>
+<% if @uploads.empty? %>
   
   <center><h3>Upload some Documents!</h3>
   <p>Start uploading some PDF or images to add to your topics.</p>
@@ -12,7 +12,6 @@
   <%= link_to raw('<i class="fa fa-upload fa-5x"></i> <br>Upload some stuff!'), new_upload_path %><br><br>
   <center><%= image_tag('topic_materials.png') %></center>
   </center>
-
 
 <% else %>
 

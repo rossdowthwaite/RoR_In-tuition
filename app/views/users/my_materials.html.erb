@@ -10,79 +10,77 @@
 		<p>Here you can organize all your course content into a useful chunks to make up your sylabus
 		<br>Using the tabs at the side you can begin to build up a comprehesive arrangement of materials that will help you structure your tuition.</p><br> 
 
-	
-	
-	<h3>How To Oragnize your Materials:</h3>
-	<p>Its really very simple:</p>
-	<%= image_tag('cms_structure.png') %>
+		<h3>How To Oragnize your Materials:</h3>
+		<p>Its really very simple:</p>
+		<%= image_tag('cms_structure.png') %>
 		
-			<h5>Courses have many Subjects. Subjects have many topics. Topics have many contents.</h5>
+		<h5>Courses have many Subjects. Subjects have many topics. Topics have many contents.</h5>
 	</center>
-
 
 <% else %>
 
 
-<% if @subjects.count > 0 %>
-	<% @subjects.each do |subject| %>
+	<% if @subjects.any? %>
+		<% @subjects.each do |subject| %>
 
-		<%= link_to subject do %> 
-			<div id="material_subject_block">
-				<div id='with_tab'>
-					<center><i class="fa fa-file fa-2x tab_icons"></i></center>
-				</div>
-				<div id='material_title'>
-					<%= subject.title %>
-				</div>
-				<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), subject, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
-				<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,subject] %></center></div>
-				<div id="booking_icon" title="No. of Topics"><center><%= subject.topics.count %></center></div>
-			</div>
-		<% end %>
-
-			<% subject.topics.each do |sub_topic| %>
-				<%= link_to sub_topic do %> 
-					<div id="material_sub_topic_block">
+				<%= link_to subject do %> 
+					<div id="material_subject_block">
 						<div id='with_tab'>
-							<center><i class="fa fa-file-text fa-2x tab_icons"></i></center>
+							<center><i class="fa fa-file fa-2x tab_icons"></i></center>
 						</div>
 						<div id='material_title'>
-							<%= sub_topic.title %>
-						</div>	
-						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), sub_topic, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
-						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,sub_topic] %></center></div>
+							<%= subject.title %>
+						</div>
+						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), subject, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
+						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,subject] %></center></div>
+						<div id="booking_icon" title="No. of Topics"><center><%= subject.topics.count %></center></div>
 					</div>
 				<% end %>
 
-			<% sub_topic.video_mediums.each do |video| %>
-					<div id="material_sub_topic_video_block">
-						<div id='with_tab'>
-							<center><i class="fa fa-film fa-2x tab_icons"></i></center>
-						</div>
-						<div id='material_title'>
-							<%= video.title %>
-						</div>	
-						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), video, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
-						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,video] %></center></div>
-					</div>
-			<% end %>
+				<% subject.topics.each do |sub_topic| %>
 
-			<% sub_topic.upload_mediums.each do |upload| %>
-					<div id="material_sub_topic_video_block">
-						<div id='with_tab'>
-							<center><i class="fa fa-clipboard fa-2x tab_icons"></i></center>
+					<%= link_to sub_topic do %> 
+						<div id="material_sub_topic_block">
+							<div id='with_tab'>
+								<center><i class="fa fa-file-text fa-2x tab_icons"></i></center>
+							</div>
+							<div id='material_title'>
+								<%= sub_topic.title %>
+							</div>	
+							<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), sub_topic, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
+							<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,sub_topic] %></center></div>
 						</div>
-						<div id='material_title'>
-							<%= upload.title %>
-						</div>	
-						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), upload, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
-						<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,upload] %></center></div>
-					</div>
-			<% end %>
+					<% end %>
+
+					<% sub_topic.video_mediums.each do |video| %>
+							<div id="material_sub_topic_video_block">
+								<div id='with_tab'>
+									<center><i class="fa fa-film fa-2x tab_icons"></i></center>
+								</div>
+								<div id='material_title'>
+									<%= video.title %>
+								</div>	
+								<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), video, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
+								<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,video] %></center></div>
+							</div>
+					<% end %>
+
+					<% sub_topic.upload_mediums.each do |upload| %>
+							<div id="material_sub_topic_video_block">
+								<div id='with_tab'>
+									<center><i class="fa fa-clipboard fa-2x tab_icons"></i></center>
+								</div>
+								<div id='material_title'>
+									<%= upload.title %>
+								</div>	
+								<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), upload, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
+								<div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,upload] %></center></div>
+							</div>
+					<% end %>
+
+				<% end %>
 
 		<% end %>
 	<% end %>
-<% end %>
-
 
 <% end %>

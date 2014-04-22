@@ -7,15 +7,15 @@
 
 		<h4>Things to do</h4>
 
-		<% if @course.locations.count == 0 %>
+		<% if @course.locations.empty? %>
 			<%= link_to 'Add a location', course_locations_path(@course) %><br> 
 		<% end %>
 
-		<% if @course.enrolments.count == 0 %>
+		<% if @course.enrolments.empty?  %>
 			<%= link_to 'Enrol Some Students', course_enrolments_path(@course) %><br> 
 		<% end %>
 
-		<% if @content.count == 0  %>
+		<% if @content.empty?   %>
 			<%= link_to 'Add Some Content!', add_content_course_path(@course) %> 
 		<% end %>
 
@@ -23,7 +23,7 @@
 
 	
 
-	<% if @content.count != 0  %>
+	<% if ! @content.empty? %>
 
 		<h2>Course Content</h2>
 
@@ -43,5 +43,5 @@
 </div>
 
 <div id="course_dash_post_container">
-<%= render 'course_posts'  %>
+	<%= render 'course_posts'  %>
 </div>

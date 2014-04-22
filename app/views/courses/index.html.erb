@@ -1,6 +1,7 @@
 <% @heading = 'My Courses'  %>
 <%= render 'layouts/header' %>
-<% if @courses.count == 0 && @enrolled.count == 0 %>
+
+<% if @courses.empty? && @enrolled.empty? %>
 
       <center><h3>No courses yet</h3></center>
       <center><p>This is where all your Course will your appear</p></center>

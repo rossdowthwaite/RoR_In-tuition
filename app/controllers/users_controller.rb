@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     # To get all the user posts and relating posts from the forums they are contribitors for
-    @user_forums = ForumContributor.contributor(current_user.id)
+    @user_forums = ForumContributor.contributor(current_user.id).pluck(:forum_id)
     @forum_posts = ForumPost.from_forums(@user_forums).pluck(:post_id)
     @posts = Post.find(@forum_posts)
     @posts = @posts.sort_by{|e| e[:created_at]}
@@ -54,9 +54,7 @@ class UsersController < ApplicationController
   def my_materials
     @topics = @user.topics
     @subjects = @user.subjects
-    @videos = @user.videos
-    @uploads = @user.uploads
-    @materials = @topics.count + @subjects.count + @videos.count + @uploads.count
+    @materials = @topics.count + @subjects.count
   end
 
   def my_office

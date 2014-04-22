@@ -3,18 +3,19 @@
 
 
 <div id="side">
-			<%= link_to add_content_course_path(@course) do %> 
-				<div id="tab_medium">
-					<div id="dash_heading">
-						<h3>Edit/Add<br>
-							Content</h3>
-					</div>
-				</div>
-			<% end %>
-
+	<%= link_to add_content_course_path(@course) do %> 
+		<div id="tab_medium">
+			<div id="dash_heading">
+				<h3>Edit/Add<br>
+					Content</h3>
+			</div>
+		</div>
+	<% end %>
 </div>
 
 <div>
+
+	<!-- Loop through the courses content -->
 	<% @content.each do |content| %>
 
 		<%= link_to course_subject_path(@course, content) do %> 
@@ -28,9 +29,8 @@
 			</div>
 		<% end %>
 
+		<!-- Loop through the individual contents topics and shot them -->
 		<% content.topics.each do |topic| %>
-
-
 			<%= link_to course_subject_topic_path(@course, content, topic) do %>
 			<div id="material_sub_topic_block">
 				<div id='with_tab'>

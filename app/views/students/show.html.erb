@@ -4,33 +4,39 @@
 <%= render 'student_side_nav' %>
 
 <div id="student_heading">
-<%= image_tag @student.pupil.avatar.url(:thumb) if @student.pupil.avatar? %>
-<h2><%= @student.students_name  %></h2>
+	<%= image_tag @student.pupil.avatar.url(:thumb) if @student.pupil.avatar? %>
+	<h2><%= @student.students_name  %></h2>
 </div>
 
 <div id='student_courses'>
-<h4>Courses</h4>
-<% @courses.each do |course| %>
-	<%= link_to course do %> 
-		<%= image_tag course.logo.url(:thumb) if course.logo? %>
+	<h4>Courses</h4>
+	<% @courses.each do |course| %>
+		<%= link_to course do %> 
+			<%= image_tag course.logo.url(:thumb) if course.logo? %>
+		<% end %>
 	<% end %>
-<% end %>
 </div>
 
 <div id="next_meeting">
 
 	<h5>Next meeting: </h5>
-	<% if @appointments.count > 0 %>
-	<div id='next_meeting_thing'>
-			<h4><%= @appointments.first.booking.title%></h4>
-			<%= @appointments.first.booking.start.strftime("%B %d, %Y") %>,
-			<%= time(@appointments.first.booking.start_time) %> -  
-			<%= time(@appointments.first.booking.end_time) %><br>
-			(<%= distance_of_time_in_words(Date.today, @appointments.first.booking.start)  %>)
-	</div>
+	
+	<% if @appointments.any? %>
+
+		<div id='next_meeting_thing'>
+				<h4><%= @appointments.first.booking.title%></h4>
+				<%= @appointments.first.booking.start.strftime("%B %d, %Y") %>,
+				<%= time(@appointments.first.booking.start_time) %> -  
+				<%= time(@appointments.first.booking.end_time) %><br>
+				(<%= distance_of_time_in_words(Date.today, @appointments.first.booking.start)  %>)
+		</div>
+	
 	<% end %>
+
 	<h5>Next 5 meetings: </h5>
+
 	<div id="next_students_bookings">
+		
 		<% @appointments.first(5).each do |app| %>
 
 			<%= link_to app.booking do %>

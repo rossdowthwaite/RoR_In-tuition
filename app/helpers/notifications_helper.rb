@@ -34,15 +34,15 @@ module NotificationsHelper
 	def set_notification_style(notification)
 
 		  if action_required(notification)
-		  	  @color = '#FA5858'
+		  	  @class = 'action'
 		  	  @link = 'notification'
 			  @icon = '<i class="fa fa-cog fa-2x tab_icons"></i>'
 		  elsif notification.seen_at == nil
-              @color = '#2EFE64'
+              @class = 'standard'
               @link = 'notification'
 			  @icon = '<i class="fa fa-envelope-o fa-2x tab_icons"></i>'
           else
-              @color = '#819FF7' 
+              @class = 'accepted' 
 		  	  @link = 'notification'
 			  @icon = '<i class="fa fa-eye fa-2x tab_icons"></i>'
           end

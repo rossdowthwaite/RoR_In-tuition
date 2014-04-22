@@ -4,11 +4,12 @@ class MaterialsController < ApplicationController
 
   # GET /materials
   def index
-    @materials = @topic.materials
+    @materials = @topic.materials.order('created_at asc')
     @video = Video.new
     @upload = Upload.new
     @text = Text.new
     @material = Material.new
+    session[:return_to] ||= request.referer
   end
 
   # GET /materials/1

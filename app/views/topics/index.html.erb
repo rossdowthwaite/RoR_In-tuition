@@ -3,7 +3,7 @@
 
 <%= render 'layouts/content_side'  %>
 
-<% if @topics.count == 0 %>
+<% if @topics.empty? %>
   
   <center><h3>Add Some Topics!</h3>
   <p>Topics are your where your main content goes. Create a new topic and add content to it.</p>
@@ -18,16 +18,24 @@
 
   <tbody>
     <% @topics.each do |topic| %>
-<%= link_to topic do %> 
+      <%= link_to topic do %> 
+
         <div id="material_topic_block">
+
           <div id='with_tab'>
             <center><i class="fa fa-file-text fa-2x tab_icons"></i></center>
           </div>
+
           <div id='material_title'>
             <%= topic.title %>
           </div>  
-          <div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), topic, method: :delete, data: { confirm: 'Are you sure?' }  %></center></div>
-          <div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,topic] %></center></div>
+
+          <div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), topic, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
+          </div>
+
+          <div id="booking_icon" title="No. of Topics"><center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), [:edit,topic] %></center>
+          </div>
+
         </div>
       <% end %>
     <% end %>

@@ -47,23 +47,23 @@ module BookingsHelper
       @pending = @appointments.pending
 
       if confirmed(booking) 
-         @booking_status_icon = '<i class="fa fa-ticket fa-2x tab_icons" title="Requires Action!!"></i>'
-         @color = '#04B486'
+         @booking_status_icon = '<i class="fa fa-ticket fa-2x tab_icons" title="Booked in!"></i>'
+         @class = 'accepted'
        elsif @appointments.rejected.count == @appointments.count - 1 
-         @booking_status_icon = '<i class="fa fa-times-circle fa-2x tab_icons" title="Booked in!"></i>'
-         @color = '#FA5858'
+         @booking_status_icon = '<i class="fa fa-times-circle fa-2x tab_icons" title="Requires Action"></i>'
+         @class = 'action'
       else
-         @booking_status_icon = '<i class="fa fa-clock-o fa-2x tab_icons" title="Booked in!"></i>'
-         @color = '#819FF7'
+         @booking_status_icon = '<i class="fa fa-clock-o fa-2x tab_icons" title="Pending"></i>'
+         @class = 'standard'
       end
    end
 
 
    def set_status_style(bool)
       if bool
-         @color = '#04B486'
+         @class = 'accepted'
       else
-         @color = '#FA5858'
+         @class = 'action'
       end
    end 
 
