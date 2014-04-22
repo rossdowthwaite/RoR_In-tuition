@@ -45,6 +45,11 @@ class User < ActiveRecord::Base
 	has_many :locations, as: :addressable
 	has_one :profile, as: :profilable
 
+	#---------- Validations -----------------  
+
+  	validates_date :dob, :before => lambda { 16.years.ago },
+                         :before_message => ' - Must be at least 16 to sign up'
+
 
   	#---------- AUTHENTICATION ----------------- 
 

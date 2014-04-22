@@ -11,6 +11,12 @@ class Topic < ActiveRecord::Base
 	has_many :video_mediums, :through => :materials, :source => :medium, :source_type => "Video"
 	has_many :upload_mediums, :through => :materials, :source => :medium, :source_type => "Upload"
 
+  #---------- VALIDATIONS -----------------
+
+  validates :title, presence: true
+  validates :title, length: { maximum: 50 }
+  validates :decription, length: { maximum: 500 }
+
 	#---------- AUTHENTICATION ----------------- 
 
 	 # This method checks permissions for the :index action

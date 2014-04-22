@@ -8,7 +8,11 @@ class Subject < ActiveRecord::Base
 	has_many :course_contents, :dependent => :destroy
   	has_many :courses, :through => :course_contents
 
-  validates :title, presence: true
+  	#---------- VALIDATIONS ----------------- 
+
+  	validates :title, presence: true
+  	validates :title, length: { maximum: 50 }
+  	validates :description, length: { maximum: 500 }
 
   	#---------- AUTHENTICATION ----------------- 
 

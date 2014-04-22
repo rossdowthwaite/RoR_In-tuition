@@ -3,6 +3,11 @@ class Video < ActiveRecord::Base
   has_many :materials, as: :medium, dependent: :destroy
   has_many :topics, :through => :materials
 
+  #---------- Validations -----------------  
+
+  validates :title, length: { maximum: 50 }
+  validates :title, presence: true
+
   	#---------- AUTHENTICATION ----------------- 
 
 	 # This method checks permissions for the :index action

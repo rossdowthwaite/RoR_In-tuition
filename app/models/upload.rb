@@ -9,7 +9,11 @@ class Upload < ActiveRecord::Base
   has_attached_file :upload, :styles => { :medium => "300x300>", :thumb => "100x100>", :post => "50x50>", :home => "200x200>", :mini => "50x50>"}
   validates_attachment_content_type :upload, :content_type => ["application/pdf", 'image/jpeg', 'image/jpg', 'image/png']
 
+  #---------- VALIDATIONS -----------------
+
   validates :upload, presence: true
+  validates :title, length: { maximum: 50 }
+  validates :title, presence: true
 
   	#---------- AUTHENTICATION ----------------- 
 

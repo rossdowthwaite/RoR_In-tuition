@@ -11,11 +11,17 @@ class Forum < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :post => "50x50>", :student => "210x210>", :home => "200x200>", :mini => "50x50>"}
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/jpg', 'image/png']
 
+  #---------- VALIDATIONS ----------------- 
+
+  validates :title, presence: true
+  validates :title, length: { maximum: 50 }
+  validates :description, length: { maximum: 500 }
+
+
   scope :is_for, ->(type) { where(:forumable_type => type) }
   scope :with_id, ->(id) { where(:forumable_id => id) }
 
   #---------- AUTHENTICATION ----------------- 
-
 
  # This method checks permissions for the :index action
   def self.is_indexable_by(user, parent = nil)

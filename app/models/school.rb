@@ -13,7 +13,13 @@ class School < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>", :post => "50x50>", :home => "200x200>", :mini => "50x50>"}
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/jpg', 'image/png']
 
+  #---------- VALIDATIONS ----------------- 
+
   validates :title, presence: true
+  validates :title, length: { maximum: 50 }
+  validates :description, length: { maximum: 500 }
+
+  #---------- HOOKS ----------------- 
 
   after_create :build_profile
 

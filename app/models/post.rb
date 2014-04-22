@@ -7,6 +7,11 @@ class Post < ActiveRecord::Base
 
   has_many :notifications, as: :notifiable, :dependent => :destroy
 
+  #---------- Validations -----------------  
+
+  validates :content, length: { maximum: 500 }
+
+
 
 
 #---------- AUTHENTICATION ----------------- 

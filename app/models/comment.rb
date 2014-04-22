@@ -4,6 +4,13 @@ class Comment < ActiveRecord::Base
 
   has_many :notifications, as: :notifiable, :dependent => :destroy
 
+#---------- Validations -----------------  
+
+validates :content, length: { maximum: 250 }
+
+
+#---------- HOOKS ----------------- 
+
   after_create :send_notification
 
 #---------- AUTHENTICATION ----------------- 

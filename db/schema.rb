@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418155721) do
+ActiveRecord::Schema.define(version: 20140422112825) do
 
   create_table "appointments", force: true do |t|
     t.integer  "user_id"
@@ -212,7 +212,7 @@ ActiveRecord::Schema.define(version: 20140418155721) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "description"
-    t.integer  "price"
+    t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

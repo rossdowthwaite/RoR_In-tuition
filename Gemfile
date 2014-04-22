@@ -95,6 +95,9 @@ gem "restful_acl"
 gem 'rails_12factor', group: :production
 
 gem 'factory_girl'
+
+# date validation in model
+gem 'validates_timeliness', '~> 3.0'
                                                  
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
