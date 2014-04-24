@@ -1,6 +1,7 @@
 <% @heading = 'Course Prices'  %>
 <%= render 'layouts/header' %>
 
+    <p id="notice"><%= notice %></p>
     <% @course_items.each do |course_item| %>
 
           <% if public?(course_item) %>
@@ -39,5 +40,5 @@
         
     <% end %>
 
-<%= link_to 'Update Prices', update_prices_course_path(@course), :class => 'btn btn-primary my_button' %>
-<%= link_to 'New Product', new_product_path, :class => 'btn btn-primary my_button' %>
+<%= link_to 'Update Prices', update_prices_course_path(@course), :class => 'btn btn-inverse my_button' %>
+<%= link_to 'New Product', new_product_path, :class => 'btn btn-inverse my_button' %>

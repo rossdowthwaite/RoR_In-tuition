@@ -8,12 +8,9 @@
 
           <%= link_to forum do %>
 
-            <div id="student_cont">
-
-              <div id="student_tab">
+              <div id="tab">
 
                 <div id="tab_logo">
-
 
                 <div id="status"><center><h4 title="No. of Contributors"><%= forum.users.count %></h4></center></div>
 
@@ -36,13 +33,11 @@
                 <% end %>
                 </div>
 
-                <div id="student_type">
+                <div id="tab_type">
                   <h3><%= forum.title %></h3>
                 </div>
 
               </div>
-
-            </div>
 
           <% end %>
 

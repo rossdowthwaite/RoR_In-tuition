@@ -10,20 +10,22 @@
 
         <% set_notification_style(notification) %>
 
-        <div id="notification_tab" class="<%= @class %>">
+        <div id="list_tab" class="<%= @class %>">
 
-            <div id='notification_sender'>
+            <div id='list_tab_icon'>
                 <%= image_tag notification.user.avatar.url(:post) if notification.user.avatar? %>
             </div>
 
-            <%= notification.message %>
+            <div id='list_tab_title'>
+              <%= notification.message %>
+            </div>
 
-            <div id="booking_icon">
+            <div id="list_tab_action">
               <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), notification, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
             </div>
 
             <%= link_to @link do %> 
-              <div id="booking_icon">
+              <div id="list_tab_action">
                 <center><%= link_to raw(@icon), notification %></center>
               </div>
             <% end %>
@@ -32,7 +34,7 @@
                 <center><%= date(notification.created_at) %></center>
               </div>
             
-            <div id="booking_icon">
+            <div id="list_tab_action">
               <center><%= check_box_tag "notifications[]", notification.id %></center>
             </div>
         

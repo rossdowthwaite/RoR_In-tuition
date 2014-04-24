@@ -1,14 +1,28 @@
 <% @heading = 'Dashboard'  %>
 <%= render 'layouts/header' %>
 
+<p id="notice"><%= notice %></p>
+
 <div id="user_dash_posts">
 	<h4>Recent Posts</h4>
-	<%= render 'dash_posts' %>
 
+	<% @posts.first(10).each do |post| %>
+	
+		<%= render :partial => 'forums/forum_posts', locals: { post: post }    %>
+	
+	<% end %>
 </div>
 
 <div id="user_dash_bookings">
 	<h4>Events</h4>
-	<%= render 'next_events'  %>
+	<div id="booking_table_dash">
+
+  		<% @bookings.each do |booking| %>
+
+			<%= render :partial=>'next_events', locals: { booking: booking }  %>
+	
+		<% end %>
+
+	</div>
 </div>
 

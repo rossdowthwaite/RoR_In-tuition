@@ -1,0 +1,19 @@
+<% if booking.appointments.count > 2 %>
+
+   <div id='list_tab_icon'>
+      <%= booking.appointments.count - 1 %>
+   </div> 
+
+<% else %>
+
+   <div id='list_tab_icon'>
+      <% booking.appointments.each do |app| %>
+        <% if !my_appointment(app) %>
+
+          <%= image_tag app.user.avatar.url(:post) if app.user.avatar?  %>
+          
+        <% end %>
+      <% end %>
+   </div> 
+
+<% end %>

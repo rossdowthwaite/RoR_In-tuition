@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :bio, :class => 'my_label' %><br>
-    <%= f.text_area :bio, :class => 'my_text_area' %>
+    <%= f.text_area :bio, :maxlength => 500, :class => 'my_text_area' %>
   </div>
   <div class="actions">
     <%= f.submit :class => 'btn btn-inverse my_button' %>

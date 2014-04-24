@@ -3,8 +3,7 @@ class Qualification < ActiveRecord::Base
 
   #---------- VALIDATIONS ----------------- 
 
-  validates :title, presence: true
-  validates :title, length: { maximum: 50 }
-  validates :description, length: { maximum: 500 }
+  validates :quality, presence: true
+  validates :quality, length: { maximum: 140 }
 
 end

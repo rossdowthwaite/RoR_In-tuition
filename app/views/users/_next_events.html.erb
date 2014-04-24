@@ -1,42 +1,25 @@
-<div id="booking_table_dash">
-  <% @bookings.each do |booking| %>
+
     <% booking_status(booking) %>
     <% my_booking_status(booking) %>
 
       <%= link_to booking do %>
-        <div id="booking" style="background-color:<%= @color %>">
-          <div id="booking_titles">
-            <%= booking.title %>
-          </div>
-          <div id='distance_time_dash'>
-            <%= distance_of_time_in_words(Date.today, booking.start)  %>
-          </div>
-         
-            <% if booking.appointments.count > 2 %>
-               <div id='with_tab'>
-                  <%= booking.appointments.count - 1 %>
-               </div> 
-            <% else %>
-               <div id='with_tab'>
-                  <% booking.appointments.each do |app| %>
-                    <% if !my_appointment(app) %>
-                      <%= image_tag app.user.avatar.url(:post) if app.user.avatar?  %>
-                    <% end %>
-                  <% end %>
-               </div> 
-            <% end %>
-          
+        
+        <div id="list_tab" class="<%= @class %>">
 
-          <div id='booking_icons'>
-                
-                    <div id="booking_icon">
-                        <center><%= raw(@booking_status_icon) %></center>
-                    </div>
-          </div>
+            <%= render :partial=>'bookings/app_count', locals: { booking: booking } %>
+          
+            <div id="list_tab_title">
+              <%= booking.title %>
+            </div>
+
+            <div id='distance_time_dash'>
+              <%= distance_of_time_in_words(Date.today, booking.start)  %>
+            </div>
+        
+            <div id="list_tab_action">
+                <center><%= raw(@booking_status_icon) %></center>
+            </div>
 
         </div>
 
       <% end %>
-
-  <% end %>
-</div>

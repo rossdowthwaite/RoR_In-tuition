@@ -2,7 +2,8 @@
 <%= render 'layouts/header' %>
 
 <div id='course_dash_content_side'>
-
+	
+    <p id="notice"><%= notice %></p>
 	<% if owned_by(current_user, @course) %>
 
 		<h4>Things to do</h4>
@@ -43,5 +44,11 @@
 </div>
 
 <div id="course_dash_post_container">
-	<%= render 'course_posts'  %>
+	<%= render 'posts/post_build' %>
+
+  	<% @posts.each do |post| %>
+
+		<%= render :partial => 'forums/forum_posts', locals: { post: post }    %>
+
+	<% end %><!-- end of post loop -->
 </div>

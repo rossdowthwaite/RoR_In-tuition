@@ -11,10 +11,10 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_field :content, :maxlength => 250, %>
+    <%= f.label 'Comment', :class => 'my_label' %>
+    <%= f.text_area :content, :maxlength => 250, :class => 'my_text_area' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary my_button' %>
   </div>
 <% end %>

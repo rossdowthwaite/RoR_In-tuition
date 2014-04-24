@@ -107,11 +107,15 @@ gem 'unicorn'
 
 group :development do
   gem 'rspec-rails'
+  gem "rails-erd"
 end
 
 group :test do
   gem 'rspec-rails'
 end
+
+gem 'deadweight'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

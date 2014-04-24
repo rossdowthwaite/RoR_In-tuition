@@ -20,11 +20,7 @@ class Booking < ActiveRecord::Base
 
   #---------- Validations -----------------  
 
-  validates :title, :description, presence: true
-  validates :title, length: { maximum: 50 }
-  validates :description, length: { maximum: 120 }
 
-  validates_date :start, :on_or_after => :today
 
 
   #---------- SCOPES -----------------   
@@ -81,11 +77,8 @@ class Booking < ActiveRecord::Base
 
   		@booking = Booking.new(params)
   		@booking.start = @start_date.to_s
-      if @booking.save
-        redirect_to bookings_url, notice: 'Booking was successfully created.'
-      else
-        render action: 'new'
-      end
+      @booking.save
+
 
       # add an owner to the booking
       if owner != nil

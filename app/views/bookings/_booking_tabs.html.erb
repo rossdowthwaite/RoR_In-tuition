@@ -3,10 +3,11 @@
 
   <%= link_to booking do %>
 
+    <div id="list_tab" class="<%= @class %>">
 
-    <div id="booking" class="<%= @class %>">
+          <%= render :partial=>'app_count', locals: { booking: booking } %>    
 
-          <div id="booking_titles">
+          <div id="list_tab_title">
             <%= booking.title %>
           </div>
           
@@ -18,39 +19,18 @@
             <%= time(booking.start_time) %> - <%= time(booking.end_time) %>
           </div>
 
-            <% if booking.appointments.count > 2 %>
-
-               <div id='with_tab'>
-                  <%= booking.appointments.count - 1 %>
-               </div> 
-            
-            <% else %>
-            
-               <div id='with_tab'>
-                  <% booking.appointments.each do |app| %>
-                    <% if !my_appointment(app) %>
-
-                      <%= image_tag app.user.avatar.url(:post) if app.user.avatar?  %>
-                    
-                    <% end %>
-                  <% end %>
-               </div> 
-
-            <% end %>
-
           <div id='booking_icons'>
-                   <div id="booking_icon">
-                      <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), booking, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
-                    </div>
-                  
-                    <div id="booking_icon">
-                        <center><%= raw(@my_status_icon) %></center>
-                    </div>
-
-                    <div id="booking_icon">
-                        <center><%= raw(@booking_status_icon) %></center>
-                    </div>
+              <div id="list_tab_action">
+                <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), booking, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
+              </div>
               
+              <div id="list_tab_action">
+                  <center><%= raw(@my_status_icon) %></center>
+              </div>
+
+              <div id="list_tab_action">
+                  <center><%= raw(@booking_status_icon) %></center>
+              </div>
           </div>
 
         </div>

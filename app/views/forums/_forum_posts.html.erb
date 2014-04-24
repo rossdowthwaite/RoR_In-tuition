@@ -1,24 +1,19 @@
 
-  <div id="create_post" style="display:none">
-    <%= render 'posts/forum_posts' %>
-  </div>
-
-  <div id='create_post_tab'>
-  <center><i class="fa fa-comment fa-2x tab_icons"></i></center>
-  </div> 
-
-  <% @posts.each do |post| %>
 
     <div id="post">
 
       <div id="post_header">
 
         <% if post.user.avatar.exists?  %>
+          
           <div id="post_avatar">
             <%= image_tag post.user.avatar.url(:mini) if post.user.avatar? %>
           </div>
+
         <% else %>
+          
           <div id="no_post_avatar"></div>
+
         <% end %>
 
         <div id="post_sender">
@@ -29,6 +24,18 @@
           <h5><%= date(post.created_at) %></h5>
         </div>
 
+        <div id="delete_post_tab" class="poster_post_tab" >
+          <center>
+            <%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </center>
+        </div>
+
+        <div id="edit_post_tab" class="poster_post_tab" >
+          <center>
+            <%= link_to raw('<i class="fa fa-wrench fa-2x tab_icons"></i>'), [:edit, post] %>
+          </center>
+        </div> 
+        
       </div>
       <!-- end of post header -->
 
@@ -84,18 +91,6 @@
           </center>
         </div>
 
-        <div id="edit_post_tab" class="poster_post_tab" >
-          <center>
-            <%= link_to raw('<i class="fa fa-wrench fa-2x tab_icons"></i>'), [:edit, post] %>
-          </center>
-        </div> 
-
-        <div id="delete_post_tab" class="poster_post_tab" >
-          <center>
-            <%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), post, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </center>
-        </div>
-
       </div>
        <!-- end of post footer -->
 
@@ -125,7 +120,7 @@
 
     </div>
     <!-- end of post -->
-    <% end %><!-- end of post loop -->
+    
 
 
 

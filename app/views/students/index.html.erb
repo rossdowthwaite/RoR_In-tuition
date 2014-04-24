@@ -1,6 +1,8 @@
 <% @heading = 'My Students'  %>
 <%= render 'layouts/header' %>
 
+<p id="notice"><%= notice %></p>
+
 <!-- Add pending -->
 <% if @students.count == 0 %>
 
@@ -10,7 +12,6 @@
 
 <!-- If some exist then -->
 <% else %>
-
 
     <div id="grid">
 
@@ -26,7 +27,7 @@
                   <%= image_tag student.pupil.avatar.url(:home) if student.pupil.avatar %>
                 </div>
 
-                <div id="student_type">
+                <div id="tab_type">
                   <h3><%= student.pupil.title %></h3>
                 </div>
 

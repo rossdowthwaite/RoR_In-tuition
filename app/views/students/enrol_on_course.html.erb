@@ -1,8 +1,13 @@
 
 <% @heading = 'Enrol ' + @student.pupil.title  %>
+
+
 <%= render 'layouts/header' %>
+
 <%= link_to 'Back to student', student_path(@student) %> 
+
 <%= render 'student_side_nav' %>
+
 <div id='grid'>
-<%= render 'enrol' %>
+	<%= render 'enrol' %>
 </div>

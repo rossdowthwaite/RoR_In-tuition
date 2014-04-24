@@ -1,6 +1,7 @@
 <% @heading = 'My Products'  %>
 <%= render 'layouts/header' %>
 
+    <p id="notice"><%= notice %></p>
     <% @products.each do |product| %>
 
         <%= link_to product do %> 
@@ -29,7 +30,7 @@
               <div id='with_tab'>
                 <center><i class="fa fa-gbp fa-2x tab_icons"></i></center>
               </div>
-                <%= product.price %>
+                <%= number_with_precision(product.price, precision: 2) %>
             </div>
           </div>
         <% end %> 
@@ -37,4 +38,4 @@
     <% end %>
 <br>
 
-<%= link_to 'New Product', new_product_path, :class => 'btn btn-primary my_button' %>
+<%= link_to 'New Product', new_product_path, :class => 'btn btn-inverse my_button' %>

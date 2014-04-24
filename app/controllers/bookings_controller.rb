@@ -42,7 +42,6 @@ class BookingsController < ApplicationController
   end
 
   # POST /bookings
-  # POST /bookings.json
   def create
     @freq = params[:recurring_amount]
     @type = params[:recurring_type]
@@ -65,7 +64,6 @@ class BookingsController < ApplicationController
   end
 
   # DELETE /bookings/1
-  # DELETE /bookings/1.json
   def destroy
     @booking.destroy
     redirect_to bookings_url

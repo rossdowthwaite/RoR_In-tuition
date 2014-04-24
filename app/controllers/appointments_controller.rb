@@ -17,10 +17,6 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new
   end
 
-  # GET /appointments/1/edit
-  def edit
-  end
-
   # POST /appointments
   def create
     @appointment = Appointment.new(appointment_params)

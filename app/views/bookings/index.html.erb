@@ -7,7 +7,7 @@
 
   <% @bookings.each do |booking| %>
 
-       <%= render 'booking_tabs', locals: { booking: booking } %>  
+       <%= render :partial=>'booking_tabs', locals: { booking: booking } %>  
 
   <% end %>
 

@@ -35,7 +35,7 @@ class CoursesController < ApplicationController
 
   def update
       if @course.update(course_params)
-        redirect_to session.delete(:return_to)
+        redirect_to session.delete(:return_to), notice: 'Course was successfully updated.'
       else
         render action: 'edit'
       end
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
 
   def enrolment_update
       if @course.update(course_params)
-        redirect_to course_enrolments_path(@course), notice: 'Course was successfully updated.'
+        redirect_to course_enrolments_path(@course), notice: 'Course Enrolments were successfully updated.'
       else
         render action: 'edit' 
       end
@@ -55,6 +55,7 @@ class CoursesController < ApplicationController
   end
 
   def settings
+    session[:return_to] ||= request.referer
   end
 
   def edit_enrolments

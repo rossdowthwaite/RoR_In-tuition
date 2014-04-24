@@ -1,24 +1,39 @@
 <% @heading = 'My Goals'  %>
 <%= render 'layouts/header' %>
 
+<%= link_to 'Back to profile', current_user.profile %><br><br>
+
 <% if @goals.count == 0  %>
 
   <p>Add some goals so people know what your about</p>
 
 <% else %>
 
-  <table>
-    <tbody>
       <% @goals.each do |goal| %>
-        <tr>
-          <td><%= goal.aim %></td>
-          <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-          <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+
+        <div id="list_tab", class="standard">
+
+          <div id='list_tab_icon'>
+              <center><i class="fa fa-flag-checkered fa-2x tab_icons"></i></center>
+          </div>
+
+          <div id='list_tab_title'>
+            <%= goal.aim %>
+          </div>
+          
+          <div id="list_tab_action">
+            <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), goal, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
+          </div>
+
+          <div id="list_tab_action">
+            <center><%= link_to raw('<i class="fa fa-wrench fa-2x tab_icons"></i>'), edit_goal_path(goal) %></center>
+          </div>
+
+        </div>
+
       <% end %>
-    </tbody>
-  </table>
+
 
 <% end %>
 
-<%= link_to 'New Goal', new_goal_path, :class => 'btn btn-primary my_button' %>
+<%= link_to 'New Goal', new_goal_path, :class => 'btn btn-inverse my_button' %>

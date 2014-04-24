@@ -15,6 +15,12 @@
 
 <div id="dash_post_container">
 
-	<%= render 'forum_posts'  %>
+	<%= render 'posts/post_build' %>
+
+  	<% @posts.each do |post| %>
+
+		<%= render :partial => 'forum_posts', locals: { post: post }    %>
+
+	<% end %><!-- end of post loop -->
 
 </div>

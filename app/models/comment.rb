@@ -27,12 +27,12 @@ validates :content, length: { maximum: 250 }
 
   # This method checks permissions for the :show action
   def is_readable_by(user, parent = nil)
-    user.is_admin?
+    user != nil
   end
 
   # This method checks permissions for the :update and :edit action
   def is_updatable_by(user, parent = nil)
-    user.is_admin
+    user.comments.include?(self)
   end
 
   # This method checks permissions for the :destroy action
