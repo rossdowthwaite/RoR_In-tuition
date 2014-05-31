@@ -1,28 +1,32 @@
 == README
 
-INSTALLATION and LOCAL DEPLOYMENT
+=== Summary
+
+=== Installation
 
 The application requires that:
 
-	- Ruby 2.0 is installed 
-	- Rails 4.0 is installed 
+- Ruby 2.0 is installed 
+- Rails 4.0 is installed 
 
 	1. in terminal navigate to the root directory of the application
 
 	2. type the following command: 
 
-		'bundle'
+		<tt>bundle</tt>
 
 	   this will load all the required gems needed for the application
 
 	3. type the following command to run a local server:
 
-		'rails s'
+		<tt>rails s</tt>
 
-	4. Open a web browser and navigate to - http://localhost:3000/
+	4. Open a web browser and navigate to: 
+	
+		<tt>http://localhost:3000/</tt>
 
 	
-THE IMPLEMENTED CODE
+=== Code
 
 All application code contained within the "app" folder is my own unless otherwise specified in the comments.
 
