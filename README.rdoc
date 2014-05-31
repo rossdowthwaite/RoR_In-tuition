@@ -18,7 +18,9 @@ The project aimed to tackle issues involved in private tuition centering around:
 
 - A solid understanding of Ruby on Rails concepts, methodologies and syntax
 - A solid understanding of web frameworks and the MVC architecture.
+- A solid understanding of realtional databases and data organisation.
 - A love for Ruby and Rails
+- Familiarity with popular gems
 
 
 === Installation
