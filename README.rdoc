@@ -2,7 +2,7 @@
 
 === Summary
 
-Intuition - A Virtual Learning Environment for private Tutors to manage and maintatin their workload.
+A Virtual Learning Environment for private Tutors to manage and maintatin their workload.
 
 Final Year Project disseration for my Computing degree at the University of Sussex.
 
