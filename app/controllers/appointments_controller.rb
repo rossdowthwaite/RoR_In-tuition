@@ -2,25 +2,11 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
   before_action :set_booking, only: [:show]
 
-  # GET /appointments
-  def index
-    @appointments = Appointment.all
-  end
-
-  # GET /appointments/1
-  def show
-    @owner = @booking.appointments.where(:owner => true).first
-  end
-
-  # GET /appointments/new
-  def new
-    @appointment = Appointment.new
-  end
-
   # POST /appointments
   def create
     @appointment = Appointment.new(appointment_params)
-      if @appointment.save
+      if @appointment.save 
+        BookingMailer.booking_email(@user, @appointment.booking, @user).deliver
         redirect_to @appointment, notice: 'Appointment was successfully created.'
       else
         render action: 'new' 

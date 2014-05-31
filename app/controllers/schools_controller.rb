@@ -3,13 +3,11 @@ class SchoolsController < ApplicationController
   before_action :set_user
 
   # GET /schools
-  # GET /schools.json
   def index
     @schools = @user.schools
   end
 
   # GET /schools/1
-  # GET /schools/1.json
   def show
     @courses = @school.courses
   end
@@ -24,43 +22,29 @@ class SchoolsController < ApplicationController
   end
 
   # POST /schools
-  # POST /schools.json
   def create
     @school = @user.schools.new(school_params)
 
-    respond_to do |format|
       if @school.save
-        format.html { redirect_to @school, notice: 'School was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @school }
+        redirect_to @school, notice: 'School was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /schools/1
-  # PATCH/PUT /schools/1.json
   def update
-    respond_to do |format|
       if @school.update(school_params)
-        format.html { redirect_to @school, notice: 'School was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @school, notice: 'School was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
   end
 
   # DELETE /schools/1
-  # DELETE /schools/1.json
   def destroy
     @school.destroy
-    respond_to do |format|
-      format.html { redirect_to schools_url }
-      format.json { head :no_content }
-    end
+    redirect_to schools_url
   end
 
   def course_update

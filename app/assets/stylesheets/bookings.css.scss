@@ -32,6 +32,10 @@
 	background-color: red
 }
 
+.doubleBooked{
+	background-color: purple
+}
+
 #booking_titles {
 	position: absolute;
 	line-height: 50px;
@@ -41,7 +45,7 @@
 
 #booking_date {
 	position: absolute;
-	right:200px;
+	right:250px;
 	margin-right: 10px;
 	line-height: 50px;
 	color: white;
@@ -49,7 +53,7 @@
 
 #booking_time{
 	position: absolute;
-	right:340px;
+	right:400px;
 	line-height: 50px;
 	color: white;
 };

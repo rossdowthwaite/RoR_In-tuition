@@ -1,6 +1,7 @@
 <% @profiled = poly(@profile.profilable_type, @profile.profilable_id)  %>
 
 <% if @profile.profilable_type == 'User' %>
+
 	<% @image = @profiled.avatar.url(:home) if @profiled.avatar?  %>
 	<% @email = @profiled.email %>
 	<% @user_profile = true  %>
@@ -9,80 +10,20 @@
 	<% else %>
 		<% @title = 'Student' %>
 	<% end %>
+
 <% else %>
+
 	<% @image = @profiled.logo.url(:home) if @profiled.logo?  %>
 	<% @email = @profiled.user.email %>
 	<% @course = true  %>
+
 <% end %>
 
 <% if owned_by(current_user, @profiled) %>
 	<% @owner = true %> 
 <% end %>
 
-<% if @owner %>
-	<div id="profile_nav">
-		<% if @user_profile %>
-		  <%= link_to qualifications_path do %>
-		    <div id="dash_tab">
-		      <div id="dash_heading">
-		        <h3>Qualities</h3> 
-		      </div>  
-		      <center><i class="fa fa-trophy fa-2x icons_100" id="tab_icon"></i></center>
-		    </div>
-		  <% end %>
-		 
-
-		  <%= link_to user_avatar_path(current_user) do %>
-		    <div id="dash_tab">
-		      <div id="dash_heading">
-		        <h3>Avatar</h3> 
-		      </div>  
-		      <center><i class="fa fa-camera-retro fa-2x icons_100" id="tab_icon"></i></center>
-		    </div>
-		  <% end %>
-
-		  <%= link_to goals_path do %>
-		    <div id="dash_tab">
-		      <div id="dash_heading">
-		        <h3>Goals</h3> 
-		      </div>  
-		      <center><i class="fa fa-flag-checkered fa-2x icons_100" id="tab_icon"></i></center>
-		    </div>
-		  <% end %>
-	<% end %>
-
-		 <%= link_to edit_profile_path do %>
-		    <div id="dash_tab">
-		      <div id="dash_heading">
-		        <h3>Bio</h3> 
-		      </div>  
-		      <center><i class="fa fa-bullhorn fa-2x icons_100" id="tab_icon"></i></center>
-		    </div>
-		  <% end %>
-
-		<% if @course %>
-			 <%= link_to course_locations_path(@profiled) do %>
-			    <div id="dash_tab">
-			      <div id="dash_heading">
-			        <h3>Locations</h3> 
-			      </div>  
-			      <center><i class="fa fa-compass fa-2x icons_100" id="tab_icon"></i></center>
-			    </div>
-			  <% end %>	
-
-			  <%= link_to course_course_items_path(@profiled) do %>
-			    <div id="dash_tab">
-			      <div id="dash_heading">
-			        <h3>Pricing</h3> 
-			      </div>  
-			      <center><i class="fa fa-money fa-2x icons_100" id="tab_icon"></i></center>
-			    </div>
-			  <% end %>	
-
-		<% end %>
-
-	</div>
-<% end %>
+<%= render 'user_profile_nav' %>
 
 <div id="Profile_header">
 	<div id='profile_heading'>

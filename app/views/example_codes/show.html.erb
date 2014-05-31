@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Example string:</strong>
+  <%= @example_code.example_string %>
+</p>
+
+<p>
+  <strong>Example int:</strong>
+  <%= @example_code.example_int %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @example_code.user %>
+</p>
+
+<%= link_to 'Edit', edit_example_code_path(@example_code) %> |
+<%= link_to 'Back', example_codes_path %>

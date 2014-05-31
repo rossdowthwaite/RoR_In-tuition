@@ -27,24 +27,26 @@
         <%= f.text_area :description, :class => 'longer my_text_Area'  %>
       </div>
 
-    <h3>with</h3>
+    <% if @students.any? %>
+            <h3>with</h3>
 
-     <div id="students">
-        <div class="items">
-          <%= f.nested_fields_for :appointments do |s| %>
-            <fieldset class="item">
-    
-              <%= s.collection_select(:user_id, @students, :pupil_id, :students_name, :prompt => false) %>
-    
-              <a href="#" class="remove">remove</a>
-    
-              <%= s.hidden_field :_destroy %>   
-            </fieldset>
-          <% end %>   
-        </div>
-        
-        <a href="#" class="add">Add Student</a>
-    </div>
+             <div id="students">
+                <div class="items">
+                  <%= f.nested_fields_for :appointments do |s| %>
+                    <fieldset class="item">
+            
+                      <%= s.collection_select(:user_id, @students, :pupil_id, :students_name, :prompt => false) %>
+            
+                      <a href="#" class="remove">remove</a>
+            
+                      <%= s.hidden_field :_destroy %>   
+                    </fieldset>
+                  <% end %>   
+                </div>
+                
+                <a href="#" class="add">Add Student</a>
+            </div>
+    <% end %>
 </div>
 
 <div id="left_section">

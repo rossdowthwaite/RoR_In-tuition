@@ -42,15 +42,16 @@
 		      <th>Email</th>
 		      <th></th>
 		      <th></th>
+		      <th></th>
 		    </tr>
 		  </thead>
 
 		  <tbody>
 		    <% @users.each do |u| %>
 		      <tr>
-		      	<td width="10%"><%= image_tag u.avatar.url(:mini) if u.avatar %></td>
+		      	<td width="10%"><%= image_tag u.avatar.url(:mini) if u.avatar.exists? %></td>
 		        <td><%= u.title %></td>
-		        <td><%= u.email %></td>
+		        <td><%= mail_to u.email %></td>
 		        <td></td>
 		        
 		        <td width="30px">

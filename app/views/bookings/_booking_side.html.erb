@@ -11,8 +11,15 @@
     
     <% elsif @appointments.rejected.count == @appointments.count - 1 %>
 
-    	<center><h5>REJECTED!</h5></center>
+      <center><h5>REJECTED!</h5></center>
       <center><i class="fa fa-times-circle fa-3x"></i></center>
+      <%= @appointments.rejected.count  %>
+
+    <% elsif @appointments.double_booked.count > 0 %>
+
+    	<center><h5>DOUBLE BOOKED!</h5></center>
+
+      <center><i class="fa fa-random fa-3x"></i></center>
 
     <% else %>
 

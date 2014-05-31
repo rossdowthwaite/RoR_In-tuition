@@ -3,8 +3,18 @@
 
 <p id="notice"><%= notice %></p>
 
+<% if first_time_user? %>
+
+	<%= render "welcome" %>	
+
+<% else %>
+
 <div id="user_dash_posts">
 	<h4>Recent Posts</h4>
+
+	<% if @posts.empty? %>
+	 		<H3>No Posts Yet!!</H3>
+	 <% end %>
 
 	<% @posts.first(10).each do |post| %>
 	
@@ -15,6 +25,11 @@
 
 <div id="user_dash_bookings">
 	<h4>Events</h4>
+
+	<% if @bookings.empty? %>
+	 		<H3>No Bookings Yet!!</H3>
+	<% end %>
+
 	<div id="booking_table_dash">
 
   		<% @bookings.each do |booking| %>
@@ -25,4 +40,6 @@
 
 	</div>
 </div>
+
+<% end %>
 

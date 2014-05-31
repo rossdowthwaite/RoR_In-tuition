@@ -7,18 +7,18 @@ class ProductsController < ApplicationController
     @products = @user.products
   end
 
-  # GET /products/1
-  def show
-  end
+
 
   # GET /products/new
   def new
     @product = Product.new
+    session.delete(:return_to)
     session[:return_to] ||= request.referer
   end
 
   # GET /products/1/edit
   def edit
+    session.delete(:return_to)
     session[:return_to] ||= request.referer
   end
 

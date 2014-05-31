@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+# handles the show and hide of the material forms in the topic
 jQuery ->
 	$("#video").click ->
 	  $("#video_field").show()
@@ -30,6 +30,3 @@ jQuery ->
 	$("#old_upload_tab").click ->
 	  $("#old_upload").show()
 	  $("#new_upload").hide()
-
-jQuery ->
-  $('.best_in_place').best_in_place()

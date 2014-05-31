@@ -1,12 +1,14 @@
 <% @heading = 'My Schools'  %>
 <%= render 'layouts/header' %>
 
-<% if @schools.count == 0 %>
+<% if @schools.empty? %>
 
-      <center><h3>Create a school!</h3></center>
-      <center><p>Blah balh blah</p></center><br><br>
+      <% school_welcome %>
+      <%= raw(@welcome)  %>
+
       <center>
-        <%= link_to raw('<i class="icon-et-graduation-cap icons"></i><br><br> Add School'), new_school_path, :class =>" no_decoration" %>
+        <i class="fa fa-home fa-5x icons_100" id="tab_icon"></i><br>
+        <%= link_to "Add a School", new_school_path, :class =>" no_decoration" %>
       </center>
 
 <% else %> 

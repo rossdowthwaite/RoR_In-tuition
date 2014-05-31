@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422112825) do
+ActiveRecord::Schema.define(version: 20140511112451) do
 
   create_table "appointments", force: true do |t|
     t.integer  "user_id"
@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 20140422112825) do
   end
 
   add_index "bookings", ["booker_id"], name: "index_bookings_on_booker_id"
-
-  create_table "class_rooms", force: true do |t|
-    t.integer  "course_id"
-    t.integer  "student_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "class_rooms", ["course_id"], name: "index_class_rooms_on_course_id"
-  add_index "class_rooms", ["student_id"], name: "index_class_rooms_on_student_id"
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -115,6 +105,16 @@ ActiveRecord::Schema.define(version: 20140422112825) do
 
   add_index "enrolments", ["course_id"], name: "index_enrolments_on_course_id"
   add_index "enrolments", ["student_id"], name: "index_enrolments_on_student_id"
+
+  create_table "example_codes", force: true do |t|
+    t.string   "example_string"
+    t.integer  "example_int"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "example_codes", ["user_id"], name: "index_example_codes_on_user_id"
 
   create_table "forum_contributors", force: true do |t|
     t.integer  "user_id"
@@ -361,15 +361,5 @@ ActiveRecord::Schema.define(version: 20140422112825) do
   end
 
   add_index "videos", ["user_id"], name: "index_videos_on_user_id"
-
-  create_table "walls", force: true do |t|
-    t.integer  "course_id"
-    t.integer  "post_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "walls", ["course_id"], name: "index_walls_on_course_id"
-  add_index "walls", ["post_id"], name: "index_walls_on_post_id"
 
 end

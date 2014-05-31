@@ -16,28 +16,26 @@ class Student < ActiveRecord::Base
   
   #---------- AUTHENTICATION ----------------- 
 
+ # this functionality was implemented using the RESTful_ACL gem 
+ # and by following this tutorial - http://everydayrails.com/2010/06/16/authorization-restful-acl-1.html 
+ # full referencses can be found in the full report reference page - [51][45]
 
- # This method checks permissions for the :index action
   def self.is_indexable_by(user, parent = nil)
     user != nil
   end
 
-  # This method checks permissions for the :create and :new action
   def self.is_creatable_by(user, parent = nil)
     user != nil
   end
 
-  # This method checks permissions for the :show action
   def is_readable_by(user, parent = nil)
-    user.students.include?(self)
+    user.students.include?(self) || user != nil
   end
 
-  # This method checks permissions for the :update and :edit action
   def is_updatable_by(user, parent = nil)
     user != nil
   end
 
-  # This method checks permissions for the :destroy action
   def is_deletable_by(user, parent = nil)
     user != nil
   end
@@ -71,7 +69,7 @@ class Student < ActiveRecord::Base
   after_create :build_forum
   after_create :send_notification 
   after_update :send_reply
-  before_destroy :remove_course_forum, :send_deletion_notification
+  before_destroy :remove_course_forum, :send_deletion_notification, :delete_appointments
 
   # Builds a new private forum for the tutor and student
   def build_forum
@@ -112,6 +110,12 @@ class Student < ActiveRecord::Base
     @student_forums.each do |f|
         f.destroy
     end
+  end
+
+  # Removes a student from all there associated forums
+  def delete_appointments
+    @appointments = Appointment.my_appointment.where(self.pupil_id)
+    @appointments.destroy_all
   end
 
   # Send un-subcribed notification to the student

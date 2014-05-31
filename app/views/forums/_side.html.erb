@@ -16,11 +16,10 @@
       <% if user.avatar.exists? %>
 
           <div id="course_enrol_img">
-            <%= image_tag user.avatar.url(:thumb) %>
+            <%= image_tag user.avatar.url(:thumb)  %>
           </div>
 
       <% else %>
-
             <div id="no_avatar"></div>
       <% end %>
 

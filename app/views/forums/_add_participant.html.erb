@@ -1,3 +1,7 @@
+<!-- The Following form was implemented by following a Ryan Bates screencast -->
+<!-- This can be found at - http://railscasts.com/episodes/52-update-through-checkboxes?autoplay=true. -->
+<!-- A full reference can be found in the report [51] -->
+
 <%= form_for @forum do |f| %>
   
   <% if @forum.errors.any? %>
@@ -19,10 +23,18 @@
   
   <% @users.each do |user| %>
     <div id="course_enrol">
+
+
+        <% if user.avatar.exists? %>
+
+            <div id="course_enrol_img">
+              <%= image_tag user.avatar.url(:home)  %>
+            </div>
+
+        <% else %>
+              <div id="no_avatar_large"></div>
+        <% end %>
         
-        <div id="course_enrol_img">
-          <%= image_tag user.avatar.url(:home) if user.avatar? %>
-        </div>
 
         <div id='course_enrol_heading'>
           <h3 class="tab_heading"><%= user.title %><h3>

@@ -1,64 +1,30 @@
 class SubjectTopicsController < ApplicationController
-  before_action :set_subject_topic, only: [:show, :edit, :update, :destroy]
-
-  # GET /subject_topics
-  # GET /subject_topics.json
-  def index
-    @subject_topics = SubjectTopic.all
-  end
-
-  # GET /subject_topics/1
-  # GET /subject_topics/1.json
-  def show
-  end
-
-  # GET /subject_topics/new
-  def new
-    @subject_topic = SubjectTopic.new
-  end
-
-  # GET /subject_topics/1/edit
-  def edit
-  end
+  before_action :set_subject_topic, only: [:update, :destroy]
 
   # POST /subject_topics
-  # POST /subject_topics.json
   def create
     @subject_topic = SubjectTopic.new(subject_topic_params)
 
-    respond_to do |format|
       if @subject_topic.save
-        format.html { redirect_to @subject_topic, notice: 'Subject topic was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @subject_topic }
+        redirect_to @subject_topic, notice: 'Subject topic was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @subject_topic.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /subject_topics/1
-  # PATCH/PUT /subject_topics/1.json
   def update
-    respond_to do |format|
       if @subject_topic.update(subject_topic_params)
-        format.html { redirect_to @subject_topic, notice: 'Subject topic was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @subject_topic, notice: 'Subject topic was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @subject_topic.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
   end
 
   # DELETE /subject_topics/1
-  # DELETE /subject_topics/1.json
   def destroy
     @subject_topic.destroy
-    respond_to do |format|
-      format.html { redirect_to subject_topics_url }
-      format.json { head :no_content }
-    end
+    redirect_to subject_topics_url
   end
 
   private

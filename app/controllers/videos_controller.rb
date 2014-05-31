@@ -45,7 +45,6 @@ class VideosController < ApplicationController
   end
 
   # DELETE /videos/1
-  # DELETE /videos/1.json
   def destroy
     @video.destroy
     redirect_to videos_url

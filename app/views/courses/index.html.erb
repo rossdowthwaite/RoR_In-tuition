@@ -3,14 +3,15 @@
 
 <% if @courses.empty? && @enrolled.empty? %>
 
-      <center><h3>No courses yet</h3></center>
-      <center><p>This is where all your Course will your appear</p></center>
-      <center><p>Whether your a student or a tutor you can access your course data here.</p></center>
-      <center><h3>Tutor?</h3></center>
-      <center><p>Get started by adding your own course and start enrolling students</p></center><br>
-      <center><%= link_to raw('<i class="fa fa-book fa-5x"></i><br> Add Course'), new_course_path, :class =>" no_decoration" %> </center>
+      <% course_welcome %>
+      <%= raw(@welcome)  %>
+      
+      <center>
+        <%= link_to raw('<i class="fa fa-book fa-5x"></i><br> Add Course'), new_course_path, :class =>" no_decoration" %>
+      </center>
 
 <% else %> 
+
     <p id="notice"><%= notice %></p>
     <div id="grid">
 

@@ -35,6 +35,7 @@
 		<% end %>
 
 		<!-- Dropdown user menu -->
+		<!-- Iimplemented using twitter bootstrap stylings - https://github.com/seyhunak/twitter-bootstrap-rails -->
 		<div class="btn-group">
             <a class="btn btn-inverse edge" data-toggle="dropdown" href="#">
               <i class="fa fa-bars fa-2x tab_icons"></i>
@@ -53,6 +54,23 @@
 				<li><%= link_to raw('<i class="fa fa-caret-square-o-down"></i> Logout'), logout_path %></li> 
             </ul>
           </div>
+
+        <!-- Admin user menu -->
+		<% if current_user.is_admin?  %>
+		<div class="btn-group">
+            <a class="btn btn-inverse edge" data-toggle="dropdown" href="#">
+              <i class="fa fa-gavel fa-2x tab_icons"></i>
+            </a>
+            <ul class="dropdown-menu pull-right" id="header_dropdown">
+					<li><%= link_to "Users", users_admin_index_path() %></li>
+					<li><%= link_to "Courses", courses_admin_index_path() %></li> 
+					<li><%= link_to 'Posts', posts_admin_index_path() %></li>
+					<li><%= link_to 'Comments', comments_admin_index_path() %></li> 
+					<li><%= link_to 'Forums', forums_admin_index_path() %></li> 
+					<li><%= link_to 'Uploads', uploads_admin_index_path() %> </li>
+            </ul>
+          </div>
+        <% end %>
 
 		<!-- else show different links -->
 		<% else %> 

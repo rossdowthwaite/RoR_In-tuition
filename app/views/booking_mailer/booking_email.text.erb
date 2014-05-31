@@ -1,0 +1,11 @@
+<%= @owner.title %> has invited you to an event!
+
+	<%= @booking.title  %>
+	Date
+	      <%= @booking.start if @booking.start? %>
+	      <%= @booking.end if @booking.end? %>
+	time
+	      <%= @booking.start_time if @booking.start_time %>
+	      <%= @booking.end_time if @booking.end_time %>
+
+	login to accept or decline this event

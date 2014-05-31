@@ -1,13 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_self
  *= require_tree .
  *= require jquery.ui.all
@@ -20,15 +11,20 @@ html, body {
 	margin: 0px;
 	height:100%;
 	width:100%;
-background: #b6ced8; /* Old browsers */
-background: -moz-linear-gradient(45deg,  #b6ced8 8%, #a5efd4 81%); /* FF3.6+ */
-background: -webkit-gradient(linear, left bottom, right top, color-stop(8%,#b6ced8), color-stop(81%,#a5efd4)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* Opera 11.10+ */
-background: -ms-linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* IE10+ */
-background: linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ced8', endColorstr='#a5efd4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	/* the follinwing gradients were made using a tool at the following link */
+	/* http://www.colorzilla.com/gradient-editor/ */
+	background: #b6ced8; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #b6ced8 8%, #a5efd4 81%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(8%,#b6ced8), color-stop(81%,#a5efd4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* IE10+ */
+	background: linear-gradient(45deg,  #b6ced8 8%,#a5efd4 81%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ced8', endColorstr='#a5efd4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
+/* the following code SHOULD enable Icon fonts to be used */
+/* found at = http://weloveiconfonts.com/ */
 
 @import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|iconicfill|iconicstroke|typicons);
 
@@ -63,6 +59,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ced8', end
 	height:100px;
 	background-color: black;
 	margin-bottom:30px;
+	/* the follinwing gradients were made using a tool at the following link */
+	/* http://www.colorzilla.com/gradient-editor/ */
 	background: #45484d; /* Old browsers */
 	background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
@@ -138,8 +136,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6ced8', end
 #no_avatar {
 	width:100px;
 	height:100px;
-	margin-right: 10px;
 	background-color: black;
+	float: left;
+}
+
+#no_avatar_large {
+	width:200px;
+	height:200px;
+	background-color: red;
 	float: left;
 }
 
@@ -468,6 +472,8 @@ h5{
 #footer_container {
 	width:100%;
 	height: 200px;
+	/* the follinwing gradients were made using a tool at the following link */
+	/* http://www.colorzilla.com/gradient-editor/ */
 	background: #45484d; /* Old browsers */
 	background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
@@ -487,7 +493,7 @@ h5{
 	margin:auto;
 	margin-top:70px;
 	overflow: auto;
-	width:900px;
+	width:700px;
 }
 
 #top_right_button{

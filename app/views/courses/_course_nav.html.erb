@@ -9,14 +9,36 @@
     </div>
   <% end %>
 
+<% if owned_by(current_user, @course) %>
+
   <%= link_to course_enrolments_path(@course) do %> 
     <div id="dash_tab">
       <div id="dash_heading">
-        <h3>Enrol</h3>
+        <h3>Enroll</h3>
       </div>  
       <center><i class="fa fa-check-square-o fa-2x icons_100" id="tab_icon"></i></center> 
     </div>
   <% end %>
+
+  <%= link_to settings_course_path(@course) do %>
+    <div id="dash_tab">
+      <div id="dash_heading">
+        <h3>Settings</h3>
+      </div>  
+      <center><i class="fa fa-cog fa-2x icons_100" id="tab_icon"></i></center> 
+    </div>
+  <% end %>
+
+  <%= link_to course_locations_path(@course) do %> 
+    <div id="dash_tab">
+      <div id="dash_heading">
+        <h3>Location</h3>
+      </div>  
+      <center><i class="fa fa-compass fa-2x icons_100" id="tab_icon"></i></center> 
+    </div>
+  <% end %>
+
+<% end %>
 
   <%= link_to @course.profile do %>
     <div id="dash_tab">
@@ -36,13 +58,6 @@
     </div>
   <% end %>
 
-  <%= link_to settings_course_path(@course) do %>
-    <div id="dash_tab">
-      <div id="dash_heading">
-        <h3>Settings</h3>
-      </div>  
-      <center><i class="fa fa-cog fa-2x icons_100" id="tab_icon"></i></center> 
-    </div>
-  <% end %>
+
 
 </div>

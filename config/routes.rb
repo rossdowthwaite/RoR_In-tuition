@@ -1,6 +1,8 @@
 InTuition::Application.routes.draw do
 
 
+  resources :example_codes
+
   resources :course_items
 
   resources :products
@@ -23,7 +25,7 @@ InTuition::Application.routes.draw do
 
   resources :bookings do
     collection do
-      delete 'multiple_delete'
+      delete 'group_delete'
       get 'old'
     end
   end
@@ -107,6 +109,7 @@ InTuition::Application.routes.draw do
 
   resources :users do 
     get 'avatar' => 'users#avatar', as: :avatar
+    get 'admin', on: :collection
     resources :locations # user is addressable
   end
 
@@ -116,6 +119,17 @@ InTuition::Application.routes.draw do
   get 'my_materials' => 'users#my_materials', as: :my_materials 
   get 'my_office' => 'users#my_office', as: :my_office
   get 'denied' => 'publics#denied_action', as: :denied
+
+  #admin routes
+  resources :admin do
+    get 'users', on: :collection
+    get 'uploads', on: :collection
+    get 'comments', on: :collection
+    get 'posts', on: :collection
+    get 'uploads', on: :collection
+    get 'courses', on: :collection
+    get 'forums', on: :collection
+  end
 
   # Root home page
   root :to => 'publics#introduction'

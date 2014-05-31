@@ -3,16 +3,9 @@ class EnrolmentsController < ApplicationController
   before_action :set_course
 
   # GET /enrolments
-  # GET /enrolments.json
   def index
     @enrolments = @course.enrolments
-    @students = current_user.students
-    # ADD WHERE STATUS = Accepted
-  end
-
-  # GET /enrolments/1
-  # GET /enrolments/1.json
-  def show
+    @students = current_user.students.confirmed
   end
 
   # GET /enrolments/new
@@ -20,48 +13,33 @@ class EnrolmentsController < ApplicationController
     @enrolment = Enrolment.new
   end
 
-  # GET /enrolments/1/edit
-  def edit
-  end
 
   # POST /enrolments
-  # POST /enrolments.json
   def create
     @enrolment = Enrolment.new(enrolment_params)
 
-    respond_to do |format|
       if @enrolment.save
-        format.html { redirect_to @enrolment, notice: 'Enrolment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @enrolment }
+        redirect_to @enrolment, notice: 'Enrolment was successfully created.' 
       else
-        format.html { render action: 'new' }
-        format.json { render json: @enrolment.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /enrolments/1
-  # PATCH/PUT /enrolments/1.json
   def update
     respond_to do |format|
       if @enrolment.update(enrolment_params)
-        format.html { redirect_to @enrolment, notice: 'Enrolment was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @enrolment, notice: 'Enrolment was successfully updated.' 
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @enrolment.errors, status: :unprocessable_entity }
+        render action: 'edit' 
       end
     end
   end
 
   # DELETE /enrolments/1
-  # DELETE /enrolments/1.json
   def destroy
     @enrolment.destroy
-    respond_to do |format|
-      format.html { redirect_to enrolments_url }
-      format.json { head :no_content }
-    end
+    redirect_to enrolments_url 
   end
 
   private

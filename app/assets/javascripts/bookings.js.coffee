@@ -2,12 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
+# toggles the recurring fields
 ready = ->
   jQuery ->
   	$("#recurring").click ->
     $("#recurring_fields").toggle()
 
+# toggles the the end date fields
   jQuery ->
   	$("#end_date").click ->
     $("#end_date_field").toggle()
@@ -15,6 +16,7 @@ ready = ->
 $(document).ready(ready)
 $(document).on('page:load', ready)
 
+# formats the datepicker
 $ ->
   $("input.datepicker").each (i) ->
     $(this).datepicker

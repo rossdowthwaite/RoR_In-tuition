@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   before_filter :has_permission?
   before_action :set_user, only: [:show, :edit, :update, :destroy, :avatar, :my_materials]
 
-  def index
-    @users = User.all
-  end
 
   def show
     # To get all the user posts and relating posts from the forums they are contribitors for
@@ -27,11 +24,32 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      if @user.save
-        redirect_to @user, notice: 'User was successfully created.'
+    if @user.is_admin == true
+
+      if @user.save_without_session_maintenance
+
+        redirect_to users_admin_index_path
+
       else
-        render action: 'new'
+
+        render action: 'admin'
+     
       end
+    
+    else
+
+      if @user.save
+
+        UserMailer.welcome_email(@user).deliver
+        redirect_to @user, notice: 'User was successfully created.'
+      
+      else
+    
+        render action: 'new'
+      
+      end
+
+    end
   end
 
   def update
@@ -49,6 +67,10 @@ class UsersController < ApplicationController
 
   # Extra Views
   def avatar 
+  end
+
+  def admin
+    @admin_user = User.new
   end
 
   def my_materials
@@ -71,6 +93,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:title, :username, :password, :password_confirmation, :email, :dob, :avatar)
+      params.require(:user).permit(:title, :username, :password, :password_confirmation, :email, :dob, :avatar, :is_admin)
     end
 end

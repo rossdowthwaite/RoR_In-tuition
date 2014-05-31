@@ -18,10 +18,24 @@ class Booking < ActiveRecord::Base
   accepts_nested_attributes_for :appointments, allow_destroy: true
   accepts_nested_attributes_for :course_bookings, allow_destroy: true
 
+  # --------- Hooks -----------------------
+
+  before_update :check_doubles
+
   #---------- Validations -----------------  
 
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :start, presence: true
+  validates_date :start, :on_or_after => lambda { Date.current }
 
+  validates_date :end, :after => :start, 
+                       :after_message => 'end date must be start date',
+                       :allow_blank => true
+
+  validates_time :end_time, :after => :start_time, 
+                            :after_message => 'end time must be after start time'
 
   #---------- SCOPES -----------------   
 
@@ -33,27 +47,26 @@ class Booking < ActiveRecord::Base
 
  #---------- AUTHENTICATION ----------------- 
 
- # This method checks permissions for the :index action
+ # this functionality was implemented using the RESTful_ACL gem 
+ # and by following this tutorial - http://everydayrails.com/2010/06/16/authorization-restful-acl-1.html 
+ # full referencses can be found in the full report reference page - [51][45]
+ 
   def self.is_indexable_by(user, parent = nil)
-    user != nil
+    user != nil 
   end
 
-  # This method checks permissions for the :create and :new action
   def self.is_creatable_by(user, parent = nil)
     user != nil
   end
 
-  # This method checks permissions for the :show action
   def is_readable_by(user, parent = nil)
     user.bookings.include?(self)
   end
 
-  # This method checks permissions for the :update and :edit action
   def is_updatable_by(user, parent = nil)
     user.bookings.include?(self)
   end
 
-  # This method checks permissions for the :destroy action
   def is_deletable_by(user, parent = nil)
     user.bookings.include?(self)
   end
@@ -61,69 +74,92 @@ class Booking < ActiveRecord::Base
 
   #---------- METHODS -----------------
 
-  def add_recurring_events(params, type, freq, limit, owner, student, course)
-  	@frequency = freq.to_i
-  	@limit = limit.to_i
-  	@limit = @limit-1
-    @owner = owner
-  	@freq_type = type
-
-  	@date =  Date.strptime(params[:start], '%Y-%m-%d')
-
-  	@start_date = @date
-
-    # loop and create events to the specified amount
-  	(0..@limit).each do |i|
-
-  		@booking = Booking.new(params)
-  		@booking.start = @start_date.to_s
-      @booking.save
-
-
-      # add an owner to the booking
-      if owner != nil
-        add_owner(@owner, @booking)
-      end
-
-      if student != nil 
-        add_student(student, @booking)
-      end
-
-      if course != nil 
-        add_course(course, @booking)
-      end
-
-      # check the duration at which the event should be reccured
-  		case @freq_type 
-	  		when "weeks"
-	  			@start_date = @start_date + @frequency.weeks
-	  		when "months"
-	  			@start_date = @start_date + @frequency.months
-	  		when "years"
-	  			@start_date = @start_date + @frequency.years
-  		end
-
-  	end
-  end
-
   # Creates an owner for the booking
   # Creates an appointment useing the current user as owner
-  def add_owner(owner, booking)
+  def add_owner(owner)
     @user = User.find(owner)
-    @user.appointments.create(:booking_id => booking.id, :owner => true, :confirmed => true, :status => 'booked')
+    @owner = @user
+    @app = @user.appointments.create(:booking_id => self.id, :owner => true, :confirmed => true, :status => 'booked')
+    if @app.save
+      BookingMailer.booking_email(@user, @app.booking, @owner).deliver
+    end  
   end
 
   # Creates an owner for the booking
   # Creates an appointment useing the current user as owner
-  def add_student(student, booking)
+  def add_student(student, owner)
     @user = User.find(student)
-    @user.appointments.create(:booking_id => booking.id)
+    @owner = User.find(owner)
+    @app = @user.appointments.create(:booking_id => eslf.id)
+    if @app.save
+      BookingMailer.booking_email(@user, @app.booking, @owner).deliver
+    end
   end
 
-  # Creates an owner for the booking
-  # Creates an appointment useing the current user as owner
-  def add_course(course, booking)
-    @course = Course.find(course)
-    @course.bookings << booking
-  end
+  def check_doubles
+    # Get all the booking appointments and loop through them
+    @apps = self.appointments
+    @apps.each do |app|
+
+      #get each user and loop through their bookings
+      @user = app.user
+      @user.bookings.each do |booking|
+
+      if booking.id != self.id
+
+        # check the day
+        if self.start == booking.start
+
+          #check the between times
+          if self.start_time >= booking.start_time and self.end_time <= booking.end_time
+
+            @status = "DoubleBooked"
+            @confirmed = nil
+            break
+          else #all is fine
+            
+            # check for other appointments
+            if self.appointments.count == 1 || app.owner == true
+              @status = ""
+              @confirmed = true
+            else
+              @status = "pending"
+              @confirmed = nil
+            end
+          
+          end
+        
+        #all is fine  
+        else
+
+            if self.appointments.count == 1 || app.owner == true
+              @status = ""
+              @confirmed = true
+            else
+              @status = "pending"
+              @confirmed = nil
+            end
+
+        end
+      
+      end
+      end
+
+      #update the appointment
+      @app = Appointment.find(app.id)
+      @app.update_attribute(:status,@status)
+      @app.update_attribute(:confirmed,@confirmed)
+
+    end #end of app loop
+
+  end #end of method
+
 end
+
+
+
+
+
+
+
+

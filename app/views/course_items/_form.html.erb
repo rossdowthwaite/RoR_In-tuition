@@ -11,15 +11,23 @@
     </div>
   <% end %>
 
- <%= @course_item.product.title %>
- <%= @course_item.product.description %>
- <%= @course_item.product.price %><br><br>
-
   <div class="field">
-    <%= f.label :show_in_profile, :class=> 'my_label'  %>
-    <%= f.check_box :show_in_profile %>
+    <h3>Show in Profile?</h3>
+    <p>Choose to show or hide this product in your course profile</p>
+     <%= f.check_box :show_in_profile %>
   </div>
+
+<h5>title</h5>
+<h4><%= @course_item.product.title %></h4>
+
+<h5>Description</h5>
+<h4><%= @course_item.product.description %></h4>
+
+<h5>Price</h5>
+<h4>&pound; <%= number_with_precision(@course_item.product.price, precision: 2) %><br><br></h4>
   <div class="actions">
     <%= f.submit :class => 'btn btn-primary my_button'%>
   </div>
 <% end %>
+
+

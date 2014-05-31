@@ -1,0 +1,29 @@
+<%= render "admin_header" %>
+
+<h3>Listing All Courses</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>created at</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.user.title %></td>
+        <td><%= course.title %></td>
+        <td><%= date(course.created_at) %></td>
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

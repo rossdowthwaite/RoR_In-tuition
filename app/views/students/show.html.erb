@@ -4,8 +4,10 @@
 <%= render 'student_side_nav' %>
 
 <div id="student_heading">
+	<%= link_to profile_path(@student.pupil.profile) do %> 
 	<%= image_tag @student.pupil.avatar.url(:thumb) if @student.pupil.avatar? %>
 	<h2><%= @student.students_name  %></h2>
+	<% end %>
 </div>
 
 <div id='student_courses'>

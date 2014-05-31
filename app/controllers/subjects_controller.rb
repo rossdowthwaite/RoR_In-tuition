@@ -43,7 +43,6 @@ class SubjectsController < ApplicationController
   end
 
   # DELETE /subjects/1
-  # DELETE /subjects/1.json
   def destroy
     @subject.destroy
     redirect_to subjects_url

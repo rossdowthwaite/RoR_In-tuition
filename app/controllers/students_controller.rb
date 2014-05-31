@@ -27,7 +27,12 @@ class StudentsController < ApplicationController
 
   end
 
-  # GET /students/new
+  # Search and Geocoder functionality was implemented following a Ryan Bates screencast tutorial
+  # found at http://railscasts.com/episodes/370-ransack 
+  # and - http://railscasts.com/episodes/273-geocoder
+  # and - http://railscasts.com/episodes/240-search-sort-paginate-with-ajax?autoplay=true.
+  # and - http://railscasts.com/episodes/37-simple-search-form?autoplay=true. 
+  # full reference at [63],[64],[66] & [67]
   def new
     @student = Student.new
     @search = User.search(params[:q])

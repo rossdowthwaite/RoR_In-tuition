@@ -2,6 +2,7 @@
 <%= render 'layouts/header' %>
 
 <%= link_to 'Back to profile', current_user.profile %><br><br>
+<p id="notice"><%= notice %></p>
 
 <% if @goals.count == 0  %>
 

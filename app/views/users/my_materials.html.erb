@@ -5,16 +5,11 @@
 
 <% if @materials == 0 %>
 
+	<% no_materials %>
+	<%= raw(@no_materials) %>
 	<center>
-		<h2>Welcome to your Materials Page!</h2>
-		<p>Here you can organize all your course content into a useful chunks to make up your sylabus
-		<br>Using the tabs at the side you can begin to build up a comprehesive arrangement of materials that will help you structure your tuition.</p><br> 
-
-		<h3>How To Oragnize your Materials:</h3>
-		<p>Its really very simple:</p>
 		<%= image_tag('cms_structure.png') %>
-		
-		<h5>Courses have many Subjects. Subjects have many topics. Topics have many contents.</h5>
+        <h5>Courses have many Subjects. Subjects have many topics. Topics have many contents.</h5>
 	</center>
 
 <% else %>

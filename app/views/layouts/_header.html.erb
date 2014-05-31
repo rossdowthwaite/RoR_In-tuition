@@ -62,11 +62,8 @@
   <div id="heading_nav_right">
 
      <% if @course %>
-     	<% if @course.user == current_user %>
+     	
      		<%= render 'courses/course_nav' %>
-     	<% else %>
-     		<%= render 'users/user_nav' %>
-     	<% end %>
 
      <% elsif @addressable %>
 

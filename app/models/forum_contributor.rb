@@ -4,9 +4,13 @@ class ForumContributor < ActiveRecord::Base
 
   has_many :notifications, as: :notifiable, :dependent => :destroy
 
-  after_create :send_notification
+  #---------- SCOPES ----------------- 
 
   scope :contributor, -> (id) {where(:user_id => id)}
+
+  #---------- HOOKS -----------------  
+
+  after_create :send_notification
 
   def send_notification
   	@notifiable = self

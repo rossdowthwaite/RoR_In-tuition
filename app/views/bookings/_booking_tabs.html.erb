@@ -1,5 +1,7 @@
+
   <% booking_status(booking) %>
   <% my_booking_status(booking) %>
+  <% double_booked(booking)  %>
 
   <%= link_to booking do %>
 
@@ -19,7 +21,6 @@
             <%= time(booking.start_time) %> - <%= time(booking.end_time) %>
           </div>
 
-          <div id='booking_icons'>
               <div id="list_tab_action">
                 <center><%= link_to raw('<i class="fa fa-trash-o fa-2x tab_icons"></i>'), booking, method: :delete, data: { confirm: 'Are you sure?' }  %></center>
               </div>
@@ -29,9 +30,14 @@
               </div>
 
               <div id="list_tab_action">
+              <center><%= check_box_tag "bookings[]", booking.id %></center>
+            </div>
+
+              <div id="list_tab_action">
                   <center><%= raw(@booking_status_icon) %></center>
               </div>
-          </div>
+  
 
         </div>
-<% end %>
+  <% end %>
+    

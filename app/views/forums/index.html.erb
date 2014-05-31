@@ -1,6 +1,12 @@
 <% @heading = 'My Forums'  %>
 <%= render 'layouts/header' %>
 
+<% if @forums.empty?  %>
+
+  <% forum_welcome %>
+  <%= raw(@welcome)  %>
+
+<% else %>
 
     <div id="grid">
 
@@ -21,9 +27,9 @@
                 <% elsif forum.forum_contributors.count == 2 %>
 
                   <% if forum.forum_contributors.first.user.id == current_user.id %>
-                    <%= image_tag forum.forum_contributors.second.user.avatar.url(:home) %>
+                    <%= image_tag forum.forum_contributors.second.user.avatar.url(:home) if forum.forum_contributors.second.user.avatar.exists? %>
                   <% else %>
-                    <%= image_tag forum.forum_contributors.first.user.avatar.url(:home) %>
+                    <%= image_tag forum.forum_contributors.first.user.avatar.url(:home) if forum.forum_contributors.first.user.avatar.exists? %>
                   <% end %>
 
                 <% elsif forum.forumable_type == 'Course' %>
@@ -55,4 +61,6 @@
 
     </div>
     <!-- Grid end -->
+
+<% end %>
 

@@ -1,20 +1,33 @@
 <div id="dash_grid">
 
-  <%= link_to students_path do %>
+
+
+
+  <%= link_to my_office_path do %>
     <div id="dash_tab">
       <div id="dash_heading">
-        <h3>Students</h3> 
+        <h3>Office</h3> 
       </div>  
-      <center><i class="fa fa-users fa-2x icons_100" id="tab_icon"></i></center>
+      <center><i class="fa fa-coffee fa-2x icons_100" id="tab_icon"></i></center>
     </div>
   <% end %>
 
-  <%= link_to courses_path do %>
+  <%= link_to my_materials_path do %>
     <div id="dash_tab">
       <div id="dash_heading">
-        <h3>Courses</h3> 
+        <h3>Materials</h3> 
       </div>  
-      <center><i class="fa fa-book fa-2x icons_100" id="tab_icon"></i></center>
+      <center><i class="fa fa-briefcase fa-2x icons_100" id="tab_icon"></i></center>
+    </div>
+  <% end %>
+
+
+  <%= link_to forums_path do %>
+    <div id="dash_tab">
+      <div id="dash_heading">
+        <h3>Forums</h3> 
+      </div>  
+      <center><i class="fa fa-comments-o fa-2x icons_100" id="tab_icon"></i></center>
     </div>
   <% end %>
 
@@ -27,22 +40,24 @@
     </div>
   <% end %>
 
-  <%= link_to forums_path do %>
+  <%= link_to students_path do %>
     <div id="dash_tab">
       <div id="dash_heading">
-        <h3>Forums</h3> 
+        <h3>Students</h3> 
       </div>  
-      <center><i class="fa fa-comments-o fa-2x icons_100" id="tab_icon"></i></center>
+      <center><i class="fa fa-users fa-2x icons_100" id="tab_icon"></i></center>
     </div>
   <% end %>
 
-  <%= link_to my_office_path do %>
+
+  <%= link_to courses_path do %>
     <div id="dash_tab">
       <div id="dash_heading">
-        <h3>Office</h3> 
+        <h3>Courses</h3> 
       </div>  
-      <center><i class="fa fa-coffee fa-2x icons_100" id="tab_icon"></i></center>
+      <center><i class="fa fa-book fa-2x icons_100" id="tab_icon"></i></center>
     </div>
   <% end %>
+
 </div>
 

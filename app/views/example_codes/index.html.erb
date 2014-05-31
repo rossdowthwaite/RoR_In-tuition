@@ -1,0 +1,31 @@
+<h1>Listing example_codes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Example string</th>
+      <th>Example int</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @example_codes.each do |example_code| %>
+      <tr>
+        <td><%= example_code.example_string %></td>
+        <td><%= example_code.example_int %></td>
+        <td><%= example_code.user %></td>
+        <td><%= link_to 'Show', example_code %></td>
+        <td><%= link_to 'Edit', edit_example_code_path(example_code) %></td>
+        <td><%= link_to 'Destroy', example_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Example code', new_example_code_path %>

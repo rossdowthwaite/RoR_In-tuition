@@ -1,44 +1,78 @@
 <% @heading = 'Course Prices'  %>
 <%= render 'layouts/header' %>
 
-    <p id="notice"><%= notice %></p>
-    <% @course_items.each do |course_item| %>
+<% if @course_items.empty?  %>
 
-          <% if public?(course_item) %>
-            <% @icon = '<i class="fa fa-eye fa-2x tab_icons"></i>' %>
-          <% else %>
-            <% @icon = '<i class="fa fa-eye-slash fa-2x tab_icons"></i>' %>
-          <% end %>
+  <% if current_user.products.empty? %>
 
-          <div id="product_item">
-            <div id='with_tab'>
-              <center><i class="fa fa-shopping-cart fa-2x tab_icons"></i></center>
-            </div>
+      <% no_product_message %>
+      <%= raw(@no_prices) %><br>
+      
+      <center>
+        <%= link_to raw('<i class="fa fa-shopping-cart fa-5x"></i><br> Add some products!'), new_product_path, :class =>" no_decoration" %>
+      </center>
 
-            <div id="product_item_title">
-                <%= course_item.product.title %>
-            </div>
+  <% else %> 
 
-            <div id="product_item_desc">
-                <%= course_item.product.description %>
-            </div>
+      <% price_message %>
+      <%= raw(@no_prices) %><br>
+      
+      <center>
+        <%= link_to raw('<i class="fa fa-money fa-5x"></i><br> Add ome prices!'), update_prices_course_path(@course), :class =>" no_decoration" %>
+      </center>
 
-
-            <div id="booking_icon" >
-              <center><%= link_to raw(@icon), edit_course_course_item_path(@course, course_item) %></center>
-            </div>
-
-            <div id="product_item_price">
-              <div id='with_tab'>
-                <center><i class="fa fa-gbp fa-2x tab_icons"></i></center>
-              </div>
-              <div id="product_item_price_int">
-                <%= course_item.product.price %>
-              </div>
-            </div>
-          </div> 
-        
     <% end %>
 
-<%= link_to 'Update Prices', update_prices_course_path(@course), :class => 'btn btn-inverse my_button' %>
-<%= link_to 'New Product', new_product_path, :class => 'btn btn-inverse my_button' %>
+<% else %>
+
+      <p id="notice"><%= notice %></p>
+      <% @course_items.each do |course_item| %>
+
+            <% if public?(course_item) %>
+              <% @icon = '<i class="fa fa-eye fa-2x tab_icons"></i>' %>
+            <% else %>
+              <% @icon = '<i class="fa fa-eye-slash fa-2x tab_icons"></i>' %>
+            <% end %>
+
+            <div id="product_item">
+              <div id='with_tab'>
+                <center><i class="fa fa-shopping-cart fa-2x tab_icons"></i></center>
+              </div>
+
+              <div id="product_item_title">
+                  <%= course_item.product.title %>
+              </div>
+
+              <div id="product_item_desc">
+                  <%= course_item.product.description %>
+              </div>
+
+            <% if owned_by(current_user, @course) %>
+                <div id="booking_icon" title="Show in Profile" >
+                  <center><%= link_to raw(@icon), edit_course_course_item_path(@course, course_item) %></center>
+                </div>
+
+                <div id="booking_icon" >
+                  <center><%= link_to raw('<i class="fa fa-cog fa-2x tab_icons"></i>'), edit_product_path(course_item.product_id) %></center>
+                </div>
+            <% end %>
+
+              <div id="product_item_price">
+                <div id='with_tab'>
+                  <center><i class="fa fa-gbp fa-2x tab_icons"></i></center>
+                </div>
+                <div id="product_item_price_int">
+                  <%= number_with_precision(course_item.product.price, precision: 2) %>
+                </div>
+              </div>
+            </div> 
+          
+      <% end %>
+  <% if owned_by(current_user, @course) %>
+
+    <%= link_to 'Update Prices', update_prices_course_path(@course), :class => 'btn btn-inverse my_button' %>
+    <%= link_to 'New Product', new_product_path, :class => 'btn btn-inverse my_button' %>
+
+  <% end %>
+
+<% end %>

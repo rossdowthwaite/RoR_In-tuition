@@ -7,11 +7,11 @@
 
 <% if @videos.empty? %>
   
-  <center><h3>Add Some Videos!</h3>
-  <p>Start adding some links to your favourite youtube videos to use in your topics.</p>
-  <p>You can add videos to topics on the fly when you create the content for you topic.<br> All the videos you link to will be shown here.</p><br>
-  <%= link_to raw('<i class="fa fa-film fa-5x"></i> <br>Add a New Video'), new_video_path %><br><br>
-  <center><%= image_tag('topic_materials.png') %></center>
+  <% no_video_message %>
+  <%= raw(@no_videos)  %>
+
+  <center>
+    <%= link_to raw('<i class="fa fa-film fa-5x"></i> <br>Add a New Video'), new_video_path %><br><br>
   </center>
 
 

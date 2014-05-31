@@ -3,14 +3,8 @@ class LocationsController < ApplicationController
   before_action :set_addressable
 
   # GET /locations
-  # GET /locations.json
   def index
     @locations = @addressable.locations
-  end
-
-  # GET /locations/1
-  # GET /locations/1.json
-  def show
   end
 
   # GET /locations/new
@@ -23,37 +17,26 @@ class LocationsController < ApplicationController
   end
 
   # POST /locations
-  # POST /locations.json
   def create
     @location = @addressable.locations.new(location_params)
 
-    respond_to do |format|
       if @location.save
-        format.html { redirect_to [@addressable, :locations], notice: 'Location was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @location }
+        redirect_to [@addressable, :locations], notice: 'Location was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /locations/1
-  # PATCH/PUT /locations/1.json
   def update
-    respond_to do |format|
       if @location.update(location_params)
-        format.html { redirect_to [@addressable, :locations], notice: 'Location was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to [@addressable, :locations], notice: 'Location was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
   end
 
   # DELETE /locations/1
-  # DELETE /locations/1.json
   def destroy
     @location.destroy
     redirect_to :back 

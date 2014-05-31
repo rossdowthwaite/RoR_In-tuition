@@ -8,11 +8,14 @@ class ApplicationController < ActionController::Base
 
 	private
 
+	# get all the user notifications
 	def notifications
 		notifications = Notification.my_notifications(current_user.id).new_notifications
 	end
 
-	# The follwing method were created by following a tutorial found at - http://railscasts.com/episodes/160-authlogic
+	# The following two methods were implemented using code from following a tutorial found at - http://railscasts.com/episodes/160-authlogic
+	# full reference found in report references [50]
+	
 	# Set the current user
 	
 	def current_user_session

@@ -1,6 +1,9 @@
 class BookingsController < ApplicationController
-  before_filter :has_permission?
+  before_filter :has_permission? 
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_students, only: [:new, :create]
+
+  include BookingsHelper
 
   # GET /bookings
   def index
@@ -23,7 +26,6 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
-    @students = current_user.students.confirmed
   end
 
   # GET /bookings/1/edit
@@ -43,15 +45,48 @@ class BookingsController < ApplicationController
 
   # POST /bookings
   def create
-    @freq = params[:recurring_amount]
+    @freq = params[:recurring_amount].to_i
     @type = params[:recurring_type]
-    @limit = params[:recurring_for]
+    @limit = params[:recurring_for].to_i 
     @owner = params[:owner]
     @student = params[:student]
 
-    @booking = Booking.new
-    @booking.add_recurring_events(booking_params, @type, @freq, @limit, @owner, @student, @course)
-    redirect_to @booking
+    @booking =  Booking.new(booking_params)
+    @start_date =  @booking.start
+
+    (1..@limit).each do |i|
+
+      @booking =  Booking.new(booking_params)
+      @booking.start = @start_date
+
+      if @booking.save 
+          # add an owner to the booking
+          if @owner != nil
+            @booking.add_owner(@owner)
+          end
+          
+          # add student to the booking
+          if @student != nil 
+            @booking.add_student(@student, @owner)
+          end
+          #add the date up
+          case @type 
+            when "weeks"
+              @start_date = @booking.start + i.weeks
+            when "months"
+              @start_date = @booking.start + i.months
+            when "years"
+              @start_date = @booking.start + i.years
+          end
+      else
+        render action: 'new' and return
+      end
+    end
+    if @limit == 1
+      redirect_to @booking
+    else
+      redirect_to bookings_path
+    end
   end
 
   # PATCH/PUT /bookings/1
@@ -69,10 +104,19 @@ class BookingsController < ApplicationController
     redirect_to bookings_url
   end
 
+  def group_delete
+    Booking.destroy(params[:bookings])
+    redirect_to bookings_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_booking
       @booking = Booking.find(params[:id])
+    end
+
+    def set_students
+      @students = current_user.students.confirmed
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

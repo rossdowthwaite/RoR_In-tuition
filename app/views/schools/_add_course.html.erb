@@ -1,3 +1,8 @@
+<!-- The Following form was implemented by following a Ryan Bates screencast -->
+<!-- This can be found at - http://railscasts.com/episodes/52-update-through-checkboxes?autoplay=true. -->
+<!-- And http://railscasts.com/episodes/17-habtm-checkboxes-revised?view=asciicast.  -->
+<!-- A full reference can be found in the report [51] and [65] -->
+
 <%= form_for @school, :url => course_update_school_path(@school) do |f| %>
   
   <% if @school.errors.any? %>

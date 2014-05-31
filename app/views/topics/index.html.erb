@@ -5,16 +5,13 @@
 
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'New Topic', new_topic_path %>
 <% if @topics.empty? %>
   
-  <center><h3>Add Some Topics!</h3>
-  <p>Topics are your where your main content goes. Create a new topic and add content to it.</p>
-  <p>Topics can be added to any subject you have created.<br> So if topic is needed over a number of subjects you can simply add it to all of them. Smashing</p>
-  <br>
-  <%= link_to raw('<i class="fa fa-file-text fa-5x"></i> <br>Add a New Topic'), new_topic_path %><br><br>
-  <center><%= image_tag('topic_materials.png') %></center>
-  </center>
-
+  <% no_topics %>
+  <%= raw(@no_topics)  %>
+  
+  <center><%= link_to raw('<i class="fa fa-file-text fa-5x"></i> <br>Add a New Topic'), new_topic_path %><br><br></center>
 
 <% else %>
 
@@ -44,6 +41,5 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
 
 <% end %>

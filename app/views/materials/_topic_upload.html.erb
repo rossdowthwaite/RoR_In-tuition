@@ -23,7 +23,10 @@
 
 <div id="media_create">
   <div class="actions">
-    <%= f.submit 'Add to Topic',:class => 'my_button btn btn-primary no_margin' %>
+    <%= f.submit 'Add to Topic',:class => 'my_button btn btn-primary no_margin', data: { confirm: 'Do you have permission to use this material?
+
+      Please makesure you check the and understand copyright before you upload materials. We take no responsibility to uploaded contents.
+      ' }  %>
   </div>
 </div>
 

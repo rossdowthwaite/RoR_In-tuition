@@ -1,7 +1,7 @@
 <% @heading = 'Content'  %>
 <%= render 'layouts/header' %>
 
-
+<% if owned_by(current_user, @course) %>
 <div id="side">
 	<%= link_to add_content_course_path(@course) do %> 
 		<div id="tab_medium">
@@ -12,7 +12,7 @@
 		</div>
 	<% end %>
 </div>
-
+<% end %>
 <div>
 
 	<!-- Loop through the courses content -->

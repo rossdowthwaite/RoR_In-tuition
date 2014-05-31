@@ -39,6 +39,9 @@ module LocationsHelper
 			when 'School'
 				@nav = 'schools/school_nav'
 				@school = addressable
+			when 'User'
+				@nav = 'users/user_nav'
+				@user = addressable
 			end
 	end
 	

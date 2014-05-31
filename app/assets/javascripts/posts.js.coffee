@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+# toggles the post tab up and down
+
 $(document).ready ->
   $(".post_tab").click ->
     id = $(this).prop('id')

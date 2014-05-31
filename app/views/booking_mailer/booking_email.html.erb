@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2><%= @owner.title %> has invited you to an event!</h2>
+
+      <h2><%= @booking.title %></h2>  
+      <h3>Date</h3>
+      <p>
+        <%= @booking.start if @booking.start? %><br>
+        <%= @booking.end if @booking.end? %><br>
+      </p>
+      <h3>time</h3>
+      <p>
+        <%= @booking.start_time if @booking.start_time? %><br>
+        <%= @booking.end_time if @booking.end_time? %>
+      </p>
+      <p>login to accept or decline this event!</p>
+
+  </body>
+</html>

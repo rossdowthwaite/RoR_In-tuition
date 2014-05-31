@@ -12,19 +12,6 @@ class MaterialsController < ApplicationController
     session[:return_to] ||= request.referer
   end
 
-  # GET /materials/1
-  def show
-  end
-
-  # GET /materials/new
-  def new
-    @material = Material.new
-  end
-
-  # GET /materials/1/edit
-  def edit
-  end
-
   # POST /materials
   def create
     @material = Material.new(material_params)

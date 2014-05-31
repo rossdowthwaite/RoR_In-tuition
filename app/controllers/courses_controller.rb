@@ -73,6 +73,7 @@ class CoursesController < ApplicationController
 
   def add_content
     @content = current_user.subjects
+    session.delete(:return_to)
     session[:return_to] ||= request.referer
   end
 
@@ -86,6 +87,7 @@ class CoursesController < ApplicationController
 
   def update_prices 
     @products = current_user.products
+    session.delete(:return_to)
     session[:return_to] ||= request.referer
   end
 

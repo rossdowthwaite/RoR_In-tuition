@@ -4,13 +4,11 @@ class ForumsController < ApplicationController
   before_action :set_user
 
   # GET /forums
-  # GET /forums.json
   def index
     @forums = @user.forums
   end
 
   # GET /forums/1
-  # GET /forums/1.json
   def show
     @posts = @forum.posts.order("created_at desc")
     @post = Post.new
@@ -26,49 +24,36 @@ class ForumsController < ApplicationController
   end
 
   # POST /forums
-  # POST /forums.json
   def create
     @forum = Forum.new(forum_params)
     @user.forums << @forum
 
-    respond_to do |format|
       if @forum.save
-        format.html { redirect_to @forum, notice: 'Forum was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @forum }
+        redirect_to @forum, notice: 'Forum was successfully created.'
       else
-        format.html { render action: 'new' }
-        format.json { render json: @forum.errors, status: :unprocessable_entity }
+        render action: 'new'
       end
-    end
   end
 
   # PATCH/PUT /forums/1
-  # PATCH/PUT /forums/1.json
   def update
-    respond_to do |format|
       if @forum.update(forum_params)
-        format.html { redirect_to @forum, notice: 'Forum was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @forum, notice: 'Forum was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @forum.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
   end
 
 
   # DELETE /forums/1
-  # DELETE /forums/1.json
   def destroy
     @forum.destroy
-    respond_to do |format|
-      format.html { redirect_to forums_url }
-      format.json { head :no_content }
-    end
+    redirect_to forums_url
   end
 
   def add_participant
-    @users = User.all
+    @students = current_user.students.pluck(:pupil_id)
+    @users = User.where(:id => @students)
   end
 
   def settings

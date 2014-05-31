@@ -3,13 +3,33 @@
 
 <%= render 'booking_index_side' %>
 
-<div id="booking_table">
+<% if @bookings.any?  %>
+	<%= form_tag group_delete_bookings_path, :method => :delete do %> 
 
-  <% @bookings.each do |booking| %>
+	<div id="booking_table">
 
-       <%= render :partial=>'booking_tabs', locals: { booking: booking } %>  
+	  <% @bookings.each do |booking| %>
 
-  <% end %>
+	       <%= render :partial=>'booking_tabs', locals: { booking: booking } %>  
 
-</div>
+	  <% end %>
+
+	</div>
+
+	  <%= submit_tag "Delete", :class => 'btn btn-inverse my_button' %>
+
+	<% end %>
+<% else %>
+
+ 		<% booking_welcome %>
+      	<%= raw(@welcome)  %>
+
+		<center>
+		  <%= link_to raw('<i class="fa fa-ticket fa-5x"></i><br>New Booking'), new_booking_path() %> 
+		</center>
+
+
+<% end %>
+
+
 

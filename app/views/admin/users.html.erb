@@ -1,0 +1,36 @@
+<%= render "admin_header" %>
+
+<h3>Listing All users</h3>
+
+<%= link_to 'New Admin', admin_users_path(), :class => 'btn btn-inverse, my_button' %> 
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>admin</th>
+      <th>Dob</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.title %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.is_admin %></td>
+        <td><%= user.dob %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

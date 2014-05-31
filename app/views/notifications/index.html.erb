@@ -3,6 +3,10 @@
 
 <h5>You have <%= pluralize(@notifications.new_notifications.count, 'new notification')  %></h5>
 
+<!-- The edit mulriple functionality was implemented by following a Ryan Bates screencast tutorial -->
+<!-- Found at http://railscasts.com/episodes/165-edit-multiple?autoplay=true -->
+<!-- A full reference can be found in the report [66] --> 
+
 <%= form_tag group_delete_notifications_path, :method => :delete do %>
 
     <% @notifications.each do |notification| %>

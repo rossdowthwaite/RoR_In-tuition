@@ -2,9 +2,20 @@
 <%= render 'layouts/header' %>
 
     <p id="notice"><%= notice %></p>
+    
+<% if @products.empty? %>
+
+      <% products_welcome %>
+      <%= raw(@welcome)  %>
+
+      <center>
+        <%= link_to raw('<i class="fa fa-shopping-cart fa-5x"></i><br> Add Product'), new_product_path, :class =>" no_decoration" %> 
+      </center>
+
+<% else %>
+
     <% @products.each do |product| %>
 
-        <%= link_to product do %> 
           <div id="product_item">
             <div id='with_tab'>
               <center><i class="fa fa-shopping-cart fa-2x tab_icons"></i></center>
@@ -33,9 +44,9 @@
                 <%= number_with_precision(product.price, precision: 2) %>
             </div>
           </div>
-        <% end %> 
         
     <% end %>
 <br>
 
 <%= link_to 'New Product', new_product_path, :class => 'btn btn-inverse my_button' %>
+<% end %>
